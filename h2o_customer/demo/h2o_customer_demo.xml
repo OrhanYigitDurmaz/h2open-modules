@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Zones -->
+    <record id="zone_kadikoy" model="h2o.zone">
+        <field name="name">Kadıköy</field>
+        <field name="code">IST-KDK</field>
+        <field name="state_id" ref="base.state_tr_34"/>
+        <field name="district_names">Kadıköy, Moda, Caferağa, Fenerbahçe, Göztepe</field>
+        <field name="zip_codes">34710, 34714, 34726</field>
+        <field name="weekday_ids" eval="[Command.set([ref('h2o_base.weekday_mon'), ref('h2o_base.weekday_thu')])]"/>
+        <field name="color">4</field>
+    </record>
+    <record id="zone_uskudar" model="h2o.zone">
+        <field name="name">Üsküdar</field>
+        <field name="code">IST-USK</field>
+        <field name="state_id" ref="base.state_tr_34"/>
+        <field name="district_names">Üsküdar, Altunizade, Acıbadem, Kuzguncuk</field>
+        <field name="zip_codes">34662, 34664, 34672</field>
+        <field name="weekday_ids" eval="[Command.set([ref('h2o_base.weekday_tue'), ref('h2o_base.weekday_fri')])]"/>
+        <field name="color">2</field>
+    </record>
+    <record id="zone_atasehir" model="h2o.zone">
+        <field name="name">Ataşehir</field>
+        <field name="code">IST-ATA</field>
+        <field name="state_id" ref="base.state_tr_34"/>
+        <field name="district_names">Ataşehir, Barbaros, Küçükbakkalköy, İçerenköy</field>
+        <field name="zip_codes">34746, 34750, 34752</field>
+        <field name="weekday_ids" eval="[Command.set([ref('h2o_base.weekday_wed'), ref('h2o_base.weekday_sat')])]"/>
+        <field name="color">6</field>
+    </record>
+    <record id="zone_kutahya_merkez" model="h2o.zone">
+        <field name="name">Kütahya Merkez</field>
+        <field name="code">KTH-MRK</field>
+        <field name="state_id" ref="base.state_tr_43"/>
+        <field name="district_names">Merkez, Cumhuriyet, Zafertepe, Yenidoğan, Evliya Çelebi</field>
+        <field name="zip_codes">43000, 43020, 43100</field>
+        <field name="weekday_ids" eval="[Command.set([ref('h2o_base.weekday_mon'), ref('h2o_base.weekday_wed'), ref('h2o_base.weekday_fri')])]"/>
+        <field name="color">10</field>
+    </record>
+    <record id="zone_tavsanli" model="h2o.zone">
+        <field name="name">Tavşanlı</field>
+        <field name="code">KTH-TAV</field>
+        <field name="state_id" ref="base.state_tr_43"/>
+        <field name="district_names">Tavşanlı</field>
+        <field name="zip_codes">43300</field>
+        <field name="weekday_ids" eval="[Command.set([ref('h2o_base.weekday_tue')])]"/>
+        <field name="color">8</field>
+    </record>
+
+    <!-- Home customers: the zone is found from the address. -->
+    <record id="partner_home_ayse" model="res.partner">
+        <field name="name">Ayşe Yılmaz</field>
+        <field name="h2o_customer_type">home</field>
+        <field name="street">Moda Cad. No: 41 D: 7</field>
+        <field name="street2">Caferağa Mah.</field>
+        <field name="city">Kadıköy</field>
+        <field name="zip">34710</field>
+        <field name="state_id" ref="base.state_tr_34"/>
+        <field name="country_id" ref="base.tr"/>
+        <field name="phone">+90 532 111 22 33</field>
+        <field name="h2o_floor">3</field>
+        <field name="h2o_has_elevator" eval="False"/>
+        <field name="h2o_delivery_notes">Leave the bottles in front of the door if nobody answers.</field>
+    </record>
+    <record id="partner_home_mehmet" model="res.partner">
+        <field name="name">Mehmet Demir</field>
+        <field name="h2o_customer_type">home</field>
+        <field name="street">Selman Ağa Sok. No: 8</field>
+        <field name="street2">Kuzguncuk Mah.</field>
+        <field name="city">Üsküdar</field>
+        <field name="state_id" ref="base.state_tr_34"/>
+        <field name="country_id" ref="base.tr"/>
+        <field name="phone">+90 533 222 33 44</field>
+        <field name="h2o_floor">1</field>
+        <field name="h2o_payment_mode">card</field>
+    </record>
+    <record id="partner_home_zeynep" model="res.partner">
+        <field name="name">Zeynep Kaya</field>
+        <field name="h2o_customer_type">home</field>
+        <field name="street">Atatürk Bulvarı No: 120 D: 4</field>
+        <field name="street2">Cumhuriyet Mah.</field>
+        <field name="city">Merkez</field>
+        <field name="zip">43100</field>
+        <field name="state_id" ref="base.state_tr_43"/>
+        <field name="country_id" ref="base.tr"/>
+        <field name="phone">+90 274 333 44 55</field>
+        <field name="h2o_floor">2</field>
+        <field name="h2o_weekday_ids" eval="[Command.set([ref('h2o_base.weekday_wed')])]"/>
+    </record>
+
+    <!-- Office customers -->
+    <record id="partner_office_bogaz" model="res.partner">
+        <field name="name">Boğaz Yazılım A.Ş.</field>
+        <field name="is_company" eval="True"/>
+        <field name="h2o_customer_type">office</field>
+        <field name="h2o_payment_mode">account</field>
+        <field name="street">Ataşehir Bulvarı, Ata Plaza Kat: 12</field>
+        <field name="street2">Barbaros Mah.</field>
+        <field name="city">Ataşehir</field>
+        <field name="zip">34746</field>
+        <field name="state_id" ref="base.state_tr_34"/>
+        <field name="country_id" ref="base.tr"/>
+        <field name="phone">+90 216 444 55 66</field>
+        <field name="email">ofis@bogazyazilim.example.com</field>
+        <field name="h2o_floor">12</field>
+        <field name="h2o_has_elevator" eval="True"/>
+        <field name="h2o_delivery_notes">Deliver to the kitchen on the 12th floor, ask reception for the service elevator.</field>
+    </record>
+    <record id="partner_office_bogaz_kadikoy" model="res.partner">
+        <field name="name">Boğaz Yazılım - Kadıköy Office</field>
+        <field name="parent_id" ref="partner_office_bogaz"/>
+        <field name="type">delivery</field>
+        <field name="street">Söğütlüçeşme Cad. No: 10</field>
+        <field name="city">Kadıköy</field>
+        <field name="zip">34714</field>
+        <field name="state_id" ref="base.state_tr_34"/>
+        <field name="country_id" ref="base.tr"/>
+        <field name="h2o_floor">2</field>
+    </record>
+    <record id="partner_office_dumlupinar" model="res.partner">
+        <field name="name">Dumlupınar Mali Müşavirlik</field>
+        <field name="is_company" eval="True"/>
+        <field name="h2o_customer_type">office</field>
+        <field name="h2o_payment_mode">account</field>
+        <field name="street">Afyon Cad. No: 15</field>
+        <field name="street2">Zafertepe Mah.</field>
+        <field name="city">Merkez</field>
+        <field name="state_id" ref="base.state_tr_43"/>
+        <field name="country_id" ref="base.tr"/>
+        <field name="phone">+90 274 555 66 77</field>
+    </record>
+
+    <!-- Resellers -->
+    <record id="partner_reseller_bereket" model="res.partner">
+        <field name="name">Bereket Market</field>
+        <field name="is_company" eval="True"/>
+        <field name="h2o_customer_type">reseller</field>
+        <field name="h2o_payment_mode">account</field>
+        <field name="street">Fahrettin Kerim Gökay Cad. No: 200</field>
+        <field name="street2">Göztepe Mah.</field>
+        <field name="city">Kadıköy</field>
+        <field name="state_id" ref="base.state_tr_34"/>
+        <field name="country_id" ref="base.tr"/>
+        <field name="phone">+90 216 666 77 88</field>
+        <field name="h2o_delivery_notes">Unload at the back entrance before 10:00.</field>
+    </record>
+    <record id="partner_reseller_tavsanli" model="res.partner">
+        <field name="name">Tavşanlı Su Bayii</field>
+        <field name="is_company" eval="True"/>
+        <field name="h2o_customer_type">reseller</field>
+        <field name="h2o_payment_mode">cash</field>
+        <field name="street">Cumhuriyet Cad. No: 33</field>
+        <field name="city">Tavşanlı</field>
+        <field name="zip">43300</field>
+        <field name="state_id" ref="base.state_tr_43"/>
+        <field name="country_id" ref="base.tr"/>
+        <field name="phone">+90 274 777 88 99</field>
+    </record>
+</odoo>

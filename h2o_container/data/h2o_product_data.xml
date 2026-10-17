@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="product_category_water" model="product.category">
+        <field name="name">Water</field>
+    </record>
+
+    <!-- Packagings of packaged water -->
+    <record id="uom_pack_4" model="uom.uom">
+        <field name="name">Pack of 4</field>
+        <field name="relative_factor" eval="4"/>
+        <field name="relative_uom_id" ref="uom.product_uom_unit"/>
+    </record>
+    <record id="uom_case_24" model="uom.uom">
+        <field name="name">Case of 24</field>
+        <field name="relative_factor" eval="24"/>
+        <field name="relative_uom_id" ref="uom.product_uom_unit"/>
+    </record>
+
+    <record id="product_deposit_19l" model="product.product">
+        <field name="name">19 L Bottle Deposit</field>
+        <field name="default_code">DEP19</field>
+        <field name="h2o_product_kind">deposit</field>
+        <field name="type">service</field>
+        <field name="categ_id" ref="product_category_water"/>
+        <field name="list_price">250.0</field>
+        <field name="sale_ok" eval="True"/>
+        <field name="purchase_ok" eval="False"/>
+        <field name="taxes_id" eval="[Command.clear()]"/>
+        <field name="description_sale">Refundable deposit for one returnable 19 L bottle.</field>
+    </record>
+
+    <record id="product_bottle_19l" model="product.product">
+        <field name="name">19 L Returnable Bottle (empty)</field>
+        <field name="default_code">BTL19</field>
+        <field name="h2o_product_kind">container</field>
+        <field name="type">consu</field>
+        <field name="categ_id" ref="product_category_water"/>
+        <field name="h2o_volume">19</field>
+        <field name="h2o_deposit_product_id" ref="product_deposit_19l"/>
+        <field name="list_price">250.0</field>
+        <field name="standard_price">150.0</field>
+        <field name="sale_ok" eval="False"/>
+        <field name="purchase_ok" eval="True"/>
+    </record>
+
+    <record id="product_water_19l" model="product.product">
+        <field name="name">19 L Drinking Water (Damacana)</field>
+        <field name="default_code">SU19</field>
+        <field name="h2o_product_kind">water_returnable</field>
+        <field name="type">consu</field>
+        <field name="categ_id" ref="product_category_water"/>
+        <field name="h2o_volume">19</field>
+        <field name="h2o_container_product_id" ref="product_bottle_19l"/>
+        <field name="list_price">120.0</field>
+        <field name="sale_ok" eval="True"/>
+        <field name="purchase_ok" eval="True"/>
+    </record>
+
+    <record id="product_water_5l" model="product.product">
+        <field name="name">5 L Drinking Water</field>
+        <field name="default_code">SU5</field>
+        <field name="h2o_product_kind">water_packaged</field>
+        <field name="type">consu</field>
+        <field name="categ_id" ref="product_category_water"/>
+        <field name="h2o_volume">5</field>
+        <field name="list_price">45.0</field>
+        <field name="uom_ids" eval="[Command.set([ref('uom_pack_4')])]"/>
+    </record>
+
+    <record id="product_water_05l" model="product.product">
+        <field name="name">0.5 L Drinking Water</field>
+        <field name="default_code">SU05</field>
+        <field name="h2o_product_kind">water_packaged</field>
+        <field name="type">consu</field>
+        <field name="categ_id" ref="product_category_water"/>
+        <field name="h2o_volume">0.5</field>
+        <field name="list_price">8.0</field>
+        <field name="uom_ids" eval="[Command.set([ref('uom.product_uom_pack_6'), ref('uom_case_24')])]"/>
+    </record>
+</odoo>

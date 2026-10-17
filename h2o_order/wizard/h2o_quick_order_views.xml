@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_quick_order_view_form" model="ir.ui.view">
+        <field name="name">h2o.quick.order.form</field>
+        <field name="model">h2o.quick.order</field>
+        <field name="arch" type="xml">
+            <form string="New Phone Order">
+                <group>
+                    <group>
+                        <field name="partner_id" context="{'default_h2o_customer_type': 'home', 'show_address': 1}"
+                               options="{'always_reload': True}"/>
+                        <field name="partner_shipping_id" invisible="not partner_id"
+                               context="{'default_type': 'delivery', 'default_parent_id': partner_id}"/>
+                        <field name="zone_id" invisible="not partner_id"/>
+                        <field name="payment_mode" invisible="not partner_id"/>
+                        <field name="bottle_balance" invisible="not partner_id"/>
+                    </group>
+                    <group>
+                        <field name="delivery_date"/>
+                        <field name="time_window"/>
+                        <field name="empties_expected"/>
+                        <field name="delivery_notes" invisible="not delivery_notes"/>
+                    </group>
+                </group>
+                <field name="line_ids">
+                    <list editable="bottom">
+                        <field name="product_id" options="{'no_create': True}"/>
+                        <field name="qty"/>
+                        <field name="allowed_uom_ids" column_invisible="1"/>
+                        <field name="product_uom_id" options="{'no_create': True, 'no_open': True}"/>
+                    </list>
+                </field>
+                <field name="note" placeholder="Note for this order..."/>
+                <footer>
+                    <button name="action_create_order" type="object" string="Confirm Order" class="btn-primary" data-hotkey="q"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="x"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="h2o_quick_order_action" model="ir.actions.act_window">
+        <field name="name">New Phone Order</field>
+        <field name="res_model">h2o.quick.order</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

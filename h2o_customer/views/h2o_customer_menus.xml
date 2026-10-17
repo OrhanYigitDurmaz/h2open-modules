@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_h2o_customer_partners" name="Customers" parent="h2o_base.menu_h2o_customers"
+              sequence="10" action="h2o_customer_action"/>
+    <menuitem id="menu_h2o_config_zones" name="Zones" parent="h2o_base.menu_h2o_config"
+              sequence="10" action="h2o_zone_action"/>
+</odoo>

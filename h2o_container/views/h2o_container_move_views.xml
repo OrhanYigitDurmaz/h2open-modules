@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_container_move_view_list" model="ir.ui.view">
+        <field name="name">h2o.container.move.list</field>
+        <field name="model">h2o.container.move</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="state == 'cancel'" decoration-info="state == 'draft'">
+                <field name="date"/>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="address_id" optional="hide"/>
+                <field name="product_id" optional="show"/>
+                <field name="qty_out" sum="Total"/>
+                <field name="qty_in" sum="Total"/>
+                <field name="qty_balance" sum="Total" optional="show"/>
+                <field name="deposit_amount" sum="Total"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="source"/>
+                <field name="origin" optional="show"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                <field name="state" widget="badge" decoration-success="state == 'done'" decoration-info="state == 'draft'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="h2o_container_move_view_form" model="ir.ui.view">
+        <field name="name">h2o.container.move.form</field>
+        <field name="model">h2o.container.move</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_done" type="object" string="Confirm" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state == 'cancel'"
+                            confirm="Cancelling a done entry changes the customer's bottle balance. Continue?"/>
+                    <button name="action_draft" type="object" string="Reset to Draft" invisible="state != 'cancel'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id" readonly="state == 'done'"/>
+                            <field name="address_id"/>
+                            <field name="product_id" readonly="state == 'done'"/>
+                            <field name="date" readonly="state == 'done'"/>
+                            <field name="source"/>
+                        </group>
+                        <group>
+                            <field name="qty_out" readonly="state == 'done'"/>
+                            <field name="qty_in" readonly="state == 'done'"/>
+                            <field name="qty_balance"/>
+                            <field name="deposit_amount" readonly="state == 'done'"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="origin"/>
+                            <field name="origin_ref" readonly="1" invisible="not origin_ref"/>
+                            <field name="company_id" groups="base.group_multi_company" readonly="state == 'done'"/>
+                        </group>
+                    </group>
+                    <field name="note" placeholder="Why this entry was recorded..."/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="h2o_container_move_view_search" model="ir.ui.view">
+        <field name="name">h2o.container.move.search</field>
+        <field name="model">h2o.container.move</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="partner_id" operator="child_of"/>
+                <field name="product_id"/>
+                <field name="origin"/>
+                <filter string="Done" name="done" domain="[('state', '=', 'done')]"/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Cancelled" name="cancel" domain="[('state', '=', 'cancel')]"/>
+                <separator/>
+                <filter string="Deliveries" name="delivery" domain="[('source', '=', 'delivery')]"/>
+                <filter string="Adjustments" name="adjustment" domain="[('source', 'in', ('adjustment', 'opening', 'closing'))]"/>
+                <filter string="With Deposit" name="with_deposit" domain="[('deposit_amount', '!=', 0)]"/>
+                <separator/>
+                <filter string="Date" name="filter_date" date="date"/>
+                <group>
+                    <filter string="Customer" name="group_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Container" name="group_product" context="{'group_by': 'product_id'}"/>
+                    <filter string="Source" name="group_source" context="{'group_by': 'source'}"/>
+                    <filter string="Date" name="group_date" context="{'group_by': 'date:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="h2o_container_move_action" model="ir.actions.act_window">
+        <field name="name">Bottle Ledger</field>
+        <field name="res_model">h2o.container.move</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_done': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No bottle movements yet</p>
+            <p>Every returnable bottle given to or taken back from a customer is recorded here, mostly by deliveries.
+               Record opening balances and corrections as adjustments.</p>
+        </field>
+    </record>
+</odoo>

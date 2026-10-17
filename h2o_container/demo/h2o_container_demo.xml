@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="account_h2o_deposit" model="account.account">
+        <field name="name">Customer Bottle Deposits</field>
+        <field name="code">329900</field>
+        <field name="account_type">liability_current</field>
+        <field name="company_ids" eval="[Command.link(ref('base.main_company'))]"/>
+    </record>
+    <record id="base.main_company" model="res.company">
+        <field name="h2o_deposit_account_id" ref="account_h2o_deposit"/>
+    </record>
+
+    <!-- Opening balances of the demo customers -->
+    <record id="move_opening_ayse" model="h2o.container.move">
+        <field name="partner_id" ref="h2o_customer.partner_home_ayse"/>
+        <field name="product_id" ref="product_bottle_19l"/>
+        <field name="qty_out">2</field>
+        <field name="deposit_amount">500.0</field>
+        <field name="source">opening</field>
+        <field name="date" eval="(DateTime.today() - relativedelta(months=3)).strftime('%Y-%m-%d 09:00:00')"/>
+        <field name="state">done</field>
+    </record>
+    <record id="move_opening_mehmet" model="h2o.container.move">
+        <field name="partner_id" ref="h2o_customer.partner_home_mehmet"/>
+        <field name="product_id" ref="product_bottle_19l"/>
+        <field name="qty_out">3</field>
+        <field name="deposit_amount">750.0</field>
+        <field name="source">opening</field>
+        <field name="date" eval="(DateTime.today() - relativedelta(months=3)).strftime('%Y-%m-%d 09:00:00')"/>
+        <field name="state">done</field>
+    </record>
+    <record id="move_opening_bogaz" model="h2o.container.move">
+        <field name="partner_id" ref="h2o_customer.partner_office_bogaz"/>
+        <field name="product_id" ref="product_bottle_19l"/>
+        <field name="qty_out">10</field>
+        <field name="deposit_amount">2500.0</field>
+        <field name="source">opening</field>
+        <field name="date" eval="(DateTime.today() - relativedelta(months=3)).strftime('%Y-%m-%d 09:00:00')"/>
+        <field name="state">done</field>
+    </record>
+    <record id="move_delivery_bogaz_kadikoy" model="h2o.container.move">
+        <field name="partner_id" ref="h2o_customer.partner_office_bogaz"/>
+        <field name="address_id" ref="h2o_customer.partner_office_bogaz_kadikoy"/>
+        <field name="product_id" ref="product_bottle_19l"/>
+        <field name="qty_out">4</field>
+        <field name="qty_in">4</field>
+        <field name="source">delivery</field>
+        <field name="origin">Demo delivery</field>
+        <field name="date" eval="(DateTime.today() - relativedelta(days=7)).strftime('%Y-%m-%d 10:30:00')"/>
+        <field name="state">done</field>
+    </record>
+    <record id="move_opening_bereket" model="h2o.container.move">
+        <field name="partner_id" ref="h2o_customer.partner_reseller_bereket"/>
+        <field name="product_id" ref="product_bottle_19l"/>
+        <field name="qty_out">40</field>
+        <field name="deposit_amount">10000.0</field>
+        <field name="source">opening</field>
+        <field name="date" eval="(DateTime.today() - relativedelta(months=3)).strftime('%Y-%m-%d 09:00:00')"/>
+        <field name="state">done</field>
+    </record>
+    <record id="move_opening_zeynep" model="h2o.container.move">
+        <field name="partner_id" ref="h2o_customer.partner_home_zeynep"/>
+        <field name="product_id" ref="product_bottle_19l"/>
+        <field name="qty_out">1</field>
+        <field name="deposit_amount">250.0</field>
+        <field name="source">opening</field>
+        <field name="date" eval="(DateTime.today() - relativedelta(months=1)).strftime('%Y-%m-%d 09:00:00')"/>
+        <field name="state">done</field>
+    </record>
+    <record id="move_adjustment_zeynep" model="h2o.container.move">
+        <field name="partner_id" ref="h2o_customer.partner_home_zeynep"/>
+        <field name="product_id" ref="product_bottle_19l"/>
+        <field name="qty_in">1</field>
+        <field name="deposit_amount">-250.0</field>
+        <field name="source">adjustment</field>
+        <field name="note">Customer returned a cracked bottle; to be checked before the deposit is refunded.</field>
+    </record>
+</odoo>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_call_view_list" model="ir.ui.view">
+        <field name="name">h2o.call.list</field>
+        <field name="model">h2o.call</field>
+        <field name="arch" type="xml">
+            <list create="false" decoration-danger="state == 'missed'" decoration-info="state == 'ringing'">
+                <field name="start"/>
+                <field name="direction"/>
+                <field name="caller_number"/>
+                <field name="called_number" optional="hide"/>
+                <field name="partner_id"/>
+                <field name="user_id" widget="many2one_avatar_user" optional="show"/>
+                <field name="duration" sum="Total"/>
+                <field name="state" widget="badge" decoration-danger="state == 'missed'"
+                       decoration-success="state == 'ended'" decoration-info="state in ('ringing', 'answered')"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="h2o_call_view_form" model="ir.ui.view">
+        <field name="name">h2o.call.form</field>
+        <field name="model">h2o.call</field>
+        <field name="arch" type="xml">
+            <form create="false">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="ringing,answered,ended"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="display_name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="direction" readonly="1"/>
+                            <field name="caller_number" readonly="1"/>
+                            <field name="called_number" readonly="1"/>
+                            <field name="partner_id"/>
+                            <field name="user_id" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="start" readonly="1"/>
+                            <field name="answer" readonly="1"/>
+                            <field name="end" readonly="1"/>
+                            <field name="duration"/>
+                            <field name="asterisk_uniqueid" groups="base.group_no_one"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="h2o_call_view_search" model="ir.ui.view">
+        <field name="name">h2o.call.search</field>
+        <field name="model">h2o.call</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="caller_number"/>
+                <field name="partner_id"/>
+                <field name="user_id"/>
+                <filter name="filter_inbound" string="Inbound" domain="[('direction', '=', 'inbound')]"/>
+                <filter name="filter_outbound" string="Outbound" domain="[('direction', '=', 'outbound')]"/>
+                <separator/>
+                <filter name="filter_missed" string="Missed" domain="[('state', '=', 'missed')]"/>
+                <filter name="filter_unknown" string="Unknown caller" domain="[('partner_id', '=', False)]"/>
+                <separator/>
+                <filter name="filter_start" string="Date" date="start"/>
+                <group>
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                    <filter name="group_user" string="Answered By" context="{'group_by': 'user_id'}"/>
+                    <filter name="group_start" string="Day" context="{'group_by': 'start:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="h2o_call_action" model="ir.actions.act_window">
+        <field name="name">Calls</field>
+        <field name="res_model">h2o.call</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No call yet</p>
+            <p>Calls to the office line show up here as Asterisk reports them.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_h2o_call" name="Calls" parent="h2o_base.menu_h2o_operations"
+              sequence="60" action="h2o_call_action" groups="h2o_base.group_h2o_dispatcher"/>
+</odoo>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.h2o_telephony</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="h2o_base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='h2o_base']" position="inside">
+                <block title="Telephony" id="h2o_settings_telephony">
+                    <setting string="Asterisk" help="Asterisk REST Interface, reached over WireGuard.">
+                        <div class="content-group">
+                            <div class="row mt8">
+                                <label for="h2o_telephony_ari_url" class="col-lg-4 o_light_label"/>
+                                <field name="h2o_telephony_ari_url" placeholder="http://10.66.0.2:8088"/>
+                            </div>
+                            <div class="row">
+                                <label for="h2o_telephony_ari_user" class="col-lg-4 o_light_label"/>
+                                <field name="h2o_telephony_ari_user"/>
+                            </div>
+                            <div class="row" groups="base.group_system">
+                                <label for="h2o_telephony_ari_password" class="col-lg-4 o_light_label"/>
+                                <field name="h2o_telephony_ari_password" password="True"/>
+                            </div>
+                            <div class="row" groups="base.group_system">
+                                <label for="h2o_telephony_asterisk_secret" class="col-lg-4 o_light_label"/>
+                                <field name="h2o_telephony_asterisk_secret" password="True"/>
+                            </div>
+                        </div>
+                    </setting>
+                    <setting string="Driver app VoIP" help="Where the driver app registers its SIP account.">
+                        <div class="content-group">
+                            <div class="row mt8">
+                                <label for="h2o_telephony_sip_domain" class="col-lg-4 o_light_label"/>
+                                <field name="h2o_telephony_sip_domain" placeholder="voip.example.com"/>
+                            </div>
+                            <div class="row">
+                                <label for="h2o_telephony_wss_url" class="col-lg-4 o_light_label"/>
+                                <field name="h2o_telephony_wss_url" placeholder="wss://voip.example.com/ws"/>
+                            </div>
+                            <div class="row">
+                                <label for="h2o_telephony_sip_credential_hours" class="col-lg-4 o_light_label"/>
+                                <field name="h2o_telephony_sip_credential_hours"/>
+                            </div>
+                        </div>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -92,6 +92,12 @@ Depends: `h2o_base`, `contacts`.
   `h2o_customer_type != False`), Configuration → Zones.
 * Partner form: a "Water delivery" page with the fields above.
 
+Built notes: `h2o.zone` also has `sequence`, `country_id`, `note`,
+`action_view_partners`, `action_h2o_assign_partners`; partners have
+`_h2o_is_water_partner()`. Zone matching checks `street2` (mahalle) before
+`city` (ilçe), ignoring case and Turkish letters. Delivery days fall back
+partner → its company → zone. Odoo 20 `res.partner` has no `mobile` field.
+
 ## h2o_container
 
 Depends: `h2o_customer`, `product`, `account`.
@@ -135,6 +141,14 @@ Depends: `h2o_customer`, `product`, `account`.
   product category `product_category_water`.
 * Menus: Customers → Bottle ledger, Bottle balances; Configuration → Water products.
 
+Built notes: `date` is a Datetime. The ledger always stores the commercial
+partner and moves the given contact to `address_id`. Done entries are
+cancelled, never edited or deleted. `_h2o_record` writes as superuser, so
+callers must check their own rights first. Extra fields: `qty_balance` on
+the ledger; `qty_out`, `qty_in`, `zone_id`, `customer_type`, `last_date`,
+`currency_id` on the balance view. Packagings `uom_pack_4` (5 L) and
+`uom_case_24` (0.5 L).
+
 ## h2o_order
 
 Depends: `h2o_customer`, `h2o_container`, `sale`.
@@ -165,6 +179,16 @@ Depends: `h2o_customer`, `h2o_container`, `sale`.
   time window, note → creates and confirms a `sale.order` with
   `h2o_channel='phone'`. Menu Operations → New phone order.
 * Menus: Operations → Delivery orders (sale orders with `h2o_is_delivery`).
+
+Built notes: dispatchers also get `sales_team.group_sale_salesman_all_leads`
+(set in h2o_order's security XML); drivers and accountants have no sale
+order rights from h2o_order. On confirmed orders the deposit line goes to
+qty 0 instead of being removed. Cancel → `cancelled`, back to draft →
+`to_plan`. Time zone: company partner → user → Europe/Istanbul. Extra:
+related `h2o_customer_type`, `h2o_payment_mode`, `h2o_bottle_balance` on the
+order; `res.company._h2o_pricelist_for_type()`,
+`res.partner._h2o_apply_type_pricelist()`,
+`sale.order._h2o_deposit_qty_by_product()`.
 
 ## h2o_subscription
 
@@ -280,6 +304,10 @@ Depends: `h2o_base`.
 * API: `POST /h2o/api/v1/push/register {token, platform, app, device_name}`,
   `POST /h2o/api/v1/push/unregister {token}`.
 
+Built notes (h2o_push): `_h2o_send` returns `{'sent', 'failed', 'deactivated'}`;
+`h2o.push.device._h2o_register(token, platform, app, device_name)`; log
+cleanup via `@api.autovacuum`. Reusable test base `h2o_push.tests.common.H2oPushCommon`.
+
 ## h2o_telephony
 
 Depends: `h2o_push`, `contacts`.
@@ -314,6 +342,12 @@ Asterisk runs on the office PC, reached over WireGuard. Odoo never records calls
   transport WSS, WebRTC on, codec alaw, ICE on), returns
   `{username, password, domain, wss_url, expires_at, ice_servers: []}`.
 * Menus: Operations → Calls (dispatchers); Configuration → SIP accounts.
+
+Built notes (h2o_telephony): `res.partner._h2o_find_by_phone(number)`,
+`h2o.call._h2o_from_event(...)`, `h2o.sip.account._h2o_issue_credentials()`,
+`_h2o_revoke()`, `_h2o_wake()`, `_h2o_cancel()`. Asterisk routes are
+`readonly=False` (Odoo replays failed writes on read-only `auth='none'`
+routes). Transport `transport-wss`, dialplan context `h2o-drivers`.
 
 ## h2o_stock
 

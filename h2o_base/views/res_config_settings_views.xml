@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.h2o_base</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="40"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="H2Open" string="H2Open" name="h2o_base" groups="h2o_base.group_h2o_manager">
+                    <!-- Other H2Open modules add their own <block> after this one. -->
+                    <block title="Orders" id="h2o_settings_orders">
+                        <setting string="Order cut-off hour" help="Orders taken after this hour go to the next delivery day.">
+                            <field name="h2o_order_cutoff_hour" widget="float_time"/>
+                        </setting>
+                    </block>
+                    <block title="Mobile apps" id="h2o_settings_apps">
+                        <setting string="Login validity" help="Days before a driver or customer app has to sign in again.">
+                            <field name="h2o_app_token_days"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="h2o_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'module': 'h2o_base'}</field>
+    </record>
+
+    <menuitem id="menu_h2o_config_settings" name="Settings" parent="menu_h2o_config"
+              sequence="0" action="h2o_config_settings_action" groups="base.group_system"/>
+    <menuitem id="menu_h2o_config_weekdays" name="Weekdays" parent="menu_h2o_config"
+              sequence="90" action="h2o_weekday_action"/>
+</odoo>

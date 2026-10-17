@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_weekday_view_list" model="ir.ui.view">
+        <field name="name">h2o.weekday.list</field>
+        <field name="model">h2o.weekday</field>
+        <field name="arch" type="xml">
+            <list editable="bottom" create="false" delete="false">
+                <field name="code" readonly="1"/>
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="h2o_weekday_action" model="ir.actions.act_window">
+        <field name="name">Weekdays</field>
+        <field name="res_model">h2o.weekday</field>
+        <field name="view_mode">list</field>
+    </record>
+</odoo>

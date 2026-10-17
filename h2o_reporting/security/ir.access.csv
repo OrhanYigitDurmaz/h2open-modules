@@ -1,0 +1,4 @@
+id,name,model_id,group_id/id,operation,domain
+access_h2o_report_delivery_dispatcher,h2o.report.delivery dispatcher,h2o.report.delivery,h2o_base.group_h2o_dispatcher,r,
+access_h2o_report_delivery_accountant,h2o.report.delivery accountant,h2o.report.delivery,h2o_base.group_h2o_accountant,r,
+rule_h2o_report_delivery_company,h2o.report.delivery multi-company,h2o.report.delivery,,r,"[('company_id', 'in', company_ids)]"

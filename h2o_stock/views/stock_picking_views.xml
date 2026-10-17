@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_picking_form_h2o_stock" model="ir.ui.view">
+        <field name="name">stock.picking.form.h2o_stock</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <field name="origin" position="after">
+                <field name="h2o_trip_id" invisible="not h2o_trip_id"/>
+                <field name="h2o_trip_role" invisible="not h2o_trip_id"/>
+            </field>
+        </field>
+    </record>
+</odoo>

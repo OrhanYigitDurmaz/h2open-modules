@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_h2o_report_deliveries" name="Deliveries" parent="h2o_base.menu_h2o_reporting"
+              sequence="10" action="h2o_report_delivery_action"/>
+    <menuitem id="menu_h2o_report_routes" name="Route Performance" parent="h2o_base.menu_h2o_reporting"
+              sequence="20" action="h2o_report_route_action"/>
+    <menuitem id="menu_h2o_report_bottles" name="Bottles Outstanding" parent="h2o_base.menu_h2o_reporting"
+              sequence="30" action="h2o_report_bottles_action"/>
+    <menuitem id="menu_h2o_report_cash" name="Cash Collected" parent="h2o_base.menu_h2o_reporting"
+              sequence="40" action="h2o_report_cash_action"/>
+    <menuitem id="menu_h2o_report_handovers" name="Cash Handovers" parent="h2o_base.menu_h2o_reporting"
+              sequence="50" action="h2o_report_handover_action" groups="h2o_base.group_h2o_accountant"/>
+</odoo>

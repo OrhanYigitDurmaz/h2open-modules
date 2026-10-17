@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_report_delivery_view_list" model="ir.ui.view">
+        <field name="name">h2o.report.delivery.list</field>
+        <field name="model">h2o.report.delivery</field>
+        <field name="arch" type="xml">
+            <list create="false" edit="false" delete="false">
+                <field name="date"/>
+                <field name="trip_id"/>
+                <field name="route_id" optional="show"/>
+                <field name="driver_id" optional="show"/>
+                <field name="zone_id" optional="show"/>
+                <field name="partner_id"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'delivered'"
+                       decoration-danger="state == 'failed'"
+                       decoration-warning="state == 'skipped'"/>
+                <field name="failure_reason" optional="hide"/>
+                <field name="bottle_qty" sum="Total"/>
+                <field name="packaged_qty" sum="Total" optional="show"/>
+                <field name="empties_collected" sum="Total"/>
+                <field name="payment_method" optional="show"/>
+                <field name="payment_amount" sum="Total"/>
+                <field name="currency_id" column_invisible="True"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="h2o_report_delivery_view_pivot" model="ir.ui.view">
+        <field name="name">h2o.report.delivery.pivot</field>
+        <field name="model">h2o.report.delivery</field>
+        <field name="arch" type="xml">
+            <pivot string="Delivery Analysis" sample="1">
+                <field name="date" interval="day" type="row"/>
+                <field name="state" type="col"/>
+                <field name="stop_count" type="measure"/>
+                <field name="bottle_qty" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="h2o_report_delivery_view_graph" model="ir.ui.view">
+        <field name="name">h2o.report.delivery.graph</field>
+        <field name="model">h2o.report.delivery</field>
+        <field name="arch" type="xml">
+            <graph string="Deliveries" type="bar" stacked="1" sample="1">
+                <field name="date" interval="day"/>
+                <field name="state"/>
+                <field name="stop_count" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="h2o_report_delivery_view_search" model="ir.ui.view">
+        <field name="name">h2o.report.delivery.search</field>
+        <field name="model">h2o.report.delivery</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id"/>
+                <field name="driver_id"/>
+                <field name="route_id"/>
+                <field name="zone_id"/>
+                <field name="vehicle_id"/>
+                <filter name="delivered" string="Delivered" domain="[('state', '=', 'delivered')]"/>
+                <filter name="failed" string="Failed or Skipped" domain="[('state', 'in', ('failed', 'skipped'))]"/>
+                <separator/>
+                <filter name="cash" string="Cash" domain="[('payment_method', '=', 'cash')]"/>
+                <filter name="card" string="Card" domain="[('payment_method', '=', 'card')]"/>
+                <separator/>
+                <filter name="date" string="Date" date="date"/>
+                <group>
+                    <filter name="group_date" string="Day" context="{'group_by': 'date:day'}"/>
+                    <filter name="group_driver" string="Driver" context="{'group_by': 'driver_id'}"/>
+                    <filter name="group_route" string="Route" context="{'group_by': 'route_id'}"/>
+                    <filter name="group_zone" string="Zone" context="{'group_by': 'zone_id'}"/>
+                    <filter name="group_customer_type" string="Customer Type" context="{'group_by': 'customer_type'}"/>
+                    <filter name="group_payment_method" string="Payment Method" context="{'group_by': 'payment_method'}"/>
+                    <filter name="group_failure_reason" string="Failure Reason" context="{'group_by': 'failure_reason'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="h2o_report_delivery_action" model="ir.actions.act_window">
+        <field name="name">Deliveries</field>
+        <field name="res_model">h2o.report.delivery</field>
+        <field name="view_mode">graph,pivot,list</field>
+        <field name="context">{'search_default_date': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No deliveries yet</p>
+            <p>Stops of planned and finished trips show up here.</p>
+        </field>
+    </record>
+
+    <record id="h2o_report_cash_action" model="ir.actions.act_window">
+        <field name="name">Cash Collected</field>
+        <field name="res_model">h2o.report.delivery</field>
+        <field name="view_mode">pivot,graph,list</field>
+        <field name="view_id" ref="h2o_report_delivery_view_pivot"/>
+        <field name="context">{
+            'search_default_delivered': 1,
+            'pivot_row_groupby': ['date:day', 'driver_id'],
+            'pivot_column_groupby': ['payment_method'],
+            'pivot_measures': ['payment_amount'],
+            'graph_groupbys': ['date:day', 'payment_method'],
+            'graph_measure': 'payment_amount',
+        }</field>
+    </record>
+
+    <record id="h2o_report_route_action" model="ir.actions.act_window">
+        <field name="name">Route Performance</field>
+        <field name="res_model">h2o.report.delivery</field>
+        <field name="view_mode">pivot,graph,list</field>
+        <field name="view_id" ref="h2o_report_delivery_view_pivot"/>
+        <field name="context">{
+            'pivot_row_groupby': ['route_id', 'driver_id'],
+            'pivot_column_groupby': [],
+            'pivot_measures': ['stop_count', 'delivered_count', 'success_rate', 'bottle_qty', 'empties_collected'],
+            'graph_groupbys': ['route_id'],
+            'graph_measure': 'success_rate',
+        }</field>
+    </record>
+</odoo>

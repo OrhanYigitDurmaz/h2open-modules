@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="fleet_vehicle_view_form_h2o_stock" model="ir.ui.view">
+        <field name="name">fleet.vehicle.form.h2o_stock</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="h2o_dispatch.fleet_vehicle_view_form_h2o"/>
+        <field name="arch" type="xml">
+            <field name="h2o_capacity" position="after">
+                <field name="h2o_warehouse_id" invisible="not h2o_is_delivery_vehicle"
+                       options="{'no_create': True}"/>
+                <field name="h2o_location_id" invisible="not h2o_location_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="fleet_vehicle_view_list_h2o_stock" model="ir.ui.view">
+        <field name="name">fleet.vehicle.list.h2o_stock</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="h2o_dispatch.fleet_vehicle_view_list_h2o"/>
+        <field name="arch" type="xml">
+            <field name="h2o_capacity" position="after">
+                <field name="h2o_warehouse_id" optional="hide"/>
+            </field>
+        </field>
+    </record>
+</odoo>

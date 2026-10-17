@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_h2o_vehicle_stock" name="Vehicle Stock" parent="h2o_base.menu_h2o_operations"
+              sequence="35" action="h2o_vehicle_stock_action" groups="h2o_base.group_h2o_dispatcher"/>
+</odoo>

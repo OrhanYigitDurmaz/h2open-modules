@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Full and empty bottles and packaged water are kept in stock. -->
+    <function model="product.template" name="_h2o_make_storable"/>
+    <!-- Vehicles are internal locations: loads and returns are internal transfers. -->
+    <function model="stock.warehouse" name="_h2o_activate_internal_types"/>
+    <function model="fleet.vehicle" name="_h2o_create_missing_locations"/>
+</odoo>

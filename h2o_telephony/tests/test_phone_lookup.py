@@ -28,9 +28,9 @@ class TestPhoneLookup(TransactionCase):
 
     def test_company_wins_over_its_contacts(self):
         Partner = self.env['res.partner']
-        company = Partner.create({'name': 'Su Ofis Ltd', 'is_company': True, 'phone': '0216 444 55 66'})
-        Partner.create({'name': 'Reception', 'parent_id': company.id, 'phone': '+90 216 444 55 66'})
-        self.assertEqual(Partner._h2o_find_by_phone('+902164445566'), company)
+        company = Partner.create({'name': 'Su Ofis Ltd', 'is_company': True, 'phone': '0216 417 03 91'})
+        Partner.create({'name': 'Reception', 'parent_id': company.id, 'phone': '+90 216 417 03 91'})
+        self.assertEqual(Partner._h2o_find_by_phone('+902164170391'), company)
 
     def test_archived_partner_ignored(self):
         partner = self.env['res.partner'].create({'name': 'Gone', 'phone': '0532 999 88 77'})

@@ -47,7 +47,7 @@ A module may only use modules on its path back to `h2o_base`.
 * Manifest version `20.0.1.0.0`, `license: LGPL-3`, `author: H2Open`,
   `category: H2Open`.
 
-## h2o_base (done)
+## h2o_base
 
 Depends: `base`, `mail`.
 
@@ -397,6 +397,16 @@ Stock moves happen once per trip, never per stop.
   `h2o_stock` is installed.
 * Menus: Operations → Vehicle stock.
 
+Built notes: `fleet.vehicle.h2o_warehouse_id` (depot);
+`stock.warehouse.h2o_vehicle_location_id`; `stock.location.h2o_vehicle_id`;
+`stock.picking.h2o_trip_role` (`load|delivery|empties|return`) and
+`_h2o_validate()`; trip `h2o_warehouse_id` (route → vehicle → company),
+`h2o_picking_count`. The "Vehicles" parent location is internal, not a view.
+Cancelling a loaded trip returns the load to the warehouse. Load lines also
+have `qty_collected`, `product_uom_id`, `company_id`, `state`. Dispatchers get
+`stock.group_stock_user`, managers `stock.group_stock_manager`, internal users
+`stock.group_stock_multi_locations`.
+
 ## h2o_billing
 
 Depends: `h2o_order`, `h2o_dispatch`, `account`.
@@ -442,3 +452,6 @@ Depends: every module above.
   outstanding (`h2o.container.balance`), Cash collected (stops + handovers),
   Route performance (stops per trip, success rate).
 * Menus under Reporting.
+
+Built notes: `success_rate` leaves pending stops out (NULL) and averages
+delivered (100) against failed or skipped (0). Cancelled trips are hidden.

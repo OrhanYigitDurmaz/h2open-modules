@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Opening stock of the main warehouse: full and empty bottles, packaged water. -->
+    <record id="quant_water_19l" model="stock.quant">
+        <field name="product_id" ref="h2o_container.product_water_19l"/>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+        <field name="inventory_quantity">400</field>
+    </record>
+    <record id="quant_bottle_19l" model="stock.quant">
+        <field name="product_id" ref="h2o_container.product_bottle_19l"/>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+        <field name="inventory_quantity">150</field>
+    </record>
+    <record id="quant_water_5l" model="stock.quant">
+        <field name="product_id" ref="h2o_container.product_water_5l"/>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+        <field name="inventory_quantity">240</field>
+    </record>
+    <record id="quant_water_05l" model="stock.quant">
+        <field name="product_id" ref="h2o_container.product_water_05l"/>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+        <field name="inventory_quantity">960</field>
+    </record>
+
+    <function model="stock.quant" name="action_apply_inventory">
+        <function eval="[[('id', 'in', (ref('quant_water_19l'), ref('quant_bottle_19l'),
+                                        ref('quant_water_5l'), ref('quant_water_05l')))]]"
+                  model="stock.quant" name="search"/>
+    </function>
+</odoo>

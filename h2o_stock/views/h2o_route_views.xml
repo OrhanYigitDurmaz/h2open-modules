@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_route_view_form_h2o_stock" model="ir.ui.view">
+        <field name="name">h2o.route.form.h2o_stock</field>
+        <field name="model">h2o.route</field>
+        <field name="inherit_id" ref="h2o_dispatch.h2o_route_view_form"/>
+        <field name="arch" type="xml">
+            <field name="driver_id" position="after">
+                <field name="h2o_warehouse_id" options="{'no_create': True}"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="h2o_route_view_list_h2o_stock" model="ir.ui.view">
+        <field name="name">h2o.route.list.h2o_stock</field>
+        <field name="model">h2o.route</field>
+        <field name="inherit_id" ref="h2o_dispatch.h2o_route_view_list"/>
+        <field name="arch" type="xml">
+            <field name="driver_id" position="after">
+                <field name="h2o_warehouse_id" optional="hide"/>
+            </field>
+        </field>
+    </record>
+</odoo>

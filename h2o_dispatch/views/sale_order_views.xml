@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_order_view_form_h2o_dispatch" model="ir.ui.view">
+        <field name="name">sale.order.form.h2o_dispatch</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="h2o_order.sale_order_view_form_h2o"/>
+        <field name="arch" type="xml">
+            <field name="h2o_delivery_state" position="after">
+                <field name="h2o_trip_id" invisible="not h2o_trip_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="h2o_delivery_order_view_list_dispatch" model="ir.ui.view">
+        <field name="name">sale.order.list.h2o_dispatch</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="h2o_order.h2o_delivery_order_view_list"/>
+        <field name="arch" type="xml">
+            <field name="h2o_delivery_state" position="before">
+                <field name="h2o_trip_id" optional="show"/>
+            </field>
+        </field>
+    </record>
+</odoo>

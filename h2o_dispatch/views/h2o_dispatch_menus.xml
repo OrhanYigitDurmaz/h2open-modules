@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_h2o_trips" name="Trips" parent="h2o_base.menu_h2o_operations"
+              sequence="20" action="h2o_trip_action"/>
+    <menuitem id="menu_h2o_trip_plan" name="Plan Trips" parent="h2o_base.menu_h2o_operations"
+              sequence="25" action="h2o_trip_plan_action" groups="h2o_base.group_h2o_dispatcher"/>
+    <menuitem id="menu_h2o_stops" name="Stops" parent="h2o_base.menu_h2o_operations"
+              sequence="30" action="h2o_stop_action"/>
+    <menuitem id="menu_h2o_config_routes" name="Routes" parent="h2o_base.menu_h2o_config"
+              sequence="30" action="h2o_route_action"/>
+    <menuitem id="menu_h2o_config_vehicles" name="Vehicles" parent="h2o_base.menu_h2o_config"
+              sequence="40" action="h2o_vehicle_action"/>
+</odoo>

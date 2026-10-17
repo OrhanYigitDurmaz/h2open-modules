@@ -1,0 +1,17 @@
+id,name,model_id,group_id/id,operation,domain
+access_h2o_route_driver,h2o.route driver,h2o.route,h2o_base.group_h2o_driver,r,
+access_h2o_route_manager,h2o.route manager,h2o.route,h2o_base.group_h2o_manager,crud,
+rule_h2o_route_company,h2o.route multi-company,h2o.route,,crud,"[('company_id', 'in', company_ids)]"
+access_h2o_trip_driver,h2o.trip driver,h2o.trip,h2o_base.group_h2o_driver,r,"[('driver_id', '=', user.id)]"
+access_h2o_trip_dispatcher,h2o.trip dispatcher,h2o.trip,h2o_base.group_h2o_dispatcher,crud,
+access_h2o_trip_accountant,h2o.trip accountant,h2o.trip,h2o_base.group_h2o_accountant,r,
+rule_h2o_trip_company,h2o.trip multi-company,h2o.trip,,crud,"[('company_id', 'in', company_ids)]"
+access_h2o_stop_driver,h2o.stop driver,h2o.stop,h2o_base.group_h2o_driver,ru,"[('trip_id.driver_id', '=', user.id)]"
+access_h2o_stop_dispatcher,h2o.stop dispatcher,h2o.stop,h2o_base.group_h2o_dispatcher,crud,
+access_h2o_stop_accountant,h2o.stop accountant,h2o.stop,h2o_base.group_h2o_accountant,r,
+rule_h2o_stop_company,h2o.stop multi-company,h2o.stop,,crud,"[('company_id', 'in', company_ids)]"
+access_h2o_stop_line_driver,h2o.stop.line driver,h2o.stop.line,h2o_base.group_h2o_driver,r,"[('stop_id.trip_id.driver_id', '=', user.id)]"
+access_h2o_stop_line_dispatcher,h2o.stop.line dispatcher,h2o.stop.line,h2o_base.group_h2o_dispatcher,crud,
+access_h2o_stop_line_accountant,h2o.stop.line accountant,h2o.stop.line,h2o_base.group_h2o_accountant,r,
+access_h2o_trip_plan_dispatcher,h2o.trip.plan dispatcher,h2o.trip.plan,h2o_base.group_h2o_dispatcher,crud,
+access_fleet_vehicle_h2o_driver,fleet.vehicle H2Open driver,fleet.vehicle,h2o_base.group_h2o_driver,r,"[('h2o_is_delivery_vehicle', '=', True)]"

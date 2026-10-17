@@ -271,6 +271,22 @@ Drivers are `res.users` in `h2o_base.group_h2o_driver`.
 * Menus: Operations → Trips (kanban/list/form with editable stops), Stops;
   Configuration → Routes, Vehicles.
 
+Built notes: trip extra `pending_count`, `planned_bottle_qty`, `note`,
+`_h2o_update_position(lat, lon)`, `_h2o_check_driver()`,
+`_h2o_check_dispatcher()`; `failed_count` includes skipped; returned
+quantities filled on close; `load_qty` defaults to planned bottles.
+`action_start` loads a planned trip first; `action_close` from loaded or
+on_road; cancel/reset are dispatcher-only, cancel refused once a stop is
+delivered, reset only from cancelled. Stops: `date`, `driver_id`,
+`company_id`, `currency_id`, `zone_id`; act only while the trip is on_road;
+empties default to the order's empties expected; delivered deposit =
+bottles delivered − empties. Stop line `product_uom_id`,
+`_h2o_bottle_qty(qty_field)`. Route `sequence`, `color`, `note`,
+`_h2o_runs_on(date)`. Cancelling an order removes or skips its stop. Hooks
+run as the acting user (possibly a driver): extending modules sudo where
+needed. Dispatchers get `fleet.fleet_group_user`, managers
+`fleet.fleet_group_manager`.
+
 ## h2o_driver
 
 Depends: `h2o_dispatch`, `h2o_push`.
@@ -290,6 +306,10 @@ Every route checks the user is a driver and only touches their own trips.
 * Errors: 4xx JSON with a message for bad state or foreign records.
 * Pushes (through `h2o_push`): to the driver when a stop is added to or
   removed from their trip in progress (`type: 'trip_changed'`).
+
+Built notes: errors are 400 (bad input), 403 (not a driver), 404 (someone
+else's record), 422 (wrong state). Coordinates come from
+`partner_latitude` / `partner_longitude`.
 
 ## h2o_push
 

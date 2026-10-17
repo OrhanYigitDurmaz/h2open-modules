@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Dispatchers assign the delivery vans; managers also configure them. -->
+    <record id="h2o_base.group_h2o_dispatcher" model="res.groups">
+        <field name="implied_ids" eval="[Command.link(ref('fleet.fleet_group_user'))]"/>
+    </record>
+    <record id="h2o_base.group_h2o_manager" model="res.groups">
+        <field name="implied_ids" eval="[Command.link(ref('fleet.fleet_group_manager'))]"/>
+    </record>
+</odoo>

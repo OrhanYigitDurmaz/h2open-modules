@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_h2o_billing" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.h2o_billing</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="h2o_base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='h2o_base']" position="inside">
+                <block title="Billing" id="h2o_settings_billing">
+                    <setting string="Driver cash journal"
+                             help="Cash collected on delivery is registered here. Empty: the first cash journal, created when missing.">
+                        <field name="h2o_cash_journal_id" options="{'no_create': True}"/>
+                    </setting>
+                    <setting string="Card payment journal"
+                             help="Card payments taken on delivery are registered here. Empty: the first bank journal.">
+                        <field name="h2o_card_journal_id" options="{'no_create': True}"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

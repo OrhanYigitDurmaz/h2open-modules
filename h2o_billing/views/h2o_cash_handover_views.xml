@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_cash_handover_view_list" model="ir.ui.view">
+        <field name="name">h2o.cash.handover.list</field>
+        <field name="model">h2o.cash.handover</field>
+        <field name="arch" type="xml">
+            <list decoration-info="state == 'draft'" decoration-danger="state == 'approved' and difference &lt; 0">
+                <field name="date"/>
+                <field name="name"/>
+                <field name="trip_id"/>
+                <field name="driver_id" widget="many2one_avatar_user"/>
+                <field name="expected" sum="Total"/>
+                <field name="counted" sum="Total"/>
+                <field name="difference" sum="Total"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="approved_by" optional="hide"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-success="state == 'approved'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="h2o_cash_handover_view_form" model="ir.ui.view">
+        <field name="name">h2o.cash.handover.form</field>
+        <field name="model">h2o.cash.handover</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_approve" type="object" string="Approve" class="btn-primary"
+                            invisible="state != 'draft'" groups="h2o_base.group_h2o_accountant"/>
+                    <button name="action_draft" type="object" string="Count Again"
+                            invisible="state != 'approved'" groups="h2o_base.group_h2o_accountant"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="trip_id"/>
+                            <field name="driver_id" widget="many2one_avatar_user"/>
+                            <field name="date" readonly="state != 'draft'"/>
+                            <field name="approved_by" invisible="not approved_by"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="expected"/>
+                            <field name="counted" readonly="state != 'draft'"/>
+                            <field name="difference" decoration-danger="difference &lt; 0"
+                                   decoration-warning="difference &gt; 0"/>
+                        </group>
+                    </group>
+                    <field name="note" placeholder="Explain any difference..."/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="h2o_cash_handover_view_search" model="ir.ui.view">
+        <field name="name">h2o.cash.handover.search</field>
+        <field name="model">h2o.cash.handover</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="trip_id"/>
+                <field name="driver_id"/>
+                <filter string="To Count" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Approved" name="approved" domain="[('state', '=', 'approved')]"/>
+                <separator/>
+                <filter string="With Difference" name="with_difference" domain="[('difference', '!=', 0)]"/>
+                <separator/>
+                <filter string="Date" name="filter_date" date="date"/>
+                <group>
+                    <filter string="Driver" name="group_driver" context="{'group_by': 'driver_id'}"/>
+                    <filter string="Date" name="group_date" context="{'group_by': 'date:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="h2o_cash_handover_action" model="ir.actions.act_window">
+        <field name="name">Cash Handovers</field>
+        <field name="res_model">h2o.cash.handover</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_draft': 1, 'create': False}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No cash to count</p>
+            <p>A handover is opened for every trip when it closes, with the cash its driver collected.
+               Count the cash and approve the handover.</p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Accountants invoice the orders and register the payments. -->
+    <record id="h2o_base.group_h2o_accountant" model="res.groups">
+        <field name="implied_ids" eval="[Command.link(ref('account.group_account_invoice'))]"/>
+    </record>
+</odoo>

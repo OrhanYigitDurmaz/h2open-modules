@@ -419,6 +419,18 @@ Depends: `h2o_order`, `h2o_dispatch`, `account`.
   Created automatically when a trip closes.
 * Menus: Billing → Cash handovers, Monthly statements, Invoices.
 
+Built notes: without a cash journal the module creates "Driver Cash" (DCSH),
+since Odoo 20 charts create only bank journals. Accountants also get
+Odoo's Billing group. Statements cover orders whose delivered stop falls
+in that month and are posted directly. Helpers:
+`sale.order._h2o_create_monthly_statements(month, partners=None)`,
+`_h2o_lines_to_invoice()`, `_h2o_create_delivered_invoice()`;
+`h2o.stop.invoice_ids`, `_h2o_invoice_delivery()`,
+`_h2o_register_payment(invoice)`; `res.company._h2o_payment_journal(method)`;
+`h2o.trip.h2o_cash_handover_ids`; handover `company_id`, `action_draft()`,
+sequence `CASH/%(year)s/0001`. Cron `_cron_h2o_monthly_invoices` is on
+`account.move`.
+
 ## h2o_reporting
 
 Depends: every module above.

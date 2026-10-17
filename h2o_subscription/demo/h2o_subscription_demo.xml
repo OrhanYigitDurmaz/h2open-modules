@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="subscription_ayse" model="h2o.subscription">
+        <field name="partner_id" ref="h2o_customer.partner_home_ayse"/>
+        <field name="frequency">weekly</field>
+        <field name="weekday_id" ref="h2o_base.weekday_mon"/>
+        <field name="time_window">morning</field>
+        <field name="line_ids" eval="[Command.create({'product_id': ref('h2o_container.product_water_19l'), 'qty': 2})]"/>
+    </record>
+    <record id="subscription_bogaz_kadikoy" model="h2o.subscription">
+        <field name="partner_id" ref="h2o_customer.partner_office_bogaz"/>
+        <field name="address_id" ref="h2o_customer.partner_office_bogaz_kadikoy"/>
+        <field name="frequency">biweekly</field>
+        <field name="weekday_id" ref="h2o_base.weekday_thu"/>
+        <field name="line_ids" eval="[
+            Command.create({'product_id': ref('h2o_container.product_water_19l'), 'qty': 6}),
+            Command.create({'product_id': ref('h2o_container.product_water_05l'), 'qty': 1, 'product_uom_id': ref('h2o_container.uom_case_24')}),
+        ]"/>
+        <field name="note">Deliver to the reception desk.</field>
+    </record>
+    <function model="h2o.subscription" name="action_activate"
+              eval="[[ref('subscription_ayse'), ref('subscription_bogaz_kadikoy')]]"/>
+</odoo>

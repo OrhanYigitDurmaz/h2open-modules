@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="ir_cron_h2o_subscription_orders" model="ir.cron">
+        <field name="name">H2Open: create subscription orders</field>
+        <field name="model_id" ref="model_h2o_subscription"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_h2o_generate_orders()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="nextcall" eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d 03:00:00')"/>
+    </record>
+</odoo>

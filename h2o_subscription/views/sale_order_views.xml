@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_order_view_form_h2o_subscription" model="ir.ui.view">
+        <field name="name">sale.order.form.h2o_subscription</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="h2o_order.sale_order_view_form_h2o"/>
+        <field name="arch" type="xml">
+            <field name="h2o_channel" position="after">
+                <field name="h2o_subscription_id" invisible="not h2o_subscription_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="sale_order_view_search_h2o_subscription" model="ir.ui.view">
+        <field name="name">sale.order.search.h2o_subscription</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <field name="h2o_subscription_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

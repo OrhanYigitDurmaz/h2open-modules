@@ -208,6 +208,12 @@ Depends: `h2o_order`.
 * `sale.order.h2o_subscription_id`.
 * Menus: Operations → Subscriptions.
 
+Built notes: lines also have `product_uom_id`, `sequence`; monthly = same
+weekday in the same week of next month (last one if no 5th). Helpers:
+`h2o_following_date(day, frequency)`, `_h2o_first_date()`,
+`_h2o_prepare_order_values(date)`, `_h2o_generate_order()`,
+`_h2o_generate_due_orders(until)`, `res.company._h2o_today()`.
+
 ## h2o_dispatch
 
 Depends: `h2o_order`, `fleet`.

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_h2o_subscription" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.h2o_subscription</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="h2o_base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='h2o_base']" position="inside">
+                <block title="Subscriptions" id="h2o_settings_subscriptions">
+                    <setting string="Order lead days" help="Subscription orders are created this many days before their delivery date.">
+                        <field name="h2o_subscription_lead_days"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

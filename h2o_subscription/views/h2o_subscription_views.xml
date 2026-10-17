@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_subscription_view_list" model="ir.ui.view">
+        <field name="name">h2o.subscription.list</field>
+        <field name="model">h2o.subscription</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="state in ('paused', 'closed')" decoration-info="state == 'draft'">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="address_id" optional="hide"/>
+                <field name="frequency"/>
+                <field name="weekday_id"/>
+                <field name="time_window" optional="hide"/>
+                <field name="next_date"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                <field name="state" widget="badge" decoration-success="state == 'active'"
+                       decoration-info="state == 'draft'" decoration-warning="state == 'paused'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="h2o_subscription_view_form" model="ir.ui.view">
+        <field name="name">h2o.subscription.form</field>
+        <field name="model">h2o.subscription</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_activate" type="object" string="Activate" class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button name="action_h2o_generate_now" type="object" string="Generate Now"
+                            invisible="state != 'active'" groups="h2o_base.group_h2o_dispatcher"
+                            help="Create and confirm the order of the next delivery now."/>
+                    <button name="action_pause" type="object" string="Pause" invisible="state != 'active'"/>
+                    <button name="action_resume" type="object" string="Resume" class="btn-primary"
+                            invisible="state != 'paused'"/>
+                    <button name="action_close" type="object" string="Close" invisible="state == 'closed'"
+                            confirm="No more orders will be created for this subscription. Orders already created are kept. Continue?"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,active,closed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_orders" type="object" class="oe_stat_button" icon="fa-truck"
+                                groups="h2o_base.group_h2o_dispatcher">
+                            <field name="order_count" widget="statinfo" string="Orders"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Paused" bg_color="text-bg-warning" invisible="state != 'paused'"/>
+                    <widget name="web_ribbon" title="Closed" bg_color="text-bg-secondary" invisible="state != 'closed'"/>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id" readonly="state != 'draft'"/>
+                            <field name="address_id" readonly="state == 'closed'"
+                                   context="{'default_type': 'delivery', 'default_parent_id': partner_id}"/>
+                            <field name="time_window" readonly="state == 'closed'"/>
+                            <field name="empties_expected" readonly="state == 'closed'"/>
+                        </group>
+                        <group>
+                            <field name="frequency" readonly="state == 'closed'"/>
+                            <field name="weekday_id" readonly="state == 'closed'" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="next_date" readonly="state == 'closed'"/>
+                            <field name="company_id" groups="base.group_multi_company" readonly="state != 'draft'"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Products" name="products">
+                            <field name="line_ids" readonly="state == 'closed'">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="product_id"/>
+                                    <field name="qty"/>
+                                    <field name="allowed_uom_ids" column_invisible="1"/>
+                                    <field name="product_uom_id" options="{'no_create': True}"/>
+                                </list>
+                            </field>
+                            <field name="note" placeholder="Note printed on every order..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="h2o_subscription_view_search" model="ir.ui.view">
+        <field name="name">h2o.subscription.search</field>
+        <field name="model">h2o.subscription</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="partner_id" operator="child_of"/>
+                <field name="weekday_id"/>
+                <filter string="Active" name="active" domain="[('state', '=', 'active')]"/>
+                <filter string="Paused" name="paused" domain="[('state', '=', 'paused')]"/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Closed" name="closed" domain="[('state', '=', 'closed')]"/>
+                <separator/>
+                <filter string="Next Delivery" name="filter_next_date" date="next_date"/>
+                <group>
+                    <filter string="Delivery Day" name="group_weekday" context="{'group_by': 'weekday_id'}"/>
+                    <filter string="Frequency" name="group_frequency" context="{'group_by': 'frequency'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="h2o_subscription_action" model="ir.actions.act_window">
+        <field name="name">Subscriptions</field>
+        <field name="res_model">h2o.subscription</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_active': 1, 'search_default_paused': 1, 'search_default_draft': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a water subscription</p>
+            <p>A subscription delivers the same products on a fixed weekday, every week, every two weeks or every month.
+               Its orders are created and confirmed automatically a few days before the delivery.</p>
+        </field>
+    </record>
+</odoo>

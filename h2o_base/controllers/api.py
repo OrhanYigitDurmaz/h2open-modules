@@ -47,7 +47,7 @@ class H2oApiController(http.Controller):
         try:
             auth_info = request.env['res.users'].sudo()._login(credential, user_agent_env={'interactive': True})
         except AccessDenied:
-            raise Unauthorized("Wrong login or password")
+            raise Unauthorized("Wrong login or password") from None
         user = request.env['res.users'].sudo().browse(auth_info['uid'])
         if not user._h2o_app_roles():
             raise Unauthorized("This user has no H2Open role")

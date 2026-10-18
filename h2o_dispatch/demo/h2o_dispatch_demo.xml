@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Driver app user: login "driver", password "driver". -->
-    <record id="user_driver" model="res.users">
+    <record id="user_driver" model="res.users" context="{'no_reset_password': True}">
         <field name="name">Ali Şoför</field>
         <field name="login">driver</field>
         <field name="password">driver</field>

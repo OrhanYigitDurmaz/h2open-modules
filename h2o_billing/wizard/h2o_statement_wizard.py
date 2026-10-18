@@ -11,7 +11,7 @@ class H2oStatementWizard(models.TransientModel):
         return fields.Date.context_today(self).replace(day=1) - relativedelta(months=1)
 
     month = fields.Date(
-        required=True, default=_default_month,
+        required=True, default=lambda self: self._default_month(),
         help="Any day of the month to invoice: orders delivered in that month are invoiced.",
     )
     partner_ids = fields.Many2many(

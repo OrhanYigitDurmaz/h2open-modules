@@ -125,7 +125,7 @@ class TestSubscriptionOrders(H2oSubscriptionCase):
 
         def prepare(subscription, delivery_date):
             if subscription == failing:
-                raise UserError("No water today")
+                raise UserError("No water today")  # pylint: disable=translation-required
             return original(subscription, delivery_date)
 
         with patch.object(H2oSubscription, '_h2o_prepare_order_values', autospec=True, side_effect=prepare), \

@@ -1,0 +1,54 @@
+name: Tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  odoo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      db:
+        image: postgres:18
+        env:
+          POSTGRES_DB: postgres
+          POSTGRES_USER: odoo
+          POSTGRES_PASSWORD: odoo
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U odoo -d postgres"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      # Installs every h2o_* module into a fresh database on the same odoo:20
+      # image as docker-compose.yml and runs their tests only (not those of
+      # the standard apps they depend on).
+      - name: Install modules and run tests
+        run: |
+          modules=$(ls -d h2o_*/ | tr -d / | paste -sd,)
+          tags=$(ls -d h2o_*/ | tr -d / | sed 's|^|/|' | paste -sd,)
+          docker run --rm --network host -v "$PWD:/mnt/extra-addons:ro" odoo:20 \
+            odoo -d h2open_test --db_host=localhost --db_user=odoo --db_password=odoo \
+            -i "$modules" --test-enable --test-tags "$tags" \
+            --stop-after-init --log-level=test 2>&1 | tee odoo.log
+      # Odoo can exit 0 after a failed test or install step, so also fail on
+      # any ERROR or CRITICAL line.
+      - name: Check log for errors
+        run: |
+          if grep -E " (ERROR|CRITICAL) " odoo.log; then exit 1; fi
+          grep "tests when loading" odoo.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: odoo-test-log
+          path: odoo.log

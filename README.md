@@ -55,6 +55,9 @@ and `docker compose restart odoo`. `docker compose down -v` wipes the database.
 
 Installing `h2o_reporting` pulls in every other module.
 
+Every pull request also installs all `h2o_*` modules into a fresh database
+on the `odoo:20` image and runs their tests (`.github/workflows/tests.yml`).
+
 ## Linting
 
 Every pull request runs [pre-commit](https://pre-commit.com) on the files it

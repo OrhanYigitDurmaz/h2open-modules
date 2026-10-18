@@ -28,7 +28,8 @@ msgid ""
 "* delivery stops: delivered quantities, empties collected, payment, signature and photo;\n"
 "  a delivery updates the order and the customer's bottle ledger,\n"
 "* failed or skipped stops send the order back to planning,\n"
-"* a planning wizard that fills the day's trips with the orders to deliver.\n"
+"* a planning wizard that fills the day's trips with the orders to deliver,\n"
+"* drivers can also take open orders themselves onto their trip of the day.\n"
 msgstr ""
 "\n"
 "H2Open sevkiyat\n"
@@ -39,7 +40,8 @@ msgstr ""
 "* teslimat durakları: teslim edilen miktarlar, toplanan boşlar, ödeme, imza ve fotoğraf;\n"
 "  bir teslimat siparişi ve müşterinin damacana defterini günceller,\n"
 "* başarısız veya atlanan duraklar siparişi yeniden planlamaya gönderir,\n"
-"* günün seferlerini teslim edilecek siparişlerle dolduran bir planlama sihirbazı.\n"
+"* günün seferlerini teslim edilecek siparişlerle dolduran bir planlama sihirbazı,\n"
+"* şoförler bekleyen siparişleri kendileri de alıp günün seferine ekleyebilir.\n"
 
 #. module: h2o_dispatch
 #: model_terms:ir.actions.act_window,help:h2o_dispatch.h2o_route_action
@@ -82,6 +84,12 @@ msgstr "Tahsil Edilen Tutar"
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__amount_due
 msgid "Amount Due"
 msgstr "Ödenecek Tutar"
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/sale_order.py:0
+msgid "Another driver is taking order %s right now."
+msgstr "Sipariş %s şu anda başka bir şoför tarafından alınıyor."
 
 #. module: h2o_dispatch
 #: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_route_view_form
@@ -342,6 +350,7 @@ msgstr "Vazgeç"
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__display_name
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip_plan__display_name
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_zone__display_name
+#: model:ir.model.fields,field_description:h2o_dispatch.field_res_users__display_name
 #: model:ir.model.fields,field_description:h2o_dispatch.field_sale_order__display_name
 msgid "Display Name"
 msgstr "İsim Göster"
@@ -533,6 +542,7 @@ msgstr "Mesaj Var"
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__id
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip_plan__id
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_zone__id
+#: model:ir.model.fields,field_description:h2o_dispatch.field_res_users__id
 #: model:ir.model.fields,field_description:h2o_dispatch.field_sale_order__id
 msgid "ID"
 msgstr ""
@@ -733,6 +743,18 @@ msgstr "Bunu yalnızca sevkiyat sorumluları yapabilir."
 
 #. module: h2o_dispatch
 #. odoo-python
+#: code:addons/h2o_dispatch/models/sale_order.py:0
+msgid "Only drivers can take orders."
+msgstr "Siparişleri yalnızca şoförler alabilir."
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_stop.py:0
+msgid "Only pending orders you took yourself can be given back."
+msgstr "Yalnızca kendi aldığınız bekleyen siparişleri geri bırakabilirsiniz."
+
+#. module: h2o_dispatch
+#. odoo-python
 #: code:addons/h2o_dispatch/models/h2o_trip.py:0
 msgid "Only planned or cancelled trips can be deleted."
 msgstr "Yalnızca planlanmış veya iptal edilmiş seferler silinebilir."
@@ -741,6 +763,12 @@ msgstr "Yalnızca planlanmış veya iptal edilmiş seferler silinebilir."
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__order_id
 msgid "Order"
 msgstr "Sipariş"
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/sale_order.py:0
+msgid "Order %s was already taken."
+msgstr "Sipariş %s zaten alındı."
 
 #. module: h2o_dispatch
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop_line__sale_line_id
@@ -985,6 +1013,19 @@ msgid "Stops failed or skipped."
 msgstr "Başarısız olan veya atlanan duraklar."
 
 #. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__claimed
+msgid "Taken by Driver"
+msgstr "Şoför Aldı"
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_stop__claimed
+msgid ""
+"The driver took this order themselves from the open orders in the driver "
+"app."
+msgstr ""
+"Şoför bu siparişi şoför uygulamasındaki bekleyen siparişlerden kendisi aldı."
+
+#. module: h2o_dispatch
 #: model:ir.model.constraint,message:h2o_dispatch.constraint_h2o_route_code_company_unique
 msgid "The route code must be unique per company."
 msgstr "Güzergah kodu şirket başına benzersiz olmalıdır."
@@ -1032,6 +1073,12 @@ msgstr ""
 "atlanacak %(count)s durak var."
 
 #. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_stop.py:0
+msgid "Trip %s is already closed."
+msgstr "Sefer %s zaten kapandı."
+
+#. module: h2o_dispatch
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__trip_count
 msgid "Trip Count"
 msgstr "Sefer Sayısı"
@@ -1072,6 +1119,11 @@ msgid "Use Plan Trips to fill the day's trips with the orders to deliver."
 msgstr ""
 "Günün seferlerini teslim edilecek siparişlerle doldurmak için Seferleri "
 "Planla'yı kullanın."
+
+#. module: h2o_dispatch
+#: model:ir.model,name:h2o_dispatch.model_res_users
+msgid "User"
+msgstr "Kullanıcı"
 
 #. module: h2o_dispatch
 #: model:ir.model.fields,field_description:h2o_dispatch.field_fleet_vehicle__h2o_driver_user_id

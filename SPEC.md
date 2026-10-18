@@ -286,6 +286,15 @@ Drivers are `res.users` in `h2o_base.group_h2o_driver`.
     (so it is planned again), hook `_h2o_on_failed()`.
   * `action_skip()` → `skipped`, order back to `to_plan`.
 * `sale.order`: `h2o_stop_ids`, `h2o_trip_id` (last stop's trip).
+* Drivers take orders themselves: `sale.order._h2o_claim()` (as the driver)
+  locks the order row, checks it is still open (`_h2o_is_open()`: confirmed,
+  delivery, `to_plan`) and adds a `claimed` stop at the end of the driver's
+  trip of today (`res.users._h2o_today()`, the driver's time zone).
+  `h2o.trip._h2o_trip_for_driver(driver, date, company)` picks the trip on
+  the road, else loaded, else planned, else creates a planned one on the
+  driver's route with its or the driver's usual vehicle, so the day's
+  planning fills the same trip. `h2o.stop.action_release()` removes a pending
+  claimed stop of the driver's own trip; the order is `to_plan` again.
 * Planning: wizard `h2o.trip.plan` (`date`, `route_ids`): for every route
   running on that weekday, create (or reuse) the `planned` trip and add a stop
   for every confirmed `to_plan` order of the route's zones with
@@ -329,9 +338,21 @@ Every route checks the user is a driver and only touches their own trips.
 * `POST stops/<id>/fail {reason, note}`, `POST stops/<id>/skip`.
 * `POST position {latitude, longitude, trip_id}` → updates trip last position.
 * `POST stops/reorder {trip_id, stop_ids}` → driver may resequence pending stops.
+* `GET orders` → open orders (confirmed, `to_plan`, any zone of the user's
+  companies) by delivery date, the driver's own zones first (`my_zone`), with
+  address, lines (`qty` still to deliver), empties expected, amount total.
+* `POST orders/<id>/claim` → the driver takes the order: `{trip, stop}`, the
+  stop added to their trip of today; 409 when it was taken meanwhile.
+* `POST stops/<id>/release` → gives back a pending stop the driver took
+  (`claimed`); the order is open again. Returns the trip summary.
 * Errors: 4xx JSON with a message for bad state or foreign records.
 * Pushes (through `h2o_push`): to the driver when a stop is added to or
-  removed from their trip in progress (`type: 'trip_changed'`).
+  removed from their trip in progress (`type: 'trip_changed'`); to the drivers
+  of the order's zone route (else all drivers of the company, never the user
+  who caused it) when an order is confirmed or given back
+  (`type: 'order_open'`, `order_id`, `order_name`, `customer`, `address`,
+  `zone`, `delivery_date`; not for subscription orders) and when it is taken
+  (`type: 'order_claimed'`, `order_id`).
 
 Built notes: errors are 400 (bad input), 403 (not a driver), 404 (someone
 else's record), 422 (wrong state). Coordinates come from

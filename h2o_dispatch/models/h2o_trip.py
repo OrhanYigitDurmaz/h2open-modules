@@ -254,6 +254,33 @@ class H2oTrip(models.Model):
     # ------------------------------------------------------------------
 
     @api.model
+    def _h2o_trip_for_driver(self, driver, date, company):
+        """The trip of ``driver`` on ``date`` that new stops go on: the one on
+        the road, else loaded, else planned. Without one, a planned trip is
+        created on the driver's route (if they have one, so the day's planning
+        fills the same trip) with the route's or the driver's usual vehicle."""
+        trips = self.search([
+            ('driver_id', '=', driver.id), ('date', '=', date), ('company_id', '=', company.id),
+            ('state', 'in', ('planned', 'loaded', 'on_road')),
+        ])
+        if trips:
+            rank = {'on_road': 0, 'loaded': 1, 'planned': 2}
+            return trips.sorted(lambda t: (rank[t.state], t.id))[0]
+        route = self.env['h2o.route'].search([('company_id', '=', company.id)]).filtered(
+            lambda r: r._h2o_driver() == driver)[:1]
+        vehicle = route.vehicle_id or self.env['fleet.vehicle'].search([
+            ('h2o_is_delivery_vehicle', '=', True), ('h2o_driver_user_id', '=', driver.id),
+            ('company_id', 'in', (company.id, False)),
+        ], limit=1)
+        return self.create({
+            'date': date,
+            'company_id': company.id,
+            'route_id': route.id,
+            'vehicle_id': vehicle.id,
+            'driver_id': driver.id,
+        })
+
+    @api.model
     def _h2o_plan_day(self, date, routes=None):
         """Put the orders to deliver by ``date`` on the trips of that day.
 

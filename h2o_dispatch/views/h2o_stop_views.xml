@@ -14,6 +14,7 @@
                 <field name="order_id" optional="show"/>
                 <field name="time_window" optional="hide"/>
                 <field name="driver_id" widget="many2one_avatar_user" optional="show"/>
+                <field name="claimed" optional="hide"/>
                 <field name="empties_expected" sum="Expected" optional="show"/>
                 <field name="empties_collected" sum="Empties" optional="show"/>
                 <field name="payment_method" optional="show"/>
@@ -52,6 +53,7 @@
                             <field name="zone_id"/>
                             <field name="time_window"/>
                             <field name="sequence"/>
+                            <field name="claimed" invisible="not claimed"/>
                         </group>
                         <group>
                             <field name="currency_id" invisible="1"/>

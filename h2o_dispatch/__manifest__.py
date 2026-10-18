@@ -12,7 +12,8 @@ H2Open dispatch
 * delivery stops: delivered quantities, empties collected, payment, signature and photo;
   a delivery updates the order and the customer's bottle ledger,
 * failed or skipped stops send the order back to planning,
-* a planning wizard that fills the day's trips with the orders to deliver.
+* a planning wizard that fills the day's trips with the orders to deliver,
+* drivers can also take open orders themselves onto their trip of the day.
 """,
     'author': 'H2Open',
     'license': 'LGPL-3',

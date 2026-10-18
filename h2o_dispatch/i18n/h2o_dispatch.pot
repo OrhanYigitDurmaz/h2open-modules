@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 20.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 03:42+0000\n"
-"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"POT-Creation-Date: 2026-10-18 23:25+0000\n"
+"PO-Revision-Date: 2026-10-18 23:25+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,8 @@ msgid ""
 "* delivery stops: delivered quantities, empties collected, payment, signature and photo;\n"
 "  a delivery updates the order and the customer's bottle ledger,\n"
 "* failed or skipped stops send the order back to planning,\n"
-"* a planning wizard that fills the day's trips with the orders to deliver.\n"
+"* a planning wizard that fills the day's trips with the orders to deliver,\n"
+"* drivers can also take open orders themselves onto their trip of the day.\n"
 msgstr ""
 
 #. module: h2o_dispatch
@@ -66,6 +67,12 @@ msgstr ""
 #. module: h2o_dispatch
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__amount_due
 msgid "Amount Due"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/sale_order.py:0
+msgid "Another driver is taking order %s right now."
 msgstr ""
 
 #. module: h2o_dispatch
@@ -321,6 +328,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__display_name
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip_plan__display_name
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_zone__display_name
+#: model:ir.model.fields,field_description:h2o_dispatch.field_res_users__display_name
 #: model:ir.model.fields,field_description:h2o_dispatch.field_sale_order__display_name
 msgid "Display Name"
 msgstr ""
@@ -373,6 +381,11 @@ msgid "Empties Collected"
 msgstr ""
 
 #. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__empties_expected
+msgid "Empties Expected"
+msgstr ""
+
+#. module: h2o_dispatch
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__returned_empty_qty
 msgid "Empties Returned"
 msgstr ""
@@ -402,8 +415,18 @@ msgid ""
 msgstr ""
 
 #. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_stop__empties_expected
+msgid "Empty bottles the customer said they will hand back, from the order."
+msgstr ""
+
+#. module: h2o_dispatch
 #: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_route_view_form
 msgid "Every day"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_list
+msgid "Expected"
 msgstr ""
 
 #. module: h2o_dispatch
@@ -484,6 +507,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__id
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip_plan__id
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_zone__id
+#: model:ir.model.fields,field_description:h2o_dispatch.field_res_users__id
 #: model:ir.model.fields,field_description:h2o_dispatch.field_sale_order__id
 msgid "ID"
 msgstr ""
@@ -684,6 +708,18 @@ msgstr ""
 
 #. module: h2o_dispatch
 #. odoo-python
+#: code:addons/h2o_dispatch/models/sale_order.py:0
+msgid "Only drivers can take orders."
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_stop.py:0
+msgid "Only pending orders you took yourself can be given back."
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
 #: code:addons/h2o_dispatch/models/h2o_trip.py:0
 msgid "Only planned or cancelled trips can be deleted."
 msgstr ""
@@ -691,6 +727,12 @@ msgstr ""
 #. module: h2o_dispatch
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__order_id
 msgid "Order"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/sale_order.py:0
+msgid "Order %s was already taken."
 msgstr ""
 
 #. module: h2o_dispatch
@@ -929,6 +971,18 @@ msgid "Stops failed or skipped."
 msgstr ""
 
 #. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__claimed
+msgid "Taken by Driver"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_stop__claimed
+msgid ""
+"The driver took this order themselves from the open orders in the driver "
+"app."
+msgstr ""
+
+#. module: h2o_dispatch
 #: model:ir.model.constraint,message:h2o_dispatch.constraint_h2o_route_code_company_unique
 msgid "The route code must be unique per company."
 msgstr ""
@@ -974,6 +1028,12 @@ msgid "Trip %(trip)s still has %(count)s stop(s) to deliver, fail or skip."
 msgstr ""
 
 #. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_stop.py:0
+msgid "Trip %s is already closed."
+msgstr ""
+
+#. module: h2o_dispatch
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__trip_count
 msgid "Trip Count"
 msgstr ""
@@ -1011,6 +1071,11 @@ msgstr ""
 #. module: h2o_dispatch
 #: model_terms:ir.actions.act_window,help:h2o_dispatch.h2o_trip_action
 msgid "Use Plan Trips to fill the day's trips with the orders to deliver."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model,name:h2o_dispatch.model_res_users
+msgid "User"
 msgstr ""
 
 #. module: h2o_dispatch

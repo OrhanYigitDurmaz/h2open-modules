@@ -12,7 +12,9 @@ JSON endpoints under /h2o/api/v1/driver/ used by the Android driver app:
   (address, phone, notes, products, bottle balance, amount due, coordinates),
 * start and close a trip, deliver, fail or skip a stop, reorder the remaining stops,
 * report the vehicle position,
-* a push to the driver's phone when the dispatcher adds or removes a stop on a trip in progress.
+* a push to the driver's phone when the dispatcher adds or removes a stop on a trip in progress,
+* open orders: drivers are notified when an order is placed, list the orders no driver has
+  yet and take one onto their trip of the day, or give it back.
 
 Drivers only ever see and change their own trips.
 """,

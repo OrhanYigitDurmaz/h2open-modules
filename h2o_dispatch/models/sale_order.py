@@ -1,4 +1,5 @@
 from odoo import api, fields, models
+from odoo.exceptions import AccessError, LockError, UserError
 
 
 class SaleOrder(models.Model):
@@ -14,6 +15,44 @@ class SaleOrder(models.Model):
     def _compute_h2o_trip_id(self):
         for order in self:
             order.h2o_trip_id = order.h2o_stop_ids.sorted('id')[-1:].trip_id
+
+    def _h2o_is_open(self):
+        """Whether the order waits for a driver: confirmed, to deliver, on no trip yet."""
+        self.ensure_one()
+        order = self.sudo()
+        return order.state == 'sale' and order.h2o_is_delivery and order.h2o_delivery_state == 'to_plan'
+
+    def _h2o_claim(self):
+        """The current user, a driver, takes the order to deliver it today.
+
+        The order becomes a stop at the end of the driver's trip of the day
+        (see ``h2o.trip._h2o_trip_for_driver``) and is ``planned``. The order
+        row is locked first, so of two drivers taking it at the same time only
+        one gets it; the other gets a ``UserError``.
+
+        :return: the new stop (``h2o.stop``)
+        """
+        self.ensure_one()
+        driver = self.env.user
+        if not driver.has_group('h2o_base.group_h2o_driver'):
+            raise AccessError(self.env._("Only drivers can take orders."))
+        # sudo: drivers have no rights on orders; they only take open ones.
+        order = self.sudo()
+        try:
+            order.lock_for_update()
+        except LockError:
+            raise UserError(self.env._("Another driver is taking order %s right now.", order.name)) from None
+        order.invalidate_recordset(['state', 'h2o_delivery_state'])
+        if not order._h2o_is_open():
+            raise UserError(self.env._("Order %s was already taken.", order.name))
+        trip = self.env['h2o.trip'].sudo()._h2o_trip_for_driver(driver, driver._h2o_today(), order.company_id)
+        stop = self.env['h2o.stop'].sudo().create({
+            'trip_id': trip.id,
+            'order_id': order.id,
+            'sequence': max(trip.stop_ids.mapped('sequence'), default=0) + 10,
+            'claimed': True,
+        })
+        return stop.sudo(self.env.su)
 
     def _h2o_release_planned(self):
         """Send planned orders without a pending stop back to planning.

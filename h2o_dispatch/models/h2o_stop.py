@@ -82,6 +82,10 @@ class H2oStop(models.Model):
     latitude = fields.Float(digits=(10, 7), copy=False)
     longitude = fields.Float(digits=(10, 7), copy=False)
     done_at = fields.Datetime(readonly=True, copy=False)
+    claimed = fields.Boolean(
+        string="Taken by Driver", readonly=True, copy=False,
+        help="The driver took this order themselves from the open orders in the driver app.",
+    )
     note = fields.Text()
     time_window = fields.Selection(related='order_id.h2o_time_window')
 
@@ -303,6 +307,24 @@ class H2oStop(models.Model):
         self._h2o_check_can_act()
         self._h2o_set_skipped()
         return True
+
+    def action_release(self):
+        """The driver gives back orders they took themselves: the stops are
+        removed and the orders are open again for any driver to take.
+
+        :return: the released orders (``sale.order``)
+        """
+        self.check_access('write')
+        self.trip_id._h2o_check_driver()
+        for stop in self:
+            if stop.state != 'pending' or not stop.claimed:
+                raise UserError(self.env._("Only pending orders you took yourself can be given back."))
+            if stop.trip_id.state not in ('planned', 'loaded', 'on_road'):
+                raise UserError(self.env._("Trip %s is already closed.", stop.trip_id.name))
+        orders = self.order_id
+        # sudo: drivers cannot delete stops; the checks above allow this one.
+        self.sudo().unlink()
+        return orders
 
     def _h2o_set_skipped(self):
         self.sudo().write({'state': 'skipped', 'done_at': fields.Datetime.now()})

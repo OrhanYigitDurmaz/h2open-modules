@@ -1,0 +1,498 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* h2o_subscription
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 03:42+0000\n"
+"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: h2o_subscription
+#: model:ir.module.module,description:base.module_h2o_subscription
+msgid ""
+"\n"
+"H2Open subscriptions\n"
+"====================\n"
+"* Recurring delivery plans per customer: products, quantities, weekly, every two weeks or monthly on a weekday,\n"
+"* a daily job creates and confirms the delivery order a few days ahead (lead days in the settings),\n"
+"  exactly like a phone order: delivery address, time window, empties expected, deposits and customer prices,\n"
+"* never two orders for the same subscription and day,\n"
+"* pause, resume and close a subscription; create the next order on demand.\n"
+msgstr ""
+
+#. module: h2o_subscription
+#: model_terms:ir.actions.act_window,help:h2o_subscription.h2o_subscription_action
+msgid ""
+"A subscription delivers the same products on a fixed weekday, every week, every two weeks or every month.\n"
+"               Its orders are created and confirmed automatically a few days before the delivery."
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Activate"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields.selection,name:h2o_subscription.selection__h2o_subscription__state__active
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_search
+msgid "Active"
+msgstr ""
+
+#. module: h2o_subscription
+#. odoo-python
+#: code:addons/h2o_subscription/models/h2o_subscription.py:0
+msgid "Add the products to deliver to %s."
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__allowed_uom_ids
+msgid "Allowed Uom"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Close"
+msgstr ""
+
+#. module: h2o_subscription
+#. odoo-python
+#: code:addons/h2o_subscription/models/h2o_subscription.py:0
+msgid "Close a subscription before deleting it."
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields.selection,name:h2o_subscription.selection__h2o_subscription__state__closed
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_search
+msgid "Closed"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model,name:h2o_subscription.model_res_company
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__company_id
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__company_id
+msgid "Company"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model,name:h2o_subscription.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: h2o_subscription
+#: model_terms:ir.actions.act_window,help:h2o_subscription.h2o_subscription_action
+msgid "Create a water subscription"
+msgstr ""
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Create and confirm the order of the next delivery now."
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__create_uid
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__create_date
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__partner_id
+msgid "Customer"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__weekday_id
+msgid "Defaults to the weekday of the next delivery day of the address."
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__address_id
+msgid "Delivery Address"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__weekday_id
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_search
+msgid "Delivery Day"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__next_date
+msgid ""
+"Delivery date of the next order to create. Set on activation to the first "
+"delivery day on this weekday the customer can still be delivered (order cut-"
+"off hour respected)."
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__display_name
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__display_name
+#: model:ir.model.fields,field_description:h2o_subscription.field_res_company__display_name
+#: model:ir.model.fields,field_description:h2o_subscription.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:h2o_subscription.field_sale_order__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields.selection,name:h2o_subscription.selection__h2o_subscription__state__draft
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_search
+msgid "Draft"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__empties_expected
+msgid "Empties Expected"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__empties_expected
+msgid ""
+"Empty bottles the customer hands back at each delivery. Defaults to the "
+"returnable bottles delivered, so a deposit is only charged for extra "
+"bottles."
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields.selection,name:h2o_subscription.selection__h2o_subscription__frequency__monthly
+msgid "Every Month"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields.selection,name:h2o_subscription.selection__h2o_subscription__frequency__biweekly
+msgid "Every Two Weeks"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields.selection,name:h2o_subscription.selection__h2o_subscription__frequency__weekly
+msgid "Every Week"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__frequency
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_search
+msgid "Frequency"
+msgstr ""
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Generate Now"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.module.module,shortdesc:base.module_h2o_subscription
+msgid "H2Open Subscriptions"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.actions.server,name:h2o_subscription.ir_cron_h2o_subscription_orders_ir_actions_server
+msgid "H2Open: create subscription orders"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__id
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__id
+#: model:ir.model.fields,field_description:h2o_subscription.field_res_company__id
+#: model:ir.model.fields,field_description:h2o_subscription.field_res_config_settings__id
+#: model:ir.model.fields,field_description:h2o_subscription.field_sale_order__id
+msgid "ID"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__message_has_error
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__write_uid
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__write_date
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__frequency
+msgid ""
+"Monthly deliveries fall on the same weekday of the same week of the month "
+"(e.g. every 2nd Monday); when a month has no 5th such weekday, the last one "
+"is used."
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__next_date
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_search
+msgid "Next Delivery"
+msgstr ""
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid ""
+"No more orders will be created for this subscription. Orders already created"
+" are kept. Continue?"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__note
+msgid "Note"
+msgstr ""
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Note printed on every order..."
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: h2o_subscription
+#. odoo-python
+#: code:addons/h2o_subscription/models/h2o_subscription.py:0
+msgid "Order %(order)s created for %(date)s."
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__order_count
+msgid "Order Count"
+msgstr ""
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.res_config_settings_view_form_h2o_subscription
+msgid "Order lead days"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__order_ids
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Orders"
+msgstr ""
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Pause"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields.selection,name:h2o_subscription.selection__h2o_subscription__state__paused
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_search
+msgid "Paused"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__note
+msgid "Printed on every order of the subscription."
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__product_id
+msgid "Product"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__line_ids
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Products"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__qty
+msgid "Quantity"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.module.module,summary:base.module_h2o_subscription
+msgid ""
+"Recurring water deliveries that create confirmed orders ahead of the "
+"delivery day"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__name
+msgid "Reference"
+msgstr ""
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Resume"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model,name:h2o_subscription.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__state
+msgid "State"
+msgstr ""
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_search
+msgid "Status"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__subscription_id
+#: model:ir.model.fields,field_description:h2o_subscription.field_sale_order__h2o_subscription_id
+msgid "Subscription"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_res_company__h2o_subscription_lead_days
+#: model:ir.model.fields,field_description:h2o_subscription.field_res_config_settings__h2o_subscription_lead_days
+msgid "Subscription Lead Days"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_res_company__h2o_subscription_lead_days
+#: model:ir.model.fields,help:h2o_subscription.field_res_config_settings__h2o_subscription_lead_days
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.res_config_settings_view_form_h2o_subscription
+msgid ""
+"Subscription orders are created this many days before their delivery date."
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.actions.act_window,name:h2o_subscription.h2o_subscription_action
+#: model:ir.ui.menu,name:h2o_subscription.menu_h2o_subscriptions
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.res_config_settings_view_form_h2o_subscription
+msgid "Subscriptions"
+msgstr ""
+
+#. module: h2o_subscription
+#. odoo-python
+#: code:addons/h2o_subscription/models/h2o_subscription.py:0
+msgid "The next delivery of %(subscription)s must be on a %(weekday)s."
+msgstr ""
+
+#. module: h2o_subscription
+#. odoo-python
+#: code:addons/h2o_subscription/models/h2o_subscription.py:0
+msgid "The order could not be created: %s"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.constraint,message:h2o_subscription.constraint_h2o_subscription_line_qty_positive
+msgid "The quantity of a subscription product must be positive."
+msgstr ""
+
+#. module: h2o_subscription
+#. odoo-python
+#: code:addons/h2o_subscription/models/h2o_subscription.py:0
+msgid "This action is not possible in the current status of the subscription."
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__time_window
+msgid "Time Window"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__product_uom_id
+msgid "Unit"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model,name:h2o_subscription.model_h2o_subscription
+msgid "Water Subscription"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model,name:h2o_subscription.model_h2o_subscription_line
+msgid "Water Subscription Product"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_sale_order__h2o_subscription_id
+msgid "Water subscription that created this order."
+msgstr ""

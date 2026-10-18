@@ -1,0 +1,504 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* h2o_telephony
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 03:42+0000\n"
+"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: h2o_telephony
+#: model:ir.module.module,description:base.module_h2o_telephony
+msgid ""
+"\n"
+"H2Open telephony\n"
+"================\n"
+"Asterisk runs on the office PC and is reached over WireGuard; a VPS is the\n"
+"public WebRTC (WSS) entry point for the driver app. Calls are never recorded.\n"
+"\n"
+"* Caller ID lookup of customers for Asterisk, whatever the format of the\n"
+"  Turkish phone number.\n"
+"* Call log fed by Asterisk events, with a pop-up for dispatchers when a\n"
+"  customer calls.\n"
+"* SIP credentials for the driver app, generated at each sign-in and pushed to\n"
+"  Asterisk through ARI dynamic configuration (PJSIP over WSS, WebRTC, ICE,\n"
+"  A-law). They are revoked on Asterisk when they expire.\n"
+"* Wakes the driver app with a high-priority push when a call comes in for a\n"
+"  driver who is not registered, and cancels it when the caller hangs up.\n"
+"\n"
+"Asterisk side: sorcery must allow dynamic ``res_pjsip`` objects through ARI,\n"
+"with a ``transport-wss`` transport and an ``h2o-drivers`` dialplan context\n"
+"for the driver endpoints. Asterisk sends the shared secret in the\n"
+"``X-H2O-Secret`` header of its calls to ``/h2o/telephony/v1/...``.\n"
+msgstr ""
+"\n"
+"H2Open telefon sistemi\n"
+"======================\n"
+"Asterisk ofis bilgisayarında çalışır ve WireGuard üzerinden erişilir; şoför uygulaması için\n"
+"herkese açık WebRTC (WSS) giriş noktası bir VPS'tir. Aramalar asla kaydedilmez.\n"
+"\n"
+"* Türk telefon numarasının biçimi ne olursa olsun Asterisk için müşterilerin\n"
+"  arayan numarasından bulunması.\n"
+"* Asterisk olaylarıyla beslenen arama kaydı; bir müşteri aradığında sevkiyat\n"
+"  sorumlularına açılır pencere.\n"
+"* Şoför uygulaması için her girişte üretilen ve ARI dinamik yapılandırması ile\n"
+"  Asterisk'e gönderilen SIP kimlik bilgileri (WSS üzerinden PJSIP, WebRTC, ICE,\n"
+"  A-law). Süreleri dolduğunda Asterisk'te iptal edilir.\n"
+"* Kayıtlı olmayan bir şoföre arama geldiğinde şoför uygulamasını yüksek öncelikli\n"
+"  bir bildirimle uyandırır ve arayan kapattığında bunu iptal eder.\n"
+"\n"
+"Asterisk tarafı: sorcery, ARI üzerinden dinamik ``res_pjsip`` nesnelerine izin vermeli;\n"
+"şoför uç noktaları için bir ``transport-wss`` transport'u ve bir ``h2o-drivers`` arama planı\n"
+"bağlamı olmalıdır. Asterisk, ``/h2o/telephony/v1/...`` adresine yaptığı çağrılarda ortak\n"
+"parolayı ``X-H2O-Secret`` başlığında gönderir.\n"
+
+#. module: h2o_telephony
+#: model:ir.model.constraint,message:h2o_telephony.constraint_h2o_sip_account_user_unique
+msgid "A user can only have one SIP account."
+msgstr "Bir kullanıcının yalnızca bir SIP hesabı olabilir."
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_res_config_settings__h2o_telephony_ari_password
+msgid "ARI Password"
+msgstr "ARI Parolası"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_res_config_settings__h2o_telephony_ari_url
+msgid "ARI URL"
+msgstr ""
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_res_config_settings__h2o_telephony_ari_user
+msgid "ARI User"
+msgstr "ARI Kullanıcısı"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_sip_account__active
+msgid "Active"
+msgstr "Aktif"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_call__answer
+#: model:ir.model.fields.selection,name:h2o_telephony.selection__h2o_call__state__answered
+msgid "Answered"
+msgstr "Yanıtlandı"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_call__user_id
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.h2o_call_view_search
+msgid "Answered By"
+msgstr "Yanıtlayan"
+
+#. module: h2o_telephony
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.h2o_sip_account_view_form
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.h2o_sip_account_view_search
+msgid "Archived"
+msgstr "Arşivlendi"
+
+#. module: h2o_telephony
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.res_config_settings_view_form
+msgid "Asterisk"
+msgstr ""
+
+#. module: h2o_telephony
+#: model:ir.model.fields,help:h2o_telephony.field_res_config_settings__h2o_telephony_ari_url
+msgid "Asterisk REST Interface over WireGuard, e.g. http://10.66.0.2:8088"
+msgstr ""
+"WireGuard üzerinden Asterisk REST Interface, ör. http://10.66.0.2:8088"
+
+#. module: h2o_telephony
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.res_config_settings_view_form
+msgid "Asterisk REST Interface, reached over WireGuard."
+msgstr "WireGuard üzerinden erişilen Asterisk REST Interface."
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_res_config_settings__h2o_telephony_asterisk_secret
+msgid "Asterisk Shared Secret"
+msgstr "Asterisk Ortak Parolası"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_call__asterisk_uniqueid
+msgid "Asterisk Unique ID"
+msgstr "Asterisk Benzersiz ID"
+
+#. module: h2o_telephony
+#: model:ir.module.module,summary:base.module_h2o_telephony
+msgid "Asterisk caller ID, call log and driver app VoIP for H2Open"
+msgstr ""
+"H2Open için Asterisk arayan numarası, arama kaydı ve şoför uygulaması VoIP'i"
+
+#. module: h2o_telephony
+#. odoo-python
+#: code:addons/h2o_telephony/models/h2o_sip_account.py:0
+msgid "Asterisk could not be reached: %s"
+msgstr "Asterisk'e ulaşılamadı: %s"
+
+#. module: h2o_telephony
+#. odoo-python
+#: code:addons/h2o_telephony/models/h2o_sip_account.py:0
+msgid ""
+"Asterisk refused the %(type)s of extension %(extension)s: %(status)s "
+"%(error)s"
+msgstr ""
+"Asterisk, %(extension)s dahilisinin %(type)s nesnesini reddetti: %(status)s "
+"%(error)s"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_call__called_number
+msgid "Called"
+msgstr "Aranan"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_call__caller_number
+msgid "Caller"
+msgstr "Arayan"
+
+#. module: h2o_telephony
+#: model:ir.actions.act_window,name:h2o_telephony.h2o_call_action
+#: model:ir.ui.menu,name:h2o_telephony.menu_h2o_call
+msgid "Calls"
+msgstr "Aramalar"
+
+#. module: h2o_telephony
+#: model_terms:ir.actions.act_window,help:h2o_telephony.h2o_call_action
+msgid "Calls to the office line show up here as Asterisk reports them."
+msgstr "Ofis hattına gelen aramalar Asterisk bildirdikçe burada görünür."
+
+#. module: h2o_telephony
+#: model:ir.model,name:h2o_telephony.model_res_config_settings
+msgid "Config Settings"
+msgstr "Yapılandırma Ayarları"
+
+#. module: h2o_telephony
+#: model:ir.model,name:h2o_telephony.model_res_partner
+msgid "Contact"
+msgstr "Kontak"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_call__create_uid
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_sip_account__create_uid
+msgid "Created by"
+msgstr "Oluşturan"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_call__create_date
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_sip_account__create_date
+msgid "Created on"
+msgstr "Oluşturulma"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_sip_account__password_expires_at
+msgid "Credentials Expire"
+msgstr "Kimlik Bilgilerinin Bitişi"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_call__partner_id
+msgid "Customer"
+msgstr "Müşteri"
+
+#. module: h2o_telephony
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.h2o_call_view_search
+msgid "Date"
+msgstr "Tarih"
+
+#. module: h2o_telephony
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.h2o_call_view_search
+msgid "Day"
+msgstr "Gün"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_call__direction
+msgid "Direction"
+msgstr "Yön"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_call__display_name
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_sip_account__display_name
+#: model:ir.model.fields,field_description:h2o_telephony.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:h2o_telephony.field_res_partner__display_name
+msgid "Display Name"
+msgstr "İsim Göster"
+
+#. module: h2o_telephony
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.res_config_settings_view_form
+msgid "Driver app VoIP"
+msgstr "Şoför uygulaması VoIP"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_call__duration
+msgid "Duration (s)"
+msgstr "Süre (sn)"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_call__end
+#: model:ir.model.fields.selection,name:h2o_telephony.selection__h2o_call__state__ended
+msgid "Ended"
+msgstr "Bitti"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_sip_account__extension
+msgid "Extension"
+msgstr "Dahili"
+
+#. module: h2o_telephony
+#: model_terms:ir.actions.act_window,help:h2o_telephony.h2o_sip_account_action
+msgid "Give a driver an extension"
+msgstr "Bir şoföre dahili numara verin"
+
+#. module: h2o_telephony
+#: model:ir.module.module,shortdesc:base.module_h2o_telephony
+msgid "H2Open Telephony"
+msgstr "H2Open Telefon Sistemi"
+
+#. module: h2o_telephony
+#: model:ir.actions.server,name:h2o_telephony.ir_cron_h2o_revoke_sip_credentials_ir_actions_server
+msgid "H2Open: Revoke expired SIP credentials"
+msgstr "H2Open: Süresi dolan SIP kimlik bilgilerini iptal et"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_call__id
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_sip_account__id
+#: model:ir.model.fields,field_description:h2o_telephony.field_res_config_settings__id
+#: model:ir.model.fields,field_description:h2o_telephony.field_res_partner__id
+msgid "ID"
+msgstr ""
+
+#. module: h2o_telephony
+#: model:ir.model.fields.selection,name:h2o_telephony.selection__h2o_call__direction__inbound
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.h2o_call_view_search
+msgid "Inbound"
+msgstr "Gelen"
+
+#. module: h2o_telephony
+#. odoo-javascript
+#: code:addons/h2o_telephony/static/src/incoming_call_plugin.js:0
+msgid "Incoming call"
+msgstr "Gelen arama"
+
+#. module: h2o_telephony
+#: model:ir.model.fields.selection,name:h2o_telephony.selection__h2o_call__direction__internal
+msgid "Internal"
+msgstr "İç Arama"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_call__write_uid
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_sip_account__write_uid
+msgid "Last Updated by"
+msgstr "Son Güncelleyen"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_call__write_date
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_sip_account__write_date
+msgid "Last Updated on"
+msgstr "Son Güncelleme"
+
+#. module: h2o_telephony
+#: model:ir.model.fields.selection,name:h2o_telephony.selection__h2o_call__state__missed
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.h2o_call_view_search
+msgid "Missed"
+msgstr "Cevapsız"
+
+#. module: h2o_telephony
+#: model_terms:ir.actions.act_window,help:h2o_telephony.h2o_call_action
+msgid "No call yet"
+msgstr "Henüz arama yok"
+
+#. module: h2o_telephony
+#. odoo-javascript
+#: code:addons/h2o_telephony/static/src/incoming_call_plugin.js:0
+msgid "Open call"
+msgstr "Aramayı aç"
+
+#. module: h2o_telephony
+#. odoo-javascript
+#: code:addons/h2o_telephony/static/src/incoming_call_plugin.js:0
+msgid "Open customer"
+msgstr "Müşteriyi aç"
+
+#. module: h2o_telephony
+#: model:ir.model.fields.selection,name:h2o_telephony.selection__h2o_call__direction__outbound
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.h2o_call_view_search
+msgid "Outbound"
+msgstr "Giden"
+
+#. module: h2o_telephony
+#: model:ir.model,name:h2o_telephony.model_h2o_call
+msgid "Phone Call"
+msgstr "Telefon Araması"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,help:h2o_telephony.field_res_config_settings__h2o_telephony_wss_url
+msgid ""
+"Public WSS address the driver app registers to, e.g. "
+"wss://voip.example.com/ws"
+msgstr ""
+"Şoför uygulamasının kaydolduğu herkese açık WSS adresi, ör. "
+"wss://voip.example.com/ws"
+
+#. module: h2o_telephony
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.h2o_sip_account_view_form
+msgid "Revoke Credentials"
+msgstr "Kimlik Bilgilerini İptal Et"
+
+#. module: h2o_telephony
+#: model:ir.model.fields.selection,name:h2o_telephony.selection__h2o_call__state__ringing
+msgid "Ringing"
+msgstr "Çalıyor"
+
+#. module: h2o_telephony
+#: model:ir.model,name:h2o_telephony.model_h2o_sip_account
+msgid "SIP Account"
+msgstr "SIP Hesabı"
+
+#. module: h2o_telephony
+#: model:ir.actions.act_window,name:h2o_telephony.h2o_sip_account_action
+#: model:ir.ui.menu,name:h2o_telephony.menu_h2o_sip_account
+msgid "SIP Accounts"
+msgstr "SIP Hesapları"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_res_config_settings__h2o_telephony_sip_credential_hours
+msgid "SIP Credential Lifetime (hours)"
+msgstr "SIP Kimlik Bilgisi Ömrü (saat)"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_res_config_settings__h2o_telephony_sip_domain
+msgid "SIP Domain"
+msgstr "SIP Alan Adı"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,help:h2o_telephony.field_h2o_sip_account__extension
+msgid "SIP user name and internal number of the user, e.g. 201."
+msgstr "Kullanıcının SIP kullanıcı adı ve dahili numarası, ör. 201."
+
+#. module: h2o_telephony
+#: model:ir.model.fields,help:h2o_telephony.field_res_config_settings__h2o_telephony_asterisk_secret
+msgid ""
+"Sent by Asterisk in the X-H2O-Secret header. Asterisk calls are refused "
+"while it is empty."
+msgstr ""
+"Asterisk tarafından X-H2O-Secret başlığında gönderilir. Boş olduğu sürece "
+"Asterisk çağrıları reddedilir."
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_call__start
+msgid "Start"
+msgstr "Başlat"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_call__state
+msgid "State"
+msgstr "Durum"
+
+#. module: h2o_telephony
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.h2o_call_view_search
+msgid "Status"
+msgstr "Durum"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,help:h2o_telephony.field_h2o_call__duration
+msgid "Talk time in seconds, from answer to hang-up."
+msgstr "Yanıttan kapatmaya kadar saniye cinsinden konuşma süresi."
+
+#. module: h2o_telephony
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.res_config_settings_view_form
+msgid "Telephony"
+msgstr "Telefon Sistemi"
+
+#. module: h2o_telephony
+#. odoo-python
+#: code:addons/h2o_telephony/models/h2o_sip_account.py:0
+msgid "The Asterisk ARI URL is not configured."
+msgstr "Asterisk ARI URL'si yapılandırılmamış."
+
+#. module: h2o_telephony
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.h2o_sip_account_view_form
+msgid "The app will have to sign in again before it can receive calls."
+msgstr "Uygulamanın arama alabilmesi için yeniden giriş yapması gerekecek."
+
+#. module: h2o_telephony
+#: model_terms:ir.actions.act_window,help:h2o_telephony.h2o_sip_account_action
+msgid ""
+"The driver app gets a fresh SIP password from Odoo each time it signs in."
+msgstr ""
+"Şoför uygulaması her giriş yaptığında Odoo'dan yeni bir SIP parolası alır."
+
+#. module: h2o_telephony
+#. odoo-python
+#: code:addons/h2o_telephony/models/h2o_sip_account.py:0
+msgid "The extension must only contain digits."
+msgstr "Dahili numara yalnızca rakam içermelidir."
+
+#. module: h2o_telephony
+#: model:ir.model.fields,help:h2o_telephony.field_h2o_sip_account__password_expires_at
+msgid ""
+"The password is generated when the driver app signs in and is only known by "
+"the app and Asterisk. Asterisk forgets it at this time."
+msgstr ""
+"Parola, şoför uygulaması giriş yaptığında üretilir ve yalnızca uygulama ile "
+"Asterisk tarafından bilinir. Asterisk bu zamanda parolayı unutur."
+
+#. module: h2o_telephony
+#: model:ir.model.constraint,message:h2o_telephony.constraint_h2o_call_asterisk_uniqueid_unique
+msgid "This Asterisk call is already logged."
+msgstr "Bu Asterisk araması zaten kaydedildi."
+
+#. module: h2o_telephony
+#: model:ir.model.constraint,message:h2o_telephony.constraint_h2o_sip_account_extension_unique
+msgid "This extension is already used."
+msgstr "Bu dahili numara zaten kullanılıyor."
+
+#. module: h2o_telephony
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.h2o_call_view_list
+msgid "Total"
+msgstr "Toplam"
+
+#. module: h2o_telephony
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.h2o_call_view_search
+msgid "Unknown caller"
+msgstr "Bilinmeyen arayan"
+
+#. module: h2o_telephony
+#. odoo-python
+#: code:addons/h2o_telephony/models/h2o_call.py:0
+msgid "Unknown number"
+msgstr "Bilinmeyen numara"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_h2o_sip_account__user_id
+msgid "User"
+msgstr "Kullanıcı"
+
+#. module: h2o_telephony
+#: model:ir.model.fields,field_description:h2o_telephony.field_res_config_settings__h2o_telephony_wss_url
+msgid "WebSocket URL"
+msgstr ""
+
+#. module: h2o_telephony
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.res_config_settings_view_form
+msgid "Where the driver app registers its SIP account."
+msgstr "Şoför uygulamasının SIP hesabını kaydettiği yer."
+
+#. module: h2o_telephony
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.res_config_settings_view_form
+msgid "http://10.66.0.2:8088"
+msgstr ""
+
+#. module: h2o_telephony
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.res_config_settings_view_form
+msgid "voip.example.com"
+msgstr ""
+
+#. module: h2o_telephony
+#: model_terms:ir.ui.view,arch_db:h2o_telephony.res_config_settings_view_form
+msgid "wss://voip.example.com/ws"
+msgstr ""

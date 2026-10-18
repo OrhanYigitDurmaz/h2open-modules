@@ -1,0 +1,524 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* h2o_order
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 03:42+0000\n"
+"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: h2o_order
+#: model:ir.module.module,description:base.module_h2o_order
+msgid ""
+"\n"
+"H2Open orders\n"
+"=============\n"
+"* Delivery information on sales orders: channel, delivery date and time window, zone, empties expected,\n"
+"* the next delivery date of a customer from its delivery days and the company cut-off hour,\n"
+"* bottle deposit lines added automatically for the bottles a customer ends up holding,\n"
+"* one pricelist per customer type (home, office, reseller),\n"
+"* a quick phone order form for dispatchers.\n"
+msgstr ""
+"\n"
+"H2Open siparişler\n"
+"=================\n"
+"* Satış siparişlerinde teslimat bilgileri: kanal, teslimat tarihi ve zaman aralığı, bölge, beklenen boşlar,\n"
+"* müşterinin teslimat günlerine ve şirketin kesim saatine göre bir sonraki teslimat tarihi,\n"
+"* müşterinin elinde kalacak damacanalar için otomatik eklenen damacana depozito satırları,\n"
+"* her müşteri tipi (ev, ofis, bayi) için bir fiyat listesi,\n"
+"* sevkiyat sorumluları için hızlı telefon siparişi formu.\n"
+
+#. module: h2o_order
+#. odoo-python
+#: code:addons/h2o_order/wizard/h2o_quick_order.py:0
+msgid "Add at least one product, with a quantity above zero."
+msgstr "Sıfırdan büyük miktarla en az bir ürün ekleyin."
+
+#. module: h2o_order
+#: model_terms:ir.ui.view,arch_db:h2o_order.sale_order_view_form_h2o
+msgid ""
+"Add or update the bottle deposit lines for the bottles the customer ends up "
+"holding."
+msgstr ""
+"Müşterinin elinde kalacak damacanalar için damacana depozito satırlarını "
+"ekle veya güncelle."
+
+#. module: h2o_order
+#: model:ir.model.fields.selection,name:h2o_order.selection__sale_order__h2o_time_window__afternoon
+msgid "Afternoon"
+msgstr "Öğleden Sonra"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order_line__allowed_uom_ids
+msgid "Allowed Uom"
+msgstr "İzin Verilen Ölçü Birimleri"
+
+#. module: h2o_order
+#: model:ir.model.fields.selection,name:h2o_order.selection__sale_order__h2o_time_window__any
+msgid "Any Time"
+msgstr "Herhangi Bir Saat"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order__bottle_balance
+#: model:ir.model.fields,field_description:h2o_order.field_sale_order__h2o_bottle_balance
+msgid "Bottles Held"
+msgstr "Eldeki Damacanalar"
+
+#. module: h2o_order
+#: model_terms:ir.ui.view,arch_db:h2o_order.h2o_quick_order_view_form
+msgid "Cancel"
+msgstr "İptal"
+
+#. module: h2o_order
+#: model:ir.model.fields.selection,name:h2o_order.selection__sale_order__h2o_delivery_state__cancelled
+msgid "Cancelled"
+msgstr "İptal Edildi"
+
+#. module: h2o_order
+#: model:ir.model.fields,help:h2o_order.field_h2o_quick_order__payment_mode
+#: model:ir.model.fields,help:h2o_order.field_sale_order__h2o_payment_mode
+msgid ""
+"Cash and card customers pay on delivery; account customers get a monthly "
+"invoice."
+msgstr ""
+"Nakit ve kartlı müşteriler teslimatta öder; cari hesaplı müşterilere aylık "
+"fatura kesilir."
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_sale_order__h2o_channel
+#: model_terms:ir.ui.view,arch_db:h2o_order.sale_order_view_search_h2o
+msgid "Channel"
+msgstr "Kanal"
+
+#. module: h2o_order
+#: model:ir.model,name:h2o_order.model_res_company
+msgid "Company"
+msgstr "Firma"
+
+#. module: h2o_order
+#: model:ir.model,name:h2o_order.model_res_config_settings
+msgid "Config Settings"
+msgstr "Yapılandırma Ayarları"
+
+#. module: h2o_order
+#: model_terms:ir.ui.view,arch_db:h2o_order.h2o_quick_order_view_form
+msgid "Confirm Order"
+msgstr "Siparişi Onayla"
+
+#. module: h2o_order
+#: model:ir.model,name:h2o_order.model_res_partner
+msgid "Contact"
+msgstr "Kontak"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order__create_uid
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order_line__create_uid
+msgid "Created by"
+msgstr "Oluşturan"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order__create_date
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order_line__create_date
+msgid "Created on"
+msgstr "Oluşturulma"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order__partner_id
+msgid "Customer"
+msgstr "Müşteri"
+
+#. module: h2o_order
+#: model:ir.model.fields.selection,name:h2o_order.selection__sale_order__h2o_channel__portal
+msgid "Customer App / Portal"
+msgstr "Müşteri Uygulaması / Portal"
+
+#. module: h2o_order
+#: model:ir.model.fields,help:h2o_order.field_sale_order__h2o_delivery_date
+msgid ""
+"Day the water is delivered. Defaults to the next delivery day of the "
+"delivery address."
+msgstr ""
+"Suyun teslim edileceği gün. Varsayılan olarak teslimat adresinin bir sonraki"
+" teslimat günüdür."
+
+#. module: h2o_order
+#: model:ir.model.fields.selection,name:h2o_order.selection__sale_order__h2o_delivery_state__delivered
+msgid "Delivered"
+msgstr "Teslim Edildi"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order__partner_shipping_id
+msgid "Delivery Address"
+msgstr "Teslimat Adresi"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order__delivery_date
+#: model_terms:ir.ui.view,arch_db:h2o_order.sale_order_view_search_h2o
+msgid "Delivery Date"
+msgstr "Teslimat Tarihi"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order__delivery_notes
+#: model:ir.model.fields,field_description:h2o_order.field_sale_order__h2o_delivery_notes
+msgid "Delivery Notes"
+msgstr "Teslimat Notları"
+
+#. module: h2o_order
+#: model:ir.actions.act_window,name:h2o_order.h2o_delivery_order_action
+#: model:ir.ui.menu,name:h2o_order.menu_h2o_delivery_orders
+#: model_terms:ir.ui.view,arch_db:h2o_order.h2o_delivery_order_view_list
+msgid "Delivery Orders"
+msgstr "Teslimat Siparişleri"
+
+#. module: h2o_order
+#: model_terms:ir.ui.view,arch_db:h2o_order.sale_order_view_search_h2o
+msgid "Delivery Status"
+msgstr "Teslimat Durumu"
+
+#. module: h2o_order
+#: model_terms:ir.ui.view,arch_db:h2o_order.sale_order_view_search_h2o
+msgid "Delivery Today"
+msgstr "Bugün Teslim"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_sale_order__h2o_zone_id
+#: model_terms:ir.ui.view,arch_db:h2o_order.sale_order_view_search_h2o
+msgid "Delivery Zone"
+msgstr "Teslimat Bölgesi"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order__display_name
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order_line__display_name
+#: model:ir.model.fields,field_description:h2o_order.field_res_company__display_name
+#: model:ir.model.fields,field_description:h2o_order.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:h2o_order.field_res_partner__display_name
+#: model:ir.model.fields,field_description:h2o_order.field_sale_order__display_name
+msgid "Display Name"
+msgstr "İsim Göster"
+
+#. module: h2o_order
+#: model:ir.model.fields.selection,name:h2o_order.selection__sale_order__h2o_channel__driver
+msgid "Driver"
+msgstr "Şoför"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order__empties_expected
+#: model:ir.model.fields,field_description:h2o_order.field_sale_order__h2o_empties_expected
+msgid "Empties Expected"
+msgstr "Beklenen Boşlar"
+
+#. module: h2o_order
+#: model:ir.model.fields,help:h2o_order.field_sale_order__h2o_empties_expected
+msgid ""
+"Empty bottles the customer will hand back. A deposit is only charged for the"
+" bottles delivered beyond this number."
+msgstr ""
+"Müşterinin geri vereceği boş damacanalar. Depozito yalnızca bu sayının "
+"üzerinde teslim edilen damacanalar için alınır."
+
+#. module: h2o_order
+#: model:ir.model.fields,help:h2o_order.field_h2o_quick_order__empties_expected
+msgid ""
+"Empty bottles the customer will hand back. Defaults to the returnable "
+"bottles ordered, up to the bottles the customer holds."
+msgstr ""
+"Müşterinin geri vereceği boş damacanalar. Varsayılan olarak, müşterinin "
+"elindeki damacana sayısını aşmamak kaydıyla sipariş edilen iade edilebilir "
+"damacanalardır."
+
+#. module: h2o_order
+#: model:ir.model.fields,help:h2o_order.field_sale_order__h2o_customer_type
+msgid "Empty when the contact is not a water delivery customer."
+msgstr "Kişi bir su dağıtım müşterisi değilse boştur."
+
+#. module: h2o_order
+#: model:ir.model.fields.selection,name:h2o_order.selection__sale_order__h2o_time_window__evening
+msgid "Evening"
+msgstr "Akşam"
+
+#. module: h2o_order
+#: model:ir.model.fields.selection,name:h2o_order.selection__sale_order__h2o_delivery_state__failed
+#: model_terms:ir.ui.view,arch_db:h2o_order.sale_order_view_search_h2o
+msgid "Failed"
+msgstr "Başarısız"
+
+#. module: h2o_order
+#: model:ir.model.fields,help:h2o_order.field_h2o_quick_order__zone_id
+#: model:ir.model.fields,help:h2o_order.field_sale_order__h2o_zone_id
+msgid "Filled automatically from the address when empty."
+msgstr "Boşsa adresten otomatik olarak doldurulur."
+
+#. module: h2o_order
+#: model:ir.module.module,shortdesc:base.module_h2o_order
+msgid "H2Open Orders"
+msgstr "H2Open Siparişler"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_res_company__h2o_pricelist_home_id
+#: model:ir.model.fields,field_description:h2o_order.field_res_config_settings__h2o_pricelist_home_id
+msgid "Home Customers Pricelist"
+msgstr "Ev Müşterileri Fiyat Listesi"
+
+#. module: h2o_order
+#: model_terms:ir.ui.view,arch_db:h2o_order.res_config_settings_view_form_h2o_order
+msgid "Home customers"
+msgstr "Ev müşterileri"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order__id
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order_line__id
+#: model:ir.model.fields,field_description:h2o_order.field_res_company__id
+#: model:ir.model.fields,field_description:h2o_order.field_res_config_settings__id
+#: model:ir.model.fields,field_description:h2o_order.field_res_partner__id
+#: model:ir.model.fields,field_description:h2o_order.field_sale_order__id
+msgid "ID"
+msgstr ""
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order__write_uid
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order_line__write_uid
+msgid "Last Updated by"
+msgstr "Son Güncelleyen"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order__write_date
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order_line__write_date
+msgid "Last Updated on"
+msgstr "Son Güncelleme"
+
+#. module: h2o_order
+#: model:ir.model.fields.selection,name:h2o_order.selection__sale_order__h2o_time_window__morning
+msgid "Morning"
+msgstr "Sabah"
+
+#. module: h2o_order
+#: model:ir.actions.act_window,name:h2o_order.h2o_quick_order_action
+#: model:ir.ui.menu,name:h2o_order.menu_h2o_quick_order
+#: model_terms:ir.ui.view,arch_db:h2o_order.h2o_quick_order_view_form
+msgid "New Phone Order"
+msgstr "Yeni Telefon Siparişi"
+
+#. module: h2o_order
+#: model_terms:ir.actions.act_window,help:h2o_order.h2o_delivery_order_action
+msgid "No water deliveries to plan"
+msgstr "Planlanacak su teslimatı yok"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order__note
+msgid "Note"
+msgstr "Not"
+
+#. module: h2o_order
+#: model_terms:ir.ui.view,arch_db:h2o_order.h2o_quick_order_view_form
+msgid "Note for this order..."
+msgstr "Bu siparişle ilgili not..."
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_res_company__h2o_pricelist_office_id
+#: model:ir.model.fields,field_description:h2o_order.field_res_config_settings__h2o_pricelist_office_id
+msgid "Office Customers Pricelist"
+msgstr "Ofis Müşterileri Fiyat Listesi"
+
+#. module: h2o_order
+#: model_terms:ir.ui.view,arch_db:h2o_order.res_config_settings_view_form_h2o_order
+msgid "Office customers"
+msgstr "Ofis müşterileri"
+
+#. module: h2o_order
+#: model:ir.model.fields.selection,name:h2o_order.selection__sale_order__h2o_channel__other
+msgid "Other"
+msgstr "Diğer"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order__payment_mode
+#: model:ir.model.fields,field_description:h2o_order.field_sale_order__h2o_payment_mode
+msgid "Payment Mode"
+msgstr "Ödeme Şekli"
+
+#. module: h2o_order
+#: model:ir.model.fields.selection,name:h2o_order.selection__sale_order__h2o_channel__phone
+msgid "Phone"
+msgstr "Telefon"
+
+#. module: h2o_order
+#: model:ir.model.fields.selection,name:h2o_order.selection__sale_order__h2o_delivery_state__planned
+#: model_terms:ir.ui.view,arch_db:h2o_order.sale_order_view_search_h2o
+msgid "Planned"
+msgstr "Planlandı"
+
+#. module: h2o_order
+#: model_terms:ir.ui.view,arch_db:h2o_order.res_config_settings_view_form_h2o_order
+msgid "Pricelist given to home customers when their type is set."
+msgstr "Tipi ayarlandığında ev müşterilerine verilen fiyat listesi."
+
+#. module: h2o_order
+#: model_terms:ir.ui.view,arch_db:h2o_order.res_config_settings_view_form_h2o_order
+msgid "Pricelist given to office customers when their type is set."
+msgstr "Tipi ayarlandığında ofis müşterilerine verilen fiyat listesi."
+
+#. module: h2o_order
+#: model_terms:ir.ui.view,arch_db:h2o_order.res_config_settings_view_form_h2o_order
+msgid "Pricelist given to resellers when their type is set."
+msgstr "Tipi ayarlandığında bayilere verilen fiyat listesi."
+
+#. module: h2o_order
+#: model_terms:ir.ui.view,arch_db:h2o_order.res_config_settings_view_form_h2o_order
+msgid "Prices per customer type"
+msgstr "Müşteri tipine göre fiyatlar"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order_line__product_id
+msgid "Product"
+msgstr "Ürün"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order__line_ids
+msgid "Products"
+msgstr "Ürünler"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order_line__qty
+msgid "Quantity"
+msgstr "Miktar"
+
+#. module: h2o_order
+#: model:ir.model,name:h2o_order.model_h2o_quick_order
+msgid "Quick Phone Order"
+msgstr "Hızlı Telefon Siparişi"
+
+#. module: h2o_order
+#: model:ir.model,name:h2o_order.model_h2o_quick_order_line
+msgid "Quick Phone Order Line"
+msgstr "Hızlı Telefon Siparişi Satırı"
+
+#. module: h2o_order
+#: model_terms:ir.ui.view,arch_db:h2o_order.res_config_settings_view_form_h2o_order
+msgid "Resellers"
+msgstr "Bayiler"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_res_company__h2o_pricelist_reseller_id
+#: model:ir.model.fields,field_description:h2o_order.field_res_config_settings__h2o_pricelist_reseller_id
+msgid "Resellers Pricelist"
+msgstr "Bayi Fiyat Listesi"
+
+#. module: h2o_order
+#: model:ir.model.fields,help:h2o_order.field_h2o_quick_order__bottle_balance
+#: model:ir.model.fields,help:h2o_order.field_sale_order__h2o_bottle_balance
+msgid ""
+"Returnable bottles the customer currently holds, from the bottle ledger."
+msgstr ""
+"Müşterinin şu anda elinde bulunan iade edilebilir damacanalar, damacana "
+"defterinden."
+
+#. module: h2o_order
+#: model:ir.model,name:h2o_order.model_sale_order
+msgid "Sales Order"
+msgstr "Satış Siparişi"
+
+#. module: h2o_order
+#: model:ir.model.fields,help:h2o_order.field_h2o_quick_order__delivery_notes
+#: model:ir.model.fields,help:h2o_order.field_sale_order__h2o_delivery_notes
+msgid "Shown to the driver: door code, where to leave the bottles, ..."
+msgstr ""
+"Şoföre gösterilir: kapı şifresi, damacanaların nereye bırakılacağı, ..."
+
+#. module: h2o_order
+#: model:ir.model.fields.selection,name:h2o_order.selection__sale_order__h2o_channel__subscription
+msgid "Subscription"
+msgstr "Abonelik"
+
+#. module: h2o_order
+#: model_terms:ir.actions.act_window,help:h2o_order.h2o_delivery_order_action
+msgid ""
+"Take a phone order with Operations &gt; New Phone Order, or create a sales "
+"order with water products."
+msgstr ""
+"Operasyon &gt; Yeni Telefon Siparişi ile telefon siparişi alın veya su "
+"ürünleriyle bir satış siparişi oluşturun."
+
+#. module: h2o_order
+#: model:ir.model.fields,help:h2o_order.field_sale_order__h2o_is_delivery
+msgid "The order contains water or bottles to deliver."
+msgstr "Siparişte teslim edilecek su veya damacana var."
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order__time_window
+#: model:ir.model.fields,field_description:h2o_order.field_sale_order__h2o_time_window
+msgid "Time Window"
+msgstr "Zaman Aralığı"
+
+#. module: h2o_order
+#: model:ir.model.fields.selection,name:h2o_order.selection__sale_order__h2o_delivery_state__to_plan
+#: model_terms:ir.ui.view,arch_db:h2o_order.sale_order_view_search_h2o
+msgid "To Plan"
+msgstr "Planlanacak"
+
+#. module: h2o_order
+#: model_terms:ir.ui.view,arch_db:h2o_order.h2o_delivery_order_view_list
+msgid "Total"
+msgstr "Toplam"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order_line__product_uom_id
+msgid "Unit"
+msgstr "Birim"
+
+#. module: h2o_order
+#: model_terms:ir.ui.view,arch_db:h2o_order.sale_order_view_form_h2o
+msgid "Update Deposits"
+msgstr "Depozitoları Güncelle"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_sale_order__h2o_customer_type
+msgid "Water Customer Type"
+msgstr "Su Müşteri Tipi"
+
+#. module: h2o_order
+#: model_terms:ir.ui.view,arch_db:h2o_order.sale_order_view_search_h2o
+msgid "Water Deliveries"
+msgstr "Su Teslimatları"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_sale_order__h2o_is_delivery
+#: model_terms:ir.ui.view,arch_db:h2o_order.sale_order_view_form_h2o
+msgid "Water Delivery"
+msgstr "Su Dağıtımı"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_sale_order__h2o_delivery_date
+msgid "Water Delivery Date"
+msgstr "Su Teslimat Tarihi"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_sale_order__h2o_delivery_state
+msgid "Water Delivery Status"
+msgstr "Su Teslimat Durumu"
+
+#. module: h2o_order
+#: model:ir.module.module,summary:base.module_h2o_order
+msgid ""
+"Water delivery orders, phone orders, delivery dates, deposits and prices per"
+" customer type"
+msgstr ""
+"Su teslimat siparişleri, telefon siparişleri, teslimat tarihleri, "
+"depozitolar ve müşteri tipine göre fiyatlar"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order_line__wizard_id
+msgid "Wizard"
+msgstr "Sihirbaz"
+
+#. module: h2o_order
+#: model:ir.model.fields,field_description:h2o_order.field_h2o_quick_order__zone_id
+msgid "Zone"
+msgstr "Bölge"

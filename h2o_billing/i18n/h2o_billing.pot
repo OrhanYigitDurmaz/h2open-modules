@@ -1,0 +1,547 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* h2o_billing
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 03:42+0000\n"
+"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: h2o_billing
+#: model:ir.module.module,description:base.module_h2o_billing
+msgid ""
+"\n"
+"H2Open billing\n"
+"==============\n"
+"* Cash and card customers: an invoice is posted for every delivery, and the payment collected\n"
+"  at the door is registered on the cash or card journal and reconciled,\n"
+"* account customers: one monthly statement invoice for all the orders delivered in the month,\n"
+"  created on the 1st or from a wizard,\n"
+"* cash handovers: when a trip closes, the cash the driver collected is counted and approved\n"
+"  by an accountant.\n"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.ui.view,arch_db:h2o_billing.h2o_trip_view_form_h2o_billing
+msgid "<span class=\"o_stat_text\">Cash Handover</span>"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.actions.act_window,help:h2o_billing.h2o_cash_handover_action
+msgid ""
+"A handover is opened for every trip when it closes, with the cash its driver collected.\n"
+"               Count the cash and approve the handover."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.constraint,message:h2o_billing.constraint_h2o_cash_handover_trip_uniq
+msgid "A trip has only one cash handover."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.ui.view,arch_db:h2o_billing.h2o_statement_wizard_view_form
+msgid "All customers on account"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,help:h2o_billing.field_h2o_statement_wizard__month
+msgid ""
+"Any day of the month to invoice: orders delivered in that month are "
+"invoiced."
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.ui.view,arch_db:h2o_billing.h2o_cash_handover_view_form
+msgid "Approve"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields.selection,name:h2o_billing.selection__h2o_cash_handover__state__approved
+#: model_terms:ir.ui.view,arch_db:h2o_billing.h2o_cash_handover_view_search
+msgid "Approved"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__approved_by
+msgid "Approved By"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.ui.view,arch_db:h2o_billing.res_config_settings_view_form_h2o_billing
+msgid "Billing"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_res_company__h2o_card_journal_id
+#: model:ir.model.fields,field_description:h2o_billing.field_res_config_settings__h2o_card_journal_id
+msgid "Card Payment Journal"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.ui.view,arch_db:h2o_billing.res_config_settings_view_form_h2o_billing
+msgid "Card payment journal"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.ui.view,arch_db:h2o_billing.res_config_settings_view_form_h2o_billing
+msgid ""
+"Card payments taken on delivery are registered here. Empty: the first bank "
+"journal."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__expected
+msgid "Cash Expected"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_trip__h2o_cash_handover_ids
+msgid "Cash Handover"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.actions.act_window,name:h2o_billing.h2o_cash_handover_action
+#: model:ir.ui.menu,name:h2o_billing.menu_h2o_cash_handovers
+msgid "Cash Handovers"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.ui.view,arch_db:h2o_billing.res_config_settings_view_form_h2o_billing
+msgid ""
+"Cash collected on delivery is registered here. Empty: the first cash "
+"journal, created when missing."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,help:h2o_billing.field_h2o_cash_handover__expected
+msgid "Cash collected on the delivered stops of the trip."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,help:h2o_billing.field_h2o_cash_handover__counted
+msgid "Cash counted when the driver handed it in."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model,name:h2o_billing.model_res_company
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__company_id
+msgid "Company"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model,name:h2o_billing.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.ui.view,arch_db:h2o_billing.h2o_cash_handover_view_form
+msgid "Count Again"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__counted
+msgid "Counted"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,help:h2o_billing.field_h2o_cash_handover__difference
+msgid "Counted minus expected: negative when cash is missing."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.actions.act_window,name:h2o_billing.h2o_statement_wizard_action
+#: model:ir.model,name:h2o_billing.model_h2o_statement_wizard
+#: model:ir.ui.menu,name:h2o_billing.menu_h2o_statement_wizard
+msgid "Create Monthly Statements"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.ui.view,arch_db:h2o_billing.h2o_statement_wizard_view_form
+msgid "Create Statements"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__create_uid
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_statement_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__create_date
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_statement_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_statement_wizard__partner_ids
+msgid "Customers"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.actions.act_window,help:h2o_billing.h2o_statement_action
+msgid ""
+"Customers on account get one invoice per month for all their deliveries, created on the 1st\n"
+"               for the previous month. Create them by hand with \"Create Monthly Statements\"."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,help:h2o_billing.field_h2o_statement_wizard__partner_ids
+msgid "Customers on account to invoice. Leave empty for all of them."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__date
+#: model_terms:ir.ui.view,arch_db:h2o_billing.h2o_cash_handover_view_search
+msgid "Date"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.ui.view,arch_db:h2o_billing.view_account_invoice_filter_h2o_billing
+msgid "Delivery Invoices"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model,name:h2o_billing.model_h2o_stop
+#: model:ir.model.fields,field_description:h2o_billing.field_account_bank_statement_line__h2o_stop_id
+#: model:ir.model.fields,field_description:h2o_billing.field_account_move__h2o_stop_id
+msgid "Delivery Stop"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model,name:h2o_billing.model_h2o_trip
+msgid "Delivery Trip"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,help:h2o_billing.field_account_bank_statement_line__h2o_stop_id
+#: model:ir.model.fields,help:h2o_billing.field_account_move__h2o_stop_id
+msgid "Delivery this invoice was created for."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__difference
+msgid "Difference"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.ui.view,arch_db:h2o_billing.h2o_statement_wizard_view_form
+msgid "Discard"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_account_move__display_name
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__display_name
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_statement_wizard__display_name
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_stop__display_name
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_trip__display_name
+#: model:ir.model.fields,field_description:h2o_billing.field_res_company__display_name
+#: model:ir.model.fields,field_description:h2o_billing.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:h2o_billing.field_sale_order__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__driver_id
+#: model_terms:ir.ui.view,arch_db:h2o_billing.h2o_cash_handover_view_search
+msgid "Driver"
+msgstr ""
+
+#. module: h2o_billing
+#. odoo-python
+#: code:addons/h2o_billing/models/res_company.py:0
+msgid "Driver Cash"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model,name:h2o_billing.model_h2o_cash_handover
+msgid "Driver Cash Handover"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_res_company__h2o_cash_journal_id
+#: model:ir.model.fields,field_description:h2o_billing.field_res_config_settings__h2o_cash_journal_id
+msgid "Driver Cash Journal"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.ui.view,arch_db:h2o_billing.res_config_settings_view_form_h2o_billing
+msgid "Driver cash journal"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.ui.view,arch_db:h2o_billing.h2o_cash_handover_view_form
+msgid "Explain any difference..."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,help:h2o_billing.field_account_bank_statement_line__h2o_statement_month
+#: model:ir.model.fields,help:h2o_billing.field_account_move__h2o_statement_month
+msgid "First day of the month of a monthly statement invoice."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.module.module,shortdesc:base.module_h2o_billing
+msgid "H2Open Billing"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.actions.server,name:h2o_billing.ir_cron_h2o_monthly_invoices_ir_actions_server
+msgid "H2Open: monthly statements of customers on account"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_account_move__id
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__id
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_statement_wizard__id
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_stop__id
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_trip__id
+#: model:ir.model.fields,field_description:h2o_billing.field_res_company__id
+#: model:ir.model.fields,field_description:h2o_billing.field_res_config_settings__id
+#: model:ir.model.fields,field_description:h2o_billing.field_sale_order__id
+msgid "ID"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,help:h2o_billing.field_h2o_cash_handover__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,help:h2o_billing.field_h2o_cash_handover__message_has_error
+#: model:ir.model.fields,help:h2o_billing.field_h2o_cash_handover__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.actions.act_window,name:h2o_billing.h2o_invoice_action
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_stop__invoice_ids
+#: model:ir.ui.menu,name:h2o_billing.menu_h2o_invoices
+msgid "Invoices"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.module.module,summary:base.module_h2o_billing
+msgid "Invoices on delivery, monthly statements and driver cash handovers"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model,name:h2o_billing.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,help:h2o_billing.field_res_company__h2o_card_journal_id
+#: model:ir.model.fields,help:h2o_billing.field_res_config_settings__h2o_card_journal_id
+msgid ""
+"Journal of the card payments taken on delivery. Defaults to the first bank "
+"journal."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,help:h2o_billing.field_res_company__h2o_cash_journal_id
+#: model:ir.model.fields,help:h2o_billing.field_res_config_settings__h2o_cash_journal_id
+msgid ""
+"Journal of the cash collected by drivers on delivery. Defaults to the first "
+"cash journal, created when the company has none."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__write_uid
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_statement_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__write_date
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_statement_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_statement_wizard__month
+msgid "Month"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.actions.act_window,name:h2o_billing.h2o_statement_action
+#: model:ir.ui.menu,name:h2o_billing.menu_h2o_statements
+#: model_terms:ir.ui.view,arch_db:h2o_billing.view_account_invoice_filter_h2o_billing
+msgid "Monthly Statements"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.actions.act_window,help:h2o_billing.h2o_cash_handover_action
+msgid "No cash to count"
+msgstr ""
+
+#. module: h2o_billing
+#. odoo-python
+#: code:addons/h2o_billing/models/h2o_stop.py:0
+msgid ""
+"No journal for %(method)s payments in company %(company)s. Set one in the "
+"H2Open settings."
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.actions.act_window,help:h2o_billing.h2o_statement_action
+msgid "No monthly statements yet"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__note
+msgid "Note"
+msgstr ""
+
+#. module: h2o_billing
+#. odoo-python
+#: code:addons/h2o_billing/wizard/h2o_statement_wizard.py:0
+msgid "Nothing left to invoice for this month."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,help:h2o_billing.field_h2o_cash_handover__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,help:h2o_billing.field_h2o_cash_handover__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.ui.view,arch_db:h2o_billing.h2o_statement_wizard_view_form
+msgid ""
+"One invoice per customer on account for the orders delivered in the month and not invoiced yet.\n"
+"                    Orders already invoiced are left out, so the statements can be created again safely."
+msgstr ""
+
+#. module: h2o_billing
+#. odoo-python
+#: code:addons/h2o_billing/models/h2o_cash_handover.py:0
+msgid "Only handovers to count can be approved."
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__name
+msgid "Reference"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model,name:h2o_billing.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__state
+msgid "State"
+msgstr ""
+
+#. module: h2o_billing
+#. odoo-python
+#: code:addons/h2o_billing/models/sale_order.py:0
+msgid "Statement %s"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_account_bank_statement_line__h2o_statement_month
+#: model:ir.model.fields,field_description:h2o_billing.field_account_move__h2o_statement_month
+#: model_terms:ir.ui.view,arch_db:h2o_billing.view_account_invoice_filter_h2o_billing
+msgid "Statement Month"
+msgstr ""
+
+#. module: h2o_billing
+#. odoo-python
+#: code:addons/h2o_billing/models/h2o_stop.py:0
+msgid ""
+"The invoice of delivery %(stop)s could not be created, please invoice the "
+"order by hand: %(error)s"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields.selection,name:h2o_billing.selection__h2o_cash_handover__state__draft
+#: model_terms:ir.ui.view,arch_db:h2o_billing.h2o_cash_handover_view_search
+msgid "To Count"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.ui.view,arch_db:h2o_billing.h2o_cash_handover_view_list
+msgid "Total"
+msgstr ""
+
+#. module: h2o_billing
+#: model:ir.model.fields,field_description:h2o_billing.field_h2o_cash_handover__trip_id
+msgid "Trip"
+msgstr ""
+
+#. module: h2o_billing
+#: model_terms:ir.ui.view,arch_db:h2o_billing.h2o_cash_handover_view_search
+msgid "With Difference"
+msgstr ""

@@ -1,0 +1,524 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* h2o_subscription
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 03:42+0000\n"
+"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: h2o_subscription
+#: model:ir.module.module,description:base.module_h2o_subscription
+msgid ""
+"\n"
+"H2Open subscriptions\n"
+"====================\n"
+"* Recurring delivery plans per customer: products, quantities, weekly, every two weeks or monthly on a weekday,\n"
+"* a daily job creates and confirms the delivery order a few days ahead (lead days in the settings),\n"
+"  exactly like a phone order: delivery address, time window, empties expected, deposits and customer prices,\n"
+"* never two orders for the same subscription and day,\n"
+"* pause, resume and close a subscription; create the next order on demand.\n"
+msgstr ""
+"\n"
+"H2Open abonelikler\n"
+"==================\n"
+"* Müşteri bazında düzenli teslimat planları: ürünler, miktarlar, haftalık, iki haftada bir veya aylık olarak belirli bir günde,\n"
+"* günlük bir görev teslimat siparişini birkaç gün önceden oluşturur ve onaylar (ön süre ayarlardadır),\n"
+"  tıpkı bir telefon siparişi gibi: teslimat adresi, zaman aralığı, beklenen boşlar, depozitolar ve müşteri fiyatları,\n"
+"* aynı abonelik ve gün için asla iki sipariş oluşmaz,\n"
+"* aboneliği duraklatma, sürdürme ve kapatma; bir sonraki siparişi istendiğinde oluşturma.\n"
+
+#. module: h2o_subscription
+#: model_terms:ir.actions.act_window,help:h2o_subscription.h2o_subscription_action
+msgid ""
+"A subscription delivers the same products on a fixed weekday, every week, every two weeks or every month.\n"
+"               Its orders are created and confirmed automatically a few days before the delivery."
+msgstr ""
+"Bir abonelik aynı ürünleri her hafta, iki haftada bir veya her ay sabit bir günde teslim eder.\n"
+"               Siparişleri teslimattan birkaç gün önce otomatik olarak oluşturulur ve onaylanır."
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_needaction
+msgid "Action Needed"
+msgstr "Aksiyon Gerekiyor"
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Activate"
+msgstr "Etkinleştir"
+
+#. module: h2o_subscription
+#: model:ir.model.fields.selection,name:h2o_subscription.selection__h2o_subscription__state__active
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_search
+msgid "Active"
+msgstr "Aktif"
+
+#. module: h2o_subscription
+#. odoo-python
+#: code:addons/h2o_subscription/models/h2o_subscription.py:0
+msgid "Add the products to deliver to %s."
+msgstr "%s için teslim edilecek ürünleri ekleyin."
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__allowed_uom_ids
+msgid "Allowed Uom"
+msgstr "İzin Verilen Ölçü Birimleri"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_attachment_count
+msgid "Attachment Count"
+msgstr "Ek Sayısı"
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Close"
+msgstr "Kapat"
+
+#. module: h2o_subscription
+#. odoo-python
+#: code:addons/h2o_subscription/models/h2o_subscription.py:0
+msgid "Close a subscription before deleting it."
+msgstr "Silmeden önce aboneliği kapatın."
+
+#. module: h2o_subscription
+#: model:ir.model.fields.selection,name:h2o_subscription.selection__h2o_subscription__state__closed
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_search
+msgid "Closed"
+msgstr "Kapandı"
+
+#. module: h2o_subscription
+#: model:ir.model,name:h2o_subscription.model_res_company
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__company_id
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__company_id
+msgid "Company"
+msgstr "Firma"
+
+#. module: h2o_subscription
+#: model:ir.model,name:h2o_subscription.model_res_config_settings
+msgid "Config Settings"
+msgstr "Yapılandırma Ayarları"
+
+#. module: h2o_subscription
+#: model_terms:ir.actions.act_window,help:h2o_subscription.h2o_subscription_action
+msgid "Create a water subscription"
+msgstr "Bir su aboneliği oluşturun"
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Create and confirm the order of the next delivery now."
+msgstr "Bir sonraki teslimatın siparişini şimdi oluştur ve onayla."
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__create_uid
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__create_uid
+msgid "Created by"
+msgstr "Oluşturan"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__create_date
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__create_date
+msgid "Created on"
+msgstr "Oluşturulma"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__partner_id
+msgid "Customer"
+msgstr "Müşteri"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__weekday_id
+msgid "Defaults to the weekday of the next delivery day of the address."
+msgstr ""
+"Varsayılan olarak adresin bir sonraki teslimat gününün haftanın günüdür."
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__address_id
+msgid "Delivery Address"
+msgstr "Teslimat Adresi"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__weekday_id
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_search
+msgid "Delivery Day"
+msgstr "Teslimat Günü"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__next_date
+msgid ""
+"Delivery date of the next order to create. Set on activation to the first "
+"delivery day on this weekday the customer can still be delivered (order cut-"
+"off hour respected)."
+msgstr ""
+"Oluşturulacak bir sonraki siparişin teslimat tarihi. Etkinleştirmede, "
+"müşteriye hâlâ teslimat yapılabilecek (sipariş kesim saatine uyularak) bu "
+"haftanın günündeki ilk teslimat gününe ayarlanır."
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__display_name
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__display_name
+#: model:ir.model.fields,field_description:h2o_subscription.field_res_company__display_name
+#: model:ir.model.fields,field_description:h2o_subscription.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:h2o_subscription.field_sale_order__display_name
+msgid "Display Name"
+msgstr "İsim Göster"
+
+#. module: h2o_subscription
+#: model:ir.model.fields.selection,name:h2o_subscription.selection__h2o_subscription__state__draft
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_search
+msgid "Draft"
+msgstr "Taslak"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__empties_expected
+msgid "Empties Expected"
+msgstr "Beklenen Boşlar"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__empties_expected
+msgid ""
+"Empty bottles the customer hands back at each delivery. Defaults to the "
+"returnable bottles delivered, so a deposit is only charged for extra "
+"bottles."
+msgstr ""
+"Müşterinin her teslimatta geri verdiği boş damacanalar. Varsayılan olarak "
+"teslim edilen iade edilebilir damacanalardır, böylece depozito yalnızca ek "
+"damacanalar için alınır."
+
+#. module: h2o_subscription
+#: model:ir.model.fields.selection,name:h2o_subscription.selection__h2o_subscription__frequency__monthly
+msgid "Every Month"
+msgstr "Her Ay"
+
+#. module: h2o_subscription
+#: model:ir.model.fields.selection,name:h2o_subscription.selection__h2o_subscription__frequency__biweekly
+msgid "Every Two Weeks"
+msgstr "İki Haftada Bir"
+
+#. module: h2o_subscription
+#: model:ir.model.fields.selection,name:h2o_subscription.selection__h2o_subscription__frequency__weekly
+msgid "Every Week"
+msgstr "Her Hafta"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_follower_ids
+msgid "Followers"
+msgstr "Takipçiler"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Takipçiler (İş Ortakları)"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__frequency
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_search
+msgid "Frequency"
+msgstr "Sıklık"
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Generate Now"
+msgstr "Şimdi Oluştur"
+
+#. module: h2o_subscription
+#: model:ir.module.module,shortdesc:base.module_h2o_subscription
+msgid "H2Open Subscriptions"
+msgstr "H2Open Abonelikler"
+
+#. module: h2o_subscription
+#: model:ir.actions.server,name:h2o_subscription.ir_cron_h2o_subscription_orders_ir_actions_server
+msgid "H2Open: create subscription orders"
+msgstr "H2Open: abonelik siparişlerini oluştur"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__has_message
+msgid "Has Message"
+msgstr "Mesaj Var"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__id
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__id
+#: model:ir.model.fields,field_description:h2o_subscription.field_res_company__id
+#: model:ir.model.fields,field_description:h2o_subscription.field_res_config_settings__id
+#: model:ir.model.fields,field_description:h2o_subscription.field_sale_order__id
+msgid "ID"
+msgstr ""
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "İşaretliyse, yeni mesajlar ilginizi bekliyor."
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__message_has_error
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "İşaretliyse, bazı mesajlarda iletim hatası var."
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_is_follower
+msgid "Is Follower"
+msgstr "Takipçi mi"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__write_uid
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__write_uid
+msgid "Last Updated by"
+msgstr "Son Güncelleyen"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__write_date
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__write_date
+msgid "Last Updated on"
+msgstr "Son Güncelleme"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_has_error
+msgid "Message Delivery error"
+msgstr "Mesaj İletim Hatası"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_ids
+msgid "Messages"
+msgstr "Mesajlar"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__frequency
+msgid ""
+"Monthly deliveries fall on the same weekday of the same week of the month "
+"(e.g. every 2nd Monday); when a month has no 5th such weekday, the last one "
+"is used."
+msgstr ""
+"Aylık teslimatlar ayın aynı haftasının aynı gününe denk gelir (ör. her ayın "
+"2. pazartesisi); ayda bu günden 5. bir tane yoksa sonuncusu kullanılır."
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__next_date
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_search
+msgid "Next Delivery"
+msgstr "Sonraki Teslimat"
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid ""
+"No more orders will be created for this subscription. Orders already created"
+" are kept. Continue?"
+msgstr ""
+"Bu abonelik için başka sipariş oluşturulmayacak. Önceden oluşturulmuş "
+"siparişler korunur. Devam edilsin mi?"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__note
+msgid "Note"
+msgstr "Not"
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Note printed on every order..."
+msgstr "Her siparişe yazdırılan not..."
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Aksiyon Sayısı"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_has_error_counter
+msgid "Number of errors"
+msgstr "Hata sayısı"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Aksiyon gerektiren mesaj sayısı"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "İletim hatası olan mesaj sayısı"
+
+#. module: h2o_subscription
+#. odoo-python
+#: code:addons/h2o_subscription/models/h2o_subscription.py:0
+msgid "Order %(order)s created for %(date)s."
+msgstr "%(date)s için %(order)s siparişi oluşturuldu."
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__order_count
+msgid "Order Count"
+msgstr "Sipariş Sayısı"
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.res_config_settings_view_form_h2o_subscription
+msgid "Order lead days"
+msgstr "Sipariş ön süresi (gün)"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__order_ids
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Orders"
+msgstr "Siparişler"
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Pause"
+msgstr "Duraklat"
+
+#. module: h2o_subscription
+#: model:ir.model.fields.selection,name:h2o_subscription.selection__h2o_subscription__state__paused
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_search
+msgid "Paused"
+msgstr "Duraklatıldı"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_h2o_subscription__note
+msgid "Printed on every order of the subscription."
+msgstr "Aboneliğin her siparişine yazdırılır."
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__product_id
+msgid "Product"
+msgstr "Ürün"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__line_ids
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Products"
+msgstr "Ürünler"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__qty
+msgid "Quantity"
+msgstr "Miktar"
+
+#. module: h2o_subscription
+#: model:ir.module.module,summary:base.module_h2o_subscription
+msgid ""
+"Recurring water deliveries that create confirmed orders ahead of the "
+"delivery day"
+msgstr ""
+"Teslimat gününden önce onaylı siparişler oluşturan düzenli su teslimatları"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__name
+msgid "Reference"
+msgstr "Referans"
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_form
+msgid "Resume"
+msgstr "Sürdür"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "SMS İletim Hatası"
+
+#. module: h2o_subscription
+#: model:ir.model,name:h2o_subscription.model_sale_order
+msgid "Sales Order"
+msgstr "Satış Siparişi"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__sequence
+msgid "Sequence"
+msgstr "Sıra"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__state
+msgid "State"
+msgstr "Durum"
+
+#. module: h2o_subscription
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.h2o_subscription_view_search
+msgid "Status"
+msgstr "Durum"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__subscription_id
+#: model:ir.model.fields,field_description:h2o_subscription.field_sale_order__h2o_subscription_id
+msgid "Subscription"
+msgstr "Abonelik"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_res_company__h2o_subscription_lead_days
+#: model:ir.model.fields,field_description:h2o_subscription.field_res_config_settings__h2o_subscription_lead_days
+msgid "Subscription Lead Days"
+msgstr "Abonelik Ön Süresi (gün)"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_res_company__h2o_subscription_lead_days
+#: model:ir.model.fields,help:h2o_subscription.field_res_config_settings__h2o_subscription_lead_days
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.res_config_settings_view_form_h2o_subscription
+msgid ""
+"Subscription orders are created this many days before their delivery date."
+msgstr ""
+"Abonelik siparişleri teslimat tarihlerinden bu kadar gün önce oluşturulur."
+
+#. module: h2o_subscription
+#: model:ir.actions.act_window,name:h2o_subscription.h2o_subscription_action
+#: model:ir.ui.menu,name:h2o_subscription.menu_h2o_subscriptions
+#: model_terms:ir.ui.view,arch_db:h2o_subscription.res_config_settings_view_form_h2o_subscription
+msgid "Subscriptions"
+msgstr "Abonelikler"
+
+#. module: h2o_subscription
+#. odoo-python
+#: code:addons/h2o_subscription/models/h2o_subscription.py:0
+msgid "The next delivery of %(subscription)s must be on a %(weekday)s."
+msgstr ""
+"%(subscription)s aboneliğinin bir sonraki teslimatı %(weekday)s gününe denk "
+"gelmelidir."
+
+#. module: h2o_subscription
+#. odoo-python
+#: code:addons/h2o_subscription/models/h2o_subscription.py:0
+msgid "The order could not be created: %s"
+msgstr "Sipariş oluşturulamadı: %s"
+
+#. module: h2o_subscription
+#: model:ir.model.constraint,message:h2o_subscription.constraint_h2o_subscription_line_qty_positive
+msgid "The quantity of a subscription product must be positive."
+msgstr "Abonelik ürününün miktarı pozitif olmalıdır."
+
+#. module: h2o_subscription
+#. odoo-python
+#: code:addons/h2o_subscription/models/h2o_subscription.py:0
+msgid "This action is not possible in the current status of the subscription."
+msgstr "Aboneliğin mevcut durumunda bu işlem yapılamaz."
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription__time_window
+msgid "Time Window"
+msgstr "Zaman Aralığı"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,field_description:h2o_subscription.field_h2o_subscription_line__product_uom_id
+msgid "Unit"
+msgstr "Birim"
+
+#. module: h2o_subscription
+#: model:ir.model,name:h2o_subscription.model_h2o_subscription
+msgid "Water Subscription"
+msgstr "Su Aboneliği"
+
+#. module: h2o_subscription
+#: model:ir.model,name:h2o_subscription.model_h2o_subscription_line
+msgid "Water Subscription Product"
+msgstr "Su Aboneliği Ürünü"
+
+#. module: h2o_subscription
+#: model:ir.model.fields,help:h2o_subscription.field_sale_order__h2o_subscription_id
+msgid "Water subscription that created this order."
+msgstr "Bu siparişi oluşturan su aboneliği."

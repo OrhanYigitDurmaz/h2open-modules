@@ -1,0 +1,393 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* h2o_stock
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 03:42+0000\n"
+"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: h2o_stock
+#: model:ir.module.module,description:base.module_h2o_stock
+msgid ""
+"\n"
+"H2Open stock\n"
+"============\n"
+"* Water and empty bottle products are storable: the warehouse knows its full and empty bottles,\n"
+"* one stock location per delivery vehicle, under its depot warehouse,\n"
+"* trip load lines: products planned from the stops, loaded, delivered, empties collected and returned,\n"
+"* stock moves once per trip, never per stop: a load-out transfer when the trip is loaded and, when it\n"
+"  closes, the deliveries, the empties taken back and the return of what is left to the depot,\n"
+"* vehicle stock for dispatchers.\n"
+"\n"
+"Sale orders do not create their own transfers (``sale_stock`` is not used): the trips move the goods.\n"
+msgstr ""
+"\n"
+"H2Open stok\n"
+"===========\n"
+"* Su ve boş damacana ürünleri stoklanabilir: depo dolu ve boş damacanalarını bilir,\n"
+"* her teslimat aracı için, bağlı olduğu deponun altında bir stok konumu,\n"
+"* sefer yük satırları: duraklardan planlanan, yüklenen, teslim edilen ürünler, toplanan ve geri getirilen boşlar,\n"
+"* stok hareketleri durak başına değil, sefer başına bir kez: sefer yüklendiğinde bir yükleme transferi,\n"
+"  kapandığında ise teslimatlar, geri alınan boşlar ve kalanların depoya iadesi,\n"
+"* sevkiyat sorumluları için araç stoku.\n"
+"\n"
+"Satış siparişleri kendi transferlerini oluşturmaz (``sale_stock`` kullanılmaz): malları seferler taşır.\n"
+
+#. module: h2o_stock
+#: model:ir.model.constraint,message:h2o_stock.constraint_h2o_trip_load_line_trip_product_uniq
+msgid "A product can only be once on the load of a trip."
+msgstr "Bir ürün bir seferin yükünde yalnızca bir kez bulunabilir."
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__qty_collected
+msgid "Collected"
+msgstr "Tahsil Edilen"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__company_id
+msgid "Company"
+msgstr "Şirket"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__create_uid
+msgid "Created by"
+msgstr "Oluşturan"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__create_date
+msgid "Created on"
+msgstr "Oluşturulma"
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_h2o_trip_load_line__product_uom_id
+msgid "Default unit of measure used for all stock operations."
+msgstr "Tüm stok işlemlerinde kullanılan varsayılan ölçü birimi."
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__qty_delivered
+msgid "Delivered"
+msgstr "Teslim Edildi"
+
+#. module: h2o_stock
+#: model:ir.model.fields.selection,name:h2o_stock.selection__stock_picking__h2o_trip_role__delivery
+msgid "Deliveries"
+msgstr "Teslimatlar"
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_h2o_route
+msgid "Delivery Route"
+msgstr "Teslimat Güzergahı"
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_h2o_stop_line
+msgid "Delivery Stop Product"
+msgstr "Teslimat Durağı Ürünü"
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_h2o_trip
+msgid "Delivery Trip"
+msgstr "Teslimat Seferi"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_location__h2o_vehicle_id
+msgid "Delivery Vehicle"
+msgstr "Teslimat Aracı"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_fleet_vehicle__h2o_warehouse_id
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_route__h2o_warehouse_id
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip__h2o_warehouse_id
+msgid "Depot"
+msgstr "Depo"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_fleet_vehicle__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_route__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_stop_line__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_product_product__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_product_template__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_location__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_picking__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_warehouse__display_name
+msgid "Display Name"
+msgstr "İsim Göster"
+
+#. module: h2o_stock
+#: model:ir.model.fields.selection,name:h2o_stock.selection__stock_picking__h2o_trip_role__empties
+msgid "Empties Collected"
+msgstr "Toplanan Boşlar"
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_h2o_trip_load_line__qty_collected
+msgid "Empty bottles taken back from the customers."
+msgstr "Müşterilerden geri alınan boş damacanalar."
+
+#. module: h2o_stock
+#: model_terms:ir.ui.view,arch_db:h2o_stock.h2o_trip_view_form_h2o_stock
+msgid "Full returnable bottles on the load lines."
+msgstr "Yük satırlarındaki dolu iade edilebilir damacanalar."
+
+#. module: h2o_stock
+#: model:ir.module.module,shortdesc:base.module_h2o_stock
+msgid "H2Open Stock"
+msgstr "H2Open Stok"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_fleet_vehicle__id
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_route__id
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_stop_line__id
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip__id
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__id
+#: model:ir.model.fields,field_description:h2o_stock.field_product_product__id
+#: model:ir.model.fields,field_description:h2o_stock.field_product_template__id
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_location__id
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_picking__id
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_warehouse__id
+msgid "ID"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_fleet_vehicle__h2o_location_id
+msgid "Internal location holding what the vehicle carries."
+msgstr "Aracın taşıdıklarını tutan iç konum."
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_stock_location
+msgid "Inventory Location"
+msgstr "Envanter Konumu"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__write_uid
+msgid "Last Updated by"
+msgstr "Son Güncelleyen"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__write_date
+msgid "Last Updated on"
+msgstr "Son Güncelleme"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip__h2o_load_line_ids
+#: model_terms:ir.ui.view,arch_db:h2o_stock.h2o_trip_view_form_h2o_stock
+msgid "Load"
+msgstr "Yükle"
+
+#. module: h2o_stock
+#: model:ir.model.fields.selection,name:h2o_stock.selection__stock_picking__h2o_trip_role__load
+msgid "Load-out"
+msgstr "Yükleme"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__qty_loaded
+msgid "Loaded"
+msgstr "Yüklendi"
+
+#. module: h2o_stock
+#: model_terms:ir.ui.view,arch_db:h2o_stock.stock_quant_view_search_h2o_vehicle
+msgid "Negative"
+msgstr "Negatif"
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_stock_warehouse__h2o_vehicle_location_id
+msgid "Parent location of the delivery vehicles based at this warehouse."
+msgstr "Bu depoya bağlı teslimat araçlarının üst konumu."
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__qty_planned
+msgid "Planned"
+msgstr "Planlandı"
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_product_template
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__product_id
+#: model_terms:ir.ui.view,arch_db:h2o_stock.stock_quant_view_search_h2o_vehicle
+msgid "Product"
+msgstr "Ürün"
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_product_product
+msgid "Product Variant"
+msgstr "Ürün Varyantı"
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_h2o_trip_load_line__qty_returned
+msgid ""
+"Quantity brought back to the depot, computed when the trip closes: loaded - "
+"delivered + collected."
+msgstr ""
+"Sefer kapandığında hesaplanan, depoya geri getirilen miktar: yüklenen - "
+"teslim edilen + toplanan."
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_h2o_trip_load_line__qty_delivered
+msgid "Quantity delivered on the trip's stops."
+msgstr "Seferin duraklarında teslim edilen miktar."
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_h2o_trip_load_line__qty_loaded
+msgid ""
+"Quantity loaded on the vehicle. Follows the planned quantity until the trip "
+"is loaded."
+msgstr "Araca yüklenen miktar. Sefer yüklenene kadar planlanan miktarı izler."
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_h2o_trip_load_line__qty_planned
+msgid "Quantity to deliver on the trip's pending and delivered stops."
+msgstr ""
+"Seferin bekleyen ve teslim edilmiş duraklarında teslim edilecek miktar."
+
+#. module: h2o_stock
+#: model:ir.model.fields.selection,name:h2o_stock.selection__stock_picking__h2o_trip_role__return
+msgid "Return to Depot"
+msgstr "Depoya Dönüş"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__qty_returned
+msgid "Returned"
+msgstr "Geri Getirilen"
+
+#. module: h2o_stock
+#. odoo-python
+#: code:addons/h2o_stock/models/h2o_trip.py:0
+msgid "Set a depot warehouse on trip %s."
+msgstr "%s seferine bir depo atayın."
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_stock_location__h2o_vehicle_id
+msgid "The delivery vehicle whose load this location holds."
+msgstr "Yükü bu konumda tutulan teslimat aracı."
+
+#. module: h2o_stock
+#: model_terms:ir.actions.act_window,help:h2o_stock.h2o_vehicle_stock_action
+msgid "The vehicles are empty"
+msgstr "Araçlar boş"
+
+#. module: h2o_stock
+#: model_terms:ir.ui.view,arch_db:h2o_stock.stock_quant_view_list_h2o_vehicle
+msgid "Total"
+msgstr "Toplam"
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_stock_picking
+msgid "Transfer"
+msgstr "Aktarım"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip__h2o_picking_ids
+#: model_terms:ir.ui.view,arch_db:h2o_stock.h2o_trip_view_form_h2o_stock
+msgid "Transfers"
+msgstr "Transferler"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip__h2o_picking_count
+msgid "Transfers Count"
+msgstr "Transfer Sayısı"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__trip_id
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_picking__h2o_trip_id
+msgid "Trip"
+msgstr "Sefer"
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_h2o_trip_load_line
+msgid "Trip Load Line"
+msgstr "Sefer Yük Satırı"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__state
+msgid "Trip Status"
+msgstr "Sefer Durumu"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_picking__h2o_trip_role
+msgid "Trip Transfer"
+msgstr "Sefer Transferi"
+
+#. module: h2o_stock
+#: model_terms:ir.actions.act_window,help:h2o_stock.h2o_vehicle_stock_action
+msgid ""
+"Trips load the vehicles when they leave and unload them when they close."
+msgstr "Seferler araçları çıkarken yükler ve kapanırken boşaltır."
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__product_uom_id
+msgid "Unit"
+msgstr "Birim"
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_fleet_vehicle
+#: model_terms:ir.ui.view,arch_db:h2o_stock.stock_quant_view_search_h2o_vehicle
+msgid "Vehicle"
+msgstr "Araç"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_fleet_vehicle__h2o_location_id
+msgid "Vehicle Location"
+msgstr "Araç Konumu"
+
+#. module: h2o_stock
+#: model:ir.actions.act_window,name:h2o_stock.h2o_vehicle_stock_action
+#: model:ir.ui.menu,name:h2o_stock.menu_h2o_vehicle_stock
+#: model_terms:ir.ui.view,arch_db:h2o_stock.stock_quant_view_list_h2o_vehicle
+msgid "Vehicle Stock"
+msgstr "Araç Stoku"
+
+#. module: h2o_stock
+#. odoo-python
+#: code:addons/h2o_stock/models/h2o_trip.py:0
+msgid "Vehicle of trip %s has no stock location; is it a delivery vehicle?"
+msgstr "%s seferinin aracının stok konumu yok; bir teslimat aracı mı?"
+
+#. module: h2o_stock
+#. odoo-python
+#: code:addons/h2o_stock/models/stock_warehouse.py:0
+msgid "Vehicles"
+msgstr "Araçlar"
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_warehouse__h2o_vehicle_location_id
+msgid "Vehicles Location"
+msgstr "Araçlar Konumu"
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_stock_warehouse
+msgid "Warehouse"
+msgstr "Depo"
+
+#. module: h2o_stock
+#: model:ir.module.module,summary:base.module_h2o_stock
+msgid ""
+"Warehouse and vehicle stock of full and empty bottles, moved once per trip"
+msgstr ""
+"Dolu ve boş damacanaların depo ve araç stoku, sefer başına bir kez hareket "
+"ettirilir"
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_h2o_route__h2o_warehouse_id
+msgid "Warehouse the route's trips load out from and return to."
+msgstr "Güzergahın seferlerinin yüklendiği ve döndüğü depo."
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_h2o_trip__h2o_warehouse_id
+msgid "Warehouse the trip loads out from and returns to: the route's depot."
+msgstr "Seferin yüklendiği ve döndüğü depo: güzergahın deposu."
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_fleet_vehicle__h2o_warehouse_id
+msgid ""
+"Warehouse the vehicle is based at; its stock location is created under it."
+msgstr ""
+"Aracın bağlı olduğu depo; aracın stok konumu bunun altında oluşturulur."

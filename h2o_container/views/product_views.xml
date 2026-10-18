@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_view_h2o" model="ir.ui.view">
+        <field name="name">product.template.form.h2o_container</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <group name="group_general" position="inside">
+                <field name="h2o_product_kind"/>
+                <field name="h2o_volume" invisible="h2o_product_kind not in ('water_returnable', 'water_packaged', 'container')"/>
+                <field name="h2o_container_product_id" invisible="h2o_product_kind != 'water_returnable'"
+                       required="h2o_product_kind == 'water_returnable'"/>
+                <field name="h2o_deposit_product_id" invisible="h2o_product_kind != 'container'"/>
+            </group>
+        </field>
+    </record>
+
+    <record id="product_template_search_view_h2o" model="ir.ui.view">
+        <field name="name">product.template.search.h2o_container</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <filter name="services" position="after">
+                <separator/>
+                <filter string="Water Products" name="h2o_water_products" domain="[('h2o_product_kind', '!=', False)]"/>
+                <filter string="Returnable Water" name="h2o_returnable" domain="[('h2o_product_kind', '=', 'water_returnable')]"/>
+                <filter string="Packaged Water" name="h2o_packaged" domain="[('h2o_product_kind', '=', 'water_packaged')]"/>
+                <filter string="Containers" name="h2o_containers" domain="[('h2o_product_kind', '=', 'container')]"/>
+            </filter>
+        </field>
+    </record>
+
+    <record id="h2o_product_template_view_list" model="ir.ui.view">
+        <field name="name">product.template.list.h2o_container</field>
+        <field name="model">product.template</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <list string="Water Products">
+                <field name="default_code"/>
+                <field name="name"/>
+                <field name="h2o_product_kind"/>
+                <field name="h2o_volume"/>
+                <field name="h2o_container_product_id" optional="show"/>
+                <field name="h2o_deposit_product_id" optional="show"/>
+                <field name="list_price" widget="monetary"/>
+                <field name="uom_id" optional="hide"/>
+                <field name="uom_ids" widget="many2many_tags" optional="show"/>
+                <field name="currency_id" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="h2o_product_action" model="ir.actions.act_window">
+        <field name="name">Water Products</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="domain">[('h2o_product_kind', '!=', False)]</field>
+        <field name="context">{'default_h2o_product_kind': 'water_packaged', 'default_categ_id': ref('h2o_container.product_category_water')}</field>
+        <field name="view_ids" eval="[Command.clear(),
+            Command.create({'view_mode': 'list', 'view_id': ref('h2o_product_template_view_list')}),
+            Command.create({'view_mode': 'kanban'}),
+            Command.create({'view_mode': 'form', 'view_id': ref('product.product_template_form_view')})]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a water product</p>
+            <p>Returnable water, packaged water, the returnable bottles themselves and their deposits.</p>
+        </field>
+    </record>
+</odoo>

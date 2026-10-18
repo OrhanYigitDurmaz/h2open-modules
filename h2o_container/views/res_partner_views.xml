@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_view_form_h2o_container" model="ir.ui.view">
+        <field name="name">res.partner.form.h2o_container</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="action_h2o_view_container_moves" type="object" class="oe_stat_button" icon="fa-tint"
+                        groups="h2o_base.group_h2o_driver,h2o_base.group_h2o_accountant"
+                        invisible="not h2o_container_move_count">
+                    <div class="o_stat_info">
+                        <span class="o_stat_value"><field name="h2o_bottle_balance"/></span>
+                        <span class="o_stat_text">Bottles Held</span>
+                    </div>
+                </button>
+            </div>
+            <group name="h2o_customer" position="inside">
+                <field name="h2o_bottle_balance" groups="h2o_base.group_h2o_driver,h2o_base.group_h2o_accountant"/>
+                <field name="h2o_deposit_balance" groups="h2o_base.group_h2o_driver,h2o_base.group_h2o_accountant"/>
+                <field name="h2o_container_move_count" invisible="1"/>
+            </group>
+        </field>
+    </record>
+
+    <record id="h2o_customer_view_list_h2o_container" model="ir.ui.view">
+        <field name="name">res.partner.list.h2o_container</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="h2o_customer.h2o_customer_view_list"/>
+        <field name="arch" type="xml">
+            <field name="h2o_payment_mode" position="after">
+                <field name="h2o_bottle_balance" optional="show"/>
+            </field>
+        </field>
+    </record>
+</odoo>

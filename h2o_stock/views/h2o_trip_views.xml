@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_trip_view_form_h2o_stock" model="ir.ui.view">
+        <field name="name">h2o.trip.form.h2o_stock</field>
+        <field name="model">h2o.trip</field>
+        <field name="inherit_id" ref="h2o_dispatch.h2o_trip_view_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="action_view_pickings" type="object" class="oe_stat_button" icon="fa-truck"
+                        groups="stock.group_stock_user" invisible="not h2o_picking_count">
+                    <field name="h2o_picking_count" widget="statinfo" string="Transfers"/>
+                </button>
+            </div>
+            <field name="route_id" position="after">
+                <field name="h2o_warehouse_id" readonly="state != 'planned'" options="{'no_create': True}"/>
+            </field>
+            <field name="load_qty" position="attributes">
+                <attribute name="readonly">1</attribute>
+                <attribute name="help">Full returnable bottles on the load lines.</attribute>
+            </field>
+            <page name="stops" position="after">
+                <page string="Load" name="load">
+                    <field name="h2o_load_line_ids" readonly="state != 'planned'"
+                           context="{'default_trip_id': id}">
+                        <list editable="bottom">
+                            <field name="product_id" readonly="id" options="{'no_create': True}"/>
+                            <field name="qty_planned"/>
+                            <field name="qty_loaded"/>
+                            <field name="qty_delivered"/>
+                            <field name="qty_collected" optional="show"/>
+                            <field name="qty_returned"/>
+                            <field name="product_uom_id" groups="uom.group_uom" optional="show"/>
+                        </list>
+                    </field>
+                </page>
+            </page>
+        </field>
+    </record>
+</odoo>

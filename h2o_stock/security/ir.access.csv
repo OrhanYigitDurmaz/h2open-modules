@@ -1,0 +1,5 @@
+id,name,model_id,group_id/id,operation,domain
+access_h2o_trip_load_line_driver,h2o.trip.load.line driver,h2o.trip.load.line,h2o_base.group_h2o_driver,r,"[('trip_id.driver_id', '=', user.id)]"
+access_h2o_trip_load_line_dispatcher,h2o.trip.load.line dispatcher,h2o.trip.load.line,h2o_base.group_h2o_dispatcher,crud,
+access_h2o_trip_load_line_accountant,h2o.trip.load.line accountant,h2o.trip.load.line,h2o_base.group_h2o_accountant,r,
+rule_h2o_trip_load_line_company,h2o.trip.load.line multi-company,h2o.trip.load.line,,crud,"[('company_id', 'in', company_ids)]"

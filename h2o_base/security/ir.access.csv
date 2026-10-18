@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_h2o_weekday_user,h2o.weekday user,h2o.weekday,base.group_user,r,
+access_h2o_weekday_manager,h2o.weekday manager,h2o.weekday,h2o_base.group_h2o_manager,crud,

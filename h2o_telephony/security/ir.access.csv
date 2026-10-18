@@ -1,0 +1,5 @@
+id,name,model_id,group_id/id,operation,domain
+access_h2o_sip_account_own,h2o.sip.account own,h2o.sip.account,base.group_user,r,"[('user_id', '=', user.id)]"
+access_h2o_sip_account_manager,h2o.sip.account manager,h2o.sip.account,h2o_base.group_h2o_manager,crud,
+access_h2o_call_dispatcher,h2o.call dispatcher,h2o.call,h2o_base.group_h2o_dispatcher,ru,
+access_h2o_call_manager,h2o.call manager,h2o.call,h2o_base.group_h2o_manager,crud,

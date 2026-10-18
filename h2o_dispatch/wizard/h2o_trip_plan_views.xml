@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_trip_plan_view_form" model="ir.ui.view">
+        <field name="name">h2o.trip.plan.form</field>
+        <field name="model">h2o.trip.plan</field>
+        <field name="arch" type="xml">
+            <form string="Plan Trips">
+                <p class="text-muted">
+                    Confirmed orders still to plan in the zones of the selected routes, with a delivery
+                    date up to this day, are added as stops to the day's planned trip of their route.
+                </p>
+                <group>
+                    <field name="date"/>
+                    <field name="route_ids" widget="many2many_tags"/>
+                </group>
+                <footer>
+                    <button name="action_plan" type="object" string="Plan" class="btn-primary" data-hotkey="q"/>
+                    <button string="Discard" special="cancel" data-hotkey="x"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="h2o_trip_plan_action" model="ir.actions.act_window">
+        <field name="name">Plan Trips</field>
+        <field name="res_model">h2o.trip.plan</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

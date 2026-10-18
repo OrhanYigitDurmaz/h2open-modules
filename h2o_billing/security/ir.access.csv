@@ -1,0 +1,6 @@
+id,name,model_id,group_id/id,operation,domain
+access_h2o_cash_handover_driver,h2o.cash.handover driver,h2o.cash.handover,h2o_base.group_h2o_driver,r,"[('driver_id', '=', user.id)]"
+access_h2o_cash_handover_accountant,h2o.cash.handover accountant,h2o.cash.handover,h2o_base.group_h2o_accountant,cru,
+access_h2o_cash_handover_manager,h2o.cash.handover manager,h2o.cash.handover,h2o_base.group_h2o_manager,crud,
+rule_h2o_cash_handover_company,h2o.cash.handover multi-company,h2o.cash.handover,,crud,"[('company_id', 'in', company_ids)]"
+access_h2o_statement_wizard_accountant,h2o.statement.wizard accountant,h2o.statement.wizard,h2o_base.group_h2o_accountant,crud,

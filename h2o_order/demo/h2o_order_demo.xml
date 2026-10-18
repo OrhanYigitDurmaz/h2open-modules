@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Prices per customer type -->
+    <record id="base.group_user" model="res.groups">
+        <field name="implied_ids" eval="[Command.link(ref('product.group_product_pricelist'))]"/>
+    </record>
+
+    <record id="pricelist_home" model="product.pricelist">
+        <field name="name">Home Customers</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="pricelist_office" model="product.pricelist">
+        <field name="name">Office Customers</field>
+        <field name="sequence">11</field>
+        <field name="item_ids" eval="[Command.create({
+            'applied_on': '1_product',
+            'product_tmpl_id': ref('h2o_container.product_water_19l_product_template'),
+            'compute_price': 'fixed',
+            'fixed_price': 110.0,
+        })]"/>
+    </record>
+    <record id="pricelist_reseller" model="product.pricelist">
+        <field name="name">Resellers</field>
+        <field name="sequence">12</field>
+        <field name="item_ids" eval="[
+            Command.create({
+                'applied_on': '1_product',
+                'product_tmpl_id': ref('h2o_container.product_water_19l_product_template'),
+                'compute_price': 'fixed',
+                'fixed_price': 90.0,
+            }),
+            Command.create({
+                'applied_on': '1_product',
+                'product_tmpl_id': ref('h2o_container.product_water_5l_product_template'),
+                'compute_price': 'fixed',
+                'fixed_price': 38.0,
+            }),
+            Command.create({
+                'applied_on': '1_product',
+                'product_tmpl_id': ref('h2o_container.product_water_05l_product_template'),
+                'compute_price': 'fixed',
+                'fixed_price': 6.5,
+            }),
+        ]"/>
+    </record>
+
+    <record id="base.main_company" model="res.company">
+        <field name="h2o_pricelist_home_id" ref="pricelist_home"/>
+        <field name="h2o_pricelist_office_id" ref="pricelist_office"/>
+        <field name="h2o_pricelist_reseller_id" ref="pricelist_reseller"/>
+    </record>
+
+    <function model="res.partner" name="_h2o_apply_type_pricelist" eval="[[
+        ref('h2o_customer.partner_home_ayse'),
+        ref('h2o_customer.partner_home_mehmet'),
+        ref('h2o_customer.partner_home_zeynep'),
+        ref('h2o_customer.partner_office_bogaz'),
+        ref('h2o_customer.partner_office_dumlupinar'),
+        ref('h2o_customer.partner_reseller_bereket'),
+        ref('h2o_customer.partner_reseller_tavsanli'),
+    ]]"/>
+
+    <!-- Delivery orders -->
+    <record id="order_ayse" model="sale.order">
+        <field name="partner_id" ref="h2o_customer.partner_home_ayse"/>
+        <field name="h2o_channel">phone</field>
+        <field name="h2o_empties_expected">2</field>
+        <field name="h2o_time_window">morning</field>
+        <field name="order_line" eval="[Command.create({'product_id': ref('h2o_container.product_water_19l'), 'product_uom_qty': 2})]"/>
+    </record>
+    <record id="order_bogaz_kadikoy" model="sale.order">
+        <field name="partner_id" ref="h2o_customer.partner_office_bogaz"/>
+        <field name="partner_shipping_id" ref="h2o_customer.partner_office_bogaz_kadikoy"/>
+        <field name="h2o_channel">phone</field>
+        <field name="h2o_empties_expected">4</field>
+        <field name="order_line" eval="[
+            Command.create({'product_id': ref('h2o_container.product_water_19l'), 'product_uom_qty': 6}),
+            Command.create({'product_id': ref('h2o_container.product_water_05l'), 'product_uom_qty': 2, 'product_uom_id': ref('h2o_container.uom_case_24')}),
+        ]"/>
+    </record>
+    <record id="order_bereket" model="sale.order">
+        <field name="partner_id" ref="h2o_customer.partner_reseller_bereket"/>
+        <field name="h2o_channel">other</field>
+        <field name="h2o_empties_expected">30</field>
+        <field name="order_line" eval="[
+            Command.create({'product_id': ref('h2o_container.product_water_19l'), 'product_uom_qty': 30}),
+            Command.create({'product_id': ref('h2o_container.product_water_5l'), 'product_uom_qty': 10, 'product_uom_id': ref('h2o_container.uom_pack_4')}),
+        ]"/>
+    </record>
+    <record id="order_zeynep_draft" model="sale.order">
+        <field name="partner_id" ref="h2o_customer.partner_home_zeynep"/>
+        <field name="h2o_channel">portal</field>
+        <field name="h2o_time_window">evening</field>
+        <field name="order_line" eval="[Command.create({'product_id': ref('h2o_container.product_water_19l'), 'product_uom_qty': 1})]"/>
+    </record>
+    <function model="sale.order" name="action_confirm"
+              eval="[[ref('order_ayse'), ref('order_bogaz_kadikoy'), ref('order_bereket')]]"/>
+</odoo>

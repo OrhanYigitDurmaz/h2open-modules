@@ -1,0 +1,8 @@
+id,name,model_id,group_id/id,operation,domain
+access_h2o_subscription_accountant,h2o.subscription accountant,h2o.subscription,h2o_base.group_h2o_accountant,r,
+access_h2o_subscription_dispatcher,h2o.subscription dispatcher,h2o.subscription,h2o_base.group_h2o_dispatcher,cru,
+access_h2o_subscription_manager,h2o.subscription manager,h2o.subscription,h2o_base.group_h2o_manager,crud,
+rule_h2o_subscription_company,h2o.subscription multi-company,h2o.subscription,,crud,"[('company_id', 'in', company_ids)]"
+access_h2o_subscription_line_accountant,h2o.subscription.line accountant,h2o.subscription.line,h2o_base.group_h2o_accountant,r,
+access_h2o_subscription_line_dispatcher,h2o.subscription.line dispatcher,h2o.subscription.line,h2o_base.group_h2o_dispatcher,crud,
+rule_h2o_subscription_line_company,h2o.subscription.line multi-company,h2o.subscription.line,,crud,"[('company_id', 'in', company_ids)]"

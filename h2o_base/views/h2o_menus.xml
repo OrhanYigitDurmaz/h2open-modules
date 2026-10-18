@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top menu and the sections every H2Open module hangs its menus under. -->
+    <menuitem id="menu_h2o_root" name="H2Open" sequence="5"
+              web_icon="h2o_base,static/description/icon.png"
+              groups="h2o_base.group_h2o_driver,h2o_base.group_h2o_accountant"/>
+
+    <menuitem id="menu_h2o_operations" name="Operations" parent="menu_h2o_root" sequence="10"/>
+    <menuitem id="menu_h2o_customers" name="Customers" parent="menu_h2o_root" sequence="20"
+              groups="h2o_base.group_h2o_dispatcher,h2o_base.group_h2o_accountant"/>
+    <menuitem id="menu_h2o_billing" name="Billing" parent="menu_h2o_root" sequence="30"
+              groups="h2o_base.group_h2o_accountant"/>
+    <menuitem id="menu_h2o_reporting" name="Reporting" parent="menu_h2o_root" sequence="40"
+              groups="h2o_base.group_h2o_dispatcher,h2o_base.group_h2o_accountant"/>
+    <menuitem id="menu_h2o_config" name="Configuration" parent="menu_h2o_root" sequence="100"
+              groups="h2o_base.group_h2o_manager"/>
+</odoo>

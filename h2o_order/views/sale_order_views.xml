@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_order_view_form_h2o" model="ir.ui.view">
+        <field name="name">sale.order.form.h2o_order</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_h2o_update_deposit_lines" type="object" string="Update Deposits"
+                        invisible="not h2o_is_delivery or state not in ('draft', 'sent')"
+                        help="Add or update the bottle deposit lines for the bottles the customer ends up holding."/>
+            </xpath>
+            <group name="sale_header" position="after">
+                <group name="h2o_delivery" string="Water Delivery" invisible="not h2o_is_delivery">
+                    <group>
+                        <field name="h2o_is_delivery" invisible="1"/>
+                        <field name="partner_shipping_id" groups="!account.group_delivery_invoice_address"
+                               context="{'default_type': 'delivery', 'default_parent_id': partner_id}"
+                               readonly="state == 'cancel' or locked"/>
+                        <field name="h2o_zone_id"/>
+                        <field name="h2o_delivery_date" readonly="h2o_delivery_state in ('delivered', 'cancelled')"/>
+                        <field name="h2o_time_window"/>
+                        <field name="h2o_delivery_notes"/>
+                    </group>
+                    <group>
+                        <field name="h2o_channel"/>
+                        <field name="h2o_customer_type"/>
+                        <field name="h2o_payment_mode"/>
+                        <field name="h2o_bottle_balance" groups="h2o_base.group_h2o_driver,h2o_base.group_h2o_accountant"/>
+                        <field name="h2o_empties_expected" readonly="state not in ('draft', 'sent')"/>
+                        <field name="h2o_delivery_state" widget="badge" readonly="1"
+                               decoration-success="h2o_delivery_state == 'delivered'"
+                               decoration-danger="h2o_delivery_state == 'failed'"
+                               decoration-info="h2o_delivery_state in ('to_plan', 'planned')"/>
+                    </group>
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record id="sale_order_view_search_h2o" model="ir.ui.view">
+        <field name="name">sale.order.search.h2o_order</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <field name="h2o_zone_id"/>
+                <separator/>
+                <filter string="Water Deliveries" name="h2o_deliveries" domain="[('h2o_is_delivery', '=', True)]"/>
+                <filter string="To Plan" name="h2o_to_plan" domain="[('h2o_delivery_state', '=', 'to_plan'), ('state', '=', 'sale')]"/>
+                <filter string="Planned" name="h2o_planned" domain="[('h2o_delivery_state', '=', 'planned')]"/>
+                <filter string="Failed" name="h2o_failed" domain="[('h2o_delivery_state', '=', 'failed')]"/>
+                <separator/>
+                <filter string="Delivery Today" name="h2o_today" domain="[('h2o_delivery_date', '=', 'today')]"/>
+                <filter string="Delivery Date" name="h2o_delivery_date" date="h2o_delivery_date"/>
+                <group>
+                    <filter string="Delivery Date" name="group_h2o_delivery_date" context="{'group_by': 'h2o_delivery_date:day'}"/>
+                    <filter string="Delivery Zone" name="group_h2o_zone" context="{'group_by': 'h2o_zone_id'}"/>
+                    <filter string="Delivery Status" name="group_h2o_delivery_state" context="{'group_by': 'h2o_delivery_state'}"/>
+                    <filter string="Channel" name="group_h2o_channel" context="{'group_by': 'h2o_channel'}"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="h2o_delivery_order_view_list" model="ir.ui.view">
+        <field name="name">sale.order.list.h2o_order</field>
+        <field name="model">sale.order</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <list string="Delivery Orders" decoration-muted="state == 'cancel'" decoration-danger="h2o_delivery_state == 'failed'">
+                <field name="name"/>
+                <field name="h2o_delivery_date"/>
+                <field name="h2o_time_window" optional="show"/>
+                <field name="partner_id"/>
+                <field name="partner_shipping_id" optional="hide"/>
+                <field name="h2o_zone_id"/>
+                <field name="h2o_channel" optional="show"/>
+                <field name="h2o_empties_expected" optional="hide"/>
+                <field name="amount_total" sum="Total" widget="monetary"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="state" optional="show" widget="badge"
+                       decoration-success="state == 'sale'" decoration-info="state in ('draft', 'sent')"/>
+                <field name="h2o_delivery_state" widget="badge"
+                       decoration-success="h2o_delivery_state == 'delivered'"
+                       decoration-danger="h2o_delivery_state == 'failed'"
+                       decoration-info="h2o_delivery_state in ('to_plan', 'planned')"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="h2o_delivery_order_action" model="ir.actions.act_window">
+        <field name="name">Delivery Orders</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">list,form,calendar,pivot</field>
+        <field name="domain">[('h2o_is_delivery', '=', True)]</field>
+        <field name="context">{'default_h2o_channel': 'phone', 'search_default_h2o_to_plan': 1}</field>
+        <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+        <field name="view_ids" eval="[Command.clear(),
+            Command.create({'view_mode': 'list', 'view_id': ref('h2o_delivery_order_view_list')}),
+            Command.create({'view_mode': 'form', 'view_id': ref('sale.view_order_form')})]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No water deliveries to plan</p>
+            <p>Take a phone order with Operations > New Phone Order, or create a sales order with water products.</p>
+        </field>
+    </record>
+</odoo>

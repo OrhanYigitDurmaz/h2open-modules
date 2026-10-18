@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_h2o_container_moves" name="Bottle Ledger" parent="h2o_base.menu_h2o_customers"
+              sequence="20" action="h2o_container_move_action"/>
+    <menuitem id="menu_h2o_container_balances" name="Bottle Balances" parent="h2o_base.menu_h2o_customers"
+              sequence="30" action="h2o_container_balance_action"/>
+    <menuitem id="menu_h2o_config_products" name="Water Products" parent="h2o_base.menu_h2o_config"
+              sequence="20" action="h2o_product_action"/>
+</odoo>

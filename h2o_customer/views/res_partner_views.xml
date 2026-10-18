@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_view_form_h2o" model="ir.ui.view">
+        <field name="name">res.partner.form.h2o_customer</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='sales_purchases']" position="before">
+                <page string="Water Delivery" name="h2o_delivery">
+                    <group>
+                        <group string="Customer" name="h2o_customer">
+                            <field name="h2o_customer_type"/>
+                            <field name="h2o_payment_mode" widget="radio" options="{'horizontal': true}"/>
+                        </group>
+                        <group string="Delivery" name="h2o_delivery_info">
+                            <field name="h2o_zone_id"/>
+                            <field name="h2o_weekday_ids" widget="many2many_tags"
+                                   placeholder="Zone days"/>
+                            <field name="h2o_floor"/>
+                            <field name="h2o_has_elevator"/>
+                        </group>
+                    </group>
+                    <field name="h2o_delivery_notes" placeholder="Door code, where to leave the bottles, ..."/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_partner_view_search_h2o" model="ir.ui.view">
+        <field name="name">res.partner.search.h2o_customer</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="h2o_zone_id"/>
+            </field>
+            <filter name="inactive" position="before">
+                <filter string="Water Customers" name="h2o_water_customers" domain="[('h2o_customer_type', '!=', False)]"/>
+                <filter string="Home" name="h2o_home" domain="[('h2o_customer_type', '=', 'home')]"/>
+                <filter string="Office" name="h2o_office" domain="[('h2o_customer_type', '=', 'office')]"/>
+                <filter string="Reseller" name="h2o_reseller" domain="[('h2o_customer_type', '=', 'reseller')]"/>
+                <separator/>
+                <filter string="Monthly Account" name="h2o_account" domain="[('h2o_payment_mode', '=', 'account')]"/>
+                <filter string="No Zone" name="h2o_no_zone" domain="[('h2o_customer_type', '!=', False), ('h2o_zone_id', '=', False)]"/>
+                <separator/>
+            </filter>
+            <filter name="salesperson" position="before">
+                <filter string="Delivery Zone" name="group_h2o_zone" context="{'group_by': 'h2o_zone_id'}"/>
+                <filter string="Customer Type" name="group_h2o_customer_type" context="{'group_by': 'h2o_customer_type'}"/>
+            </filter>
+        </field>
+    </record>
+
+    <record id="h2o_customer_view_list" model="ir.ui.view">
+        <field name="name">res.partner.list.h2o_customer</field>
+        <field name="model">res.partner</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <list string="Water Customers">
+                <field name="complete_name" string="Name"/>
+                <field name="h2o_customer_type"/>
+                <field name="phone" class="o_force_ltr"/>
+                <field name="street" optional="show"/>
+                <field name="street2" optional="hide"/>
+                <field name="city" optional="show"/>
+                <field name="state_id" optional="hide"/>
+                <field name="h2o_zone_id"/>
+                <field name="h2o_payment_mode" optional="show"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="h2o_customer_action" model="ir.actions.act_window">
+        <field name="name">Water Customers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="domain">[('h2o_customer_type', '!=', False)]</field>
+        <field name="context">{'default_h2o_customer_type': 'home', 'default_is_company': False}</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        <field name="view_ids" eval="[Command.clear(),
+            Command.create({'view_mode': 'list', 'view_id': ref('h2o_customer_view_list')}),
+            Command.create({'view_mode': 'kanban'}),
+            Command.create({'view_mode': 'form', 'view_id': ref('base.view_partner_form')})]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a water customer</p>
+            <p>Home, office and reseller customers, with their delivery zone, days and notes for the driver.</p>
+        </field>
+    </record>
+</odoo>

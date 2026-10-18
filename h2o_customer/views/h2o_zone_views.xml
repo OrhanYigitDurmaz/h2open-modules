@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_zone_view_list" model="ir.ui.view">
+        <field name="name">h2o.zone.list</field>
+        <field name="model">h2o.zone</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="state_id"/>
+                <field name="district_names" optional="show"/>
+                <field name="zip_codes" optional="hide"/>
+                <field name="weekday_ids" widget="many2many_tags"/>
+                <field name="partner_count"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="h2o_zone_view_form" model="ir.ui.view">
+        <field name="name">h2o.zone.form</field>
+        <field name="model">h2o.zone</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_h2o_assign_partners" type="object" string="Assign Matching Customers"
+                            help="Put the water customers without a zone whose address matches this zone into it."/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_partners" type="object" class="oe_stat_button" icon="fa-users">
+                            <field name="partner_count" widget="statinfo" string="Customers"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. Kadıköy - Moda"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="country_id"/>
+                            <field name="state_id"/>
+                            <field name="weekday_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="district_names" placeholder="e.g. Kadıköy, Moda, Caferağa"/>
+                            <field name="zip_codes" placeholder="e.g. 34710, 34714"/>
+                            <field name="color" widget="color_picker"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                    </group>
+                    <field name="note" placeholder="Internal notes about this zone..."/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="h2o_zone_view_search" model="ir.ui.view">
+        <field name="name">h2o.zone.search</field>
+        <field name="model">h2o.zone</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" filter_domain="['|', ('name', 'ilike', self), ('code', 'ilike', self)]"/>
+                <field name="district_names"/>
+                <field name="zip_codes"/>
+                <field name="state_id"/>
+                <field name="weekday_ids"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <group>
+                    <filter string="Province" name="group_state" context="{'group_by': 'state_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="h2o_zone_action" model="ir.actions.act_window">
+        <field name="name">Delivery Zones</field>
+        <field name="res_model">h2o.zone</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a delivery zone</p>
+            <p>Zones group customers by district or postal code and define the days water is delivered there.</p>
+        </field>
+    </record>
+</odoo>

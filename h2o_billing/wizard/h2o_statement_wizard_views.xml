@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_statement_wizard_view_form" model="ir.ui.view">
+        <field name="name">h2o.statement.wizard.form</field>
+        <field name="model">h2o.statement.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <p class="text-muted">
+                    One invoice per customer on account for the orders delivered in the month and not invoiced yet.
+                    Orders already invoiced are left out, so the statements can be created again safely.
+                </p>
+                <group>
+                    <field name="month"/>
+                    <field name="partner_ids" widget="many2many_tags" placeholder="All customers on account"
+                           options="{'no_create': True}"/>
+                </group>
+                <footer>
+                    <button name="action_create_statements" type="object" string="Create Statements"
+                            class="btn-primary" data-hotkey="q"/>
+                    <button string="Discard" special="cancel" data-hotkey="x"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="h2o_statement_wizard_action" model="ir.actions.act_window">
+        <field name="name">Create Monthly Statements</field>
+        <field name="res_model">h2o.statement.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_trip_view_list" model="ir.ui.view">
+        <field name="name">h2o.trip.list</field>
+        <field name="model">h2o.trip</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="state == 'cancelled'" decoration-info="state == 'planned'">
+                <field name="date"/>
+                <field name="name"/>
+                <field name="route_id"/>
+                <field name="vehicle_id" optional="show"/>
+                <field name="driver_id" widget="many2one_avatar_user"/>
+                <field name="stop_count" sum="Stops"/>
+                <field name="delivered_count" sum="Delivered" optional="show"/>
+                <field name="failed_count" sum="Failed" optional="show"/>
+                <field name="load_qty" optional="hide"/>
+                <field name="cash_expected" sum="Cash" optional="show"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                <field name="state" widget="badge"
+                       decoration-info="state in ('planned', 'loaded')" decoration-warning="state == 'on_road'"
+                       decoration-success="state == 'closed'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="h2o_trip_view_kanban" model="ir.ui.view">
+        <field name="name">h2o.trip.kanban</field>
+        <field name="model">h2o.trip</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state" sample="1" quick_create="false">
+                <field name="currency_id"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="d-flex justify-content-between">
+                            <field name="name" class="fw-bolder fs-5"/>
+                            <field name="date"/>
+                        </div>
+                        <field name="route_id"/>
+                        <field name="vehicle_id" class="text-muted"/>
+                        <div class="small">
+                            <field name="delivered_count"/> / <field name="stop_count"/> stops delivered
+                            <t t-if="record.failed_count.raw_value">, <field name="failed_count"/> failed</t>
+                        </div>
+                        <footer>
+                            <field name="cash_expected" widget="monetary"/>
+                            <field name="driver_id" widget="many2one_avatar_user" class="ms-auto"/>
+                        </footer>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="h2o_trip_view_form" model="ir.ui.view">
+        <field name="name">h2o.trip.form</field>
+        <field name="model">h2o.trip</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_load" type="object" string="Load" class="btn-primary"
+                            invisible="state != 'planned'"/>
+                    <button name="action_start" type="object" string="Start"
+                            invisible="state not in ('planned', 'loaded')" class="btn-primary"/>
+                    <button name="action_close" type="object" string="Close" class="btn-primary"
+                            invisible="state not in ('loaded', 'on_road')"/>
+                    <button name="action_cancel" type="object" string="Cancel" groups="h2o_base.group_h2o_dispatcher"
+                            invisible="state not in ('planned', 'loaded', 'on_road')"
+                            confirm="Pending stops will be skipped and their orders planned again."/>
+                    <button name="action_reset_planned" type="object" string="Reset to Planned"
+                            groups="h2o_base.group_h2o_dispatcher" invisible="state != 'cancelled'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="planned,loaded,on_road,closed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_stops" type="object" class="oe_stat_button" icon="fa-map-marker">
+                            <field name="stop_count" widget="statinfo" string="Stops"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="date" readonly="state != 'planned'"/>
+                            <field name="route_id" readonly="state != 'planned'"/>
+                            <field name="vehicle_id" readonly="state not in ('planned', 'loaded')"/>
+                            <field name="driver_id" widget="many2one_avatar_user" readonly="state not in ('planned', 'loaded')"/>
+                            <field name="company_id" groups="base.group_multi_company" readonly="state != 'planned'"/>
+                        </group>
+                        <group>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="planned_bottle_qty"/>
+                            <field name="load_qty" readonly="state not in ('planned', 'loaded')"/>
+                            <field name="returned_full_qty" invisible="state != 'closed'"/>
+                            <field name="returned_empty_qty" invisible="state != 'closed'"/>
+                            <field name="cash_expected"/>
+                            <field name="cash_handed_in" invisible="state != 'closed'"/>
+                            <label for="last_position_at" invisible="not last_position_at"/>
+                            <div invisible="not last_position_at">
+                                <field name="last_position_at" class="oe_inline"/>
+                                (<field name="last_latitude" class="oe_inline"/>, <field name="last_longitude" class="oe_inline"/>)
+                            </div>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Stops" name="stops">
+                            <field name="stop_ids" readonly="state in ('closed', 'cancelled')"
+                                   context="{'default_trip_id': id}">
+                                <list editable="bottom" decoration-success="state == 'delivered'"
+                                      decoration-danger="state == 'failed'" decoration-muted="state == 'skipped'">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="order_id" readonly="state != 'pending'"
+                                           options="{'no_create': True}"/>
+                                    <field name="partner_id" readonly="state != 'pending'"/>
+                                    <field name="zone_id" optional="show"/>
+                                    <field name="time_window" optional="show"/>
+                                    <field name="currency_id" column_invisible="1"/>
+                                    <field name="amount_due" optional="show"/>
+                                    <field name="payment_method" readonly="state != 'pending'" optional="show"/>
+                                    <field name="payment_amount" readonly="1" optional="show"/>
+                                    <field name="empties_collected" readonly="1" optional="show"/>
+                                    <field name="failure_reason" optional="hide"/>
+                                    <field name="state" widget="badge"
+                                           decoration-success="state == 'delivered'" decoration-danger="state == 'failed'"
+                                           decoration-info="state == 'pending'"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="note" placeholder="Notes about this trip..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="h2o_trip_view_search" model="ir.ui.view">
+        <field name="name">h2o.trip.search</field>
+        <field name="model">h2o.trip</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="route_id"/>
+                <field name="driver_id"/>
+                <field name="vehicle_id"/>
+                <filter string="My Trips" name="my_trips" domain="[('driver_id', '=', uid)]"/>
+                <separator/>
+                <filter string="In Progress" name="in_progress" domain="[('state', 'in', ('planned', 'loaded', 'on_road'))]"/>
+                <filter string="Closed" name="closed" domain="[('state', '=', 'closed')]"/>
+                <separator/>
+                <filter string="Today" name="today" domain="[('date', '=', 'today')]"/>
+                <filter string="Date" name="date" date="date"/>
+                <group>
+                    <filter string="Date" name="group_date" context="{'group_by': 'date:day'}"/>
+                    <filter string="Route" name="group_route" context="{'group_by': 'route_id'}"/>
+                    <filter string="Driver" name="group_driver" context="{'group_by': 'driver_id'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="h2o_trip_action" model="ir.actions.act_window">
+        <field name="name">Trips</field>
+        <field name="res_model">h2o.trip</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="context">{'search_default_in_progress': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No trips planned</p>
+            <p>Use Plan Trips to fill the day's trips with the orders to deliver.</p>
+        </field>
+    </record>
+</odoo>

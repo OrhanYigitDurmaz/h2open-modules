@@ -1,0 +1,4 @@
+id,name,model_id,group_id/id,operation,domain
+access_h2o_push_device_own,h2o.push.device own,h2o.push.device,base.group_user,rud,"[('user_id', '=', user.id)]"
+access_h2o_push_device_manager,h2o.push.device manager,h2o.push.device,h2o_base.group_h2o_manager,crud,
+access_h2o_push_log_manager,h2o.push.log manager,h2o.push.log,h2o_base.group_h2o_manager,r,

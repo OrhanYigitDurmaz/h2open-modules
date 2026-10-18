@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="fleet_vehicle_view_form_h2o" model="ir.ui.view">
+        <field name="name">fleet.vehicle.form.h2o_dispatch</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <field name="future_driver_id" position="after">
+                <field name="h2o_is_delivery_vehicle"/>
+                <field name="h2o_driver_user_id" invisible="not h2o_is_delivery_vehicle"/>
+                <field name="h2o_capacity" invisible="not h2o_is_delivery_vehicle"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="fleet_vehicle_view_list_h2o" model="ir.ui.view">
+        <field name="name">fleet.vehicle.list.h2o_dispatch</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <list string="Delivery Vehicles">
+                <field name="license_plate"/>
+                <field name="model_id"/>
+                <field name="h2o_driver_user_id" widget="many2one_avatar_user"/>
+                <field name="h2o_capacity"/>
+                <field name="state_id" optional="show"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="h2o_vehicle_action" model="ir.actions.act_window">
+        <field name="name">Delivery Vehicles</field>
+        <field name="res_model">fleet.vehicle</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="domain">[('h2o_is_delivery_vehicle', '=', True)]</field>
+        <field name="context">{'default_h2o_is_delivery_vehicle': True}</field>
+        <field name="view_ids" eval="[Command.clear(),
+            Command.create({'view_mode': 'list', 'view_id': ref('fleet_vehicle_view_list_h2o')})]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Add a delivery vehicle</p>
+            <p>Delivery vehicles carry the trips; give them a capacity and a usual driver.</p>
+        </field>
+    </record>
+</odoo>

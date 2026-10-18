@@ -1,0 +1,6 @@
+id,name,model_id,group_id/id,operation,domain
+access_h2o_zone_user,h2o.zone user,h2o.zone,base.group_user,r,
+access_h2o_zone_dispatcher,h2o.zone dispatcher,h2o.zone,h2o_base.group_h2o_dispatcher,cru,
+access_h2o_zone_manager,h2o.zone manager,h2o.zone,h2o_base.group_h2o_manager,crud,
+rule_h2o_zone_company,h2o.zone multi-company,h2o.zone,,crud,"[('company_id', 'in', company_ids)]"
+access_res_partner_h2o_dispatcher,res.partner H2Open dispatcher,res.partner,h2o_base.group_h2o_dispatcher,cu,

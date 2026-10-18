@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_trip_view_form_h2o_billing" model="ir.ui.view">
+        <field name="name">h2o.trip.form.inherit.h2o_billing</field>
+        <field name="model">h2o.trip</field>
+        <field name="inherit_id" ref="h2o_dispatch.h2o_trip_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_h2o_view_cash_handover" type="object" class="oe_stat_button" icon="fa-money"
+                        invisible="not h2o_cash_handover_ids" groups="h2o_base.group_h2o_accountant">
+                    <div class="o_stat_info">
+                        <span class="o_stat_text">Cash Handover</span>
+                    </div>
+                </button>
+                <field name="h2o_cash_handover_ids" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

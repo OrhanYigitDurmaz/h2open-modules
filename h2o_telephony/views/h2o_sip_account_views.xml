@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_sip_account_view_list" model="ir.ui.view">
+        <field name="name">h2o.sip.account.list</field>
+        <field name="model">h2o.sip.account</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="extension"/>
+                <field name="user_id" widget="many2one_avatar_user"/>
+                <field name="password_expires_at"/>
+                <field name="active" column_invisible="True"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="h2o_sip_account_view_form" model="ir.ui.view">
+        <field name="name">h2o.sip.account.form</field>
+        <field name="model">h2o.sip.account</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_h2o_revoke" type="object" string="Revoke Credentials"
+                            invisible="not password_expires_at"
+                            confirm="The app will have to sign in again before it can receive calls."/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <group>
+                        <group>
+                            <field name="extension"/>
+                            <field name="user_id"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="password_expires_at"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="h2o_sip_account_view_search" model="ir.ui.view">
+        <field name="name">h2o.sip.account.search</field>
+        <field name="model">h2o.sip.account</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="extension"/>
+                <field name="user_id"/>
+                <filter name="inactive" string="Archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="h2o_sip_account_action" model="ir.actions.act_window">
+        <field name="name">SIP Accounts</field>
+        <field name="res_model">h2o.sip.account</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Give a driver an extension</p>
+            <p>The driver app gets a fresh SIP password from Odoo each time it signs in.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_h2o_sip_account" name="SIP Accounts" parent="h2o_base.menu_h2o_config"
+              sequence="60" action="h2o_sip_account_action"/>
+</odoo>

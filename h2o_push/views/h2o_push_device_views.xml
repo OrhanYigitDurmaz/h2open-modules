@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_push_device_view_list" model="ir.ui.view">
+        <field name="name">h2o.push.device.list</field>
+        <field name="model">h2o.push.device</field>
+        <field name="arch" type="xml">
+            <list create="false">
+                <field name="user_id"/>
+                <field name="device_name"/>
+                <field name="app"/>
+                <field name="platform"/>
+                <field name="last_seen"/>
+                <field name="active" column_invisible="True"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="h2o_push_device_view_form" model="ir.ui.view">
+        <field name="name">h2o.push.device.form</field>
+        <field name="model">h2o.push.device</field>
+        <field name="arch" type="xml">
+            <form create="false">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="device_name"/>
+                            <field name="app"/>
+                            <field name="platform"/>
+                        </group>
+                        <group>
+                            <field name="last_seen"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="token"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="h2o_push_device_view_search" model="ir.ui.view">
+        <field name="name">h2o.push.device.search</field>
+        <field name="model">h2o.push.device</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="user_id"/>
+                <field name="device_name"/>
+                <filter name="filter_driver" string="Driver app" domain="[('app', '=', 'driver')]"/>
+                <filter name="filter_customer" string="Customer app" domain="[('app', '=', 'customer')]"/>
+                <separator/>
+                <filter name="inactive" string="Archived" domain="[('active', '=', False)]"/>
+                <group>
+                    <filter name="group_user" string="User" context="{'group_by': 'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="h2o_push_device_action" model="ir.actions.act_window">
+        <field name="name">Push Devices</field>
+        <field name="res_model">h2o.push.device</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No device registered yet</p>
+            <p>Devices appear here when a driver or customer signs in to an H2Open app.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_h2o_push_device" name="Push Devices" parent="h2o_base.menu_h2o_config"
+              sequence="70" action="h2o_push_device_action"/>
+</odoo>

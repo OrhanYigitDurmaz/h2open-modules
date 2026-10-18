@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_h2o_subscriptions" name="Subscriptions" parent="h2o_base.menu_h2o_operations"
+              sequence="20" action="h2o_subscription_action"
+              groups="h2o_base.group_h2o_dispatcher,h2o_base.group_h2o_accountant"/>
+</odoo>

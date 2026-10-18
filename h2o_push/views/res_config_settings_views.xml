@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.h2o_push</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="h2o_base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='h2o_base']" position="inside">
+                <block title="Push notifications" id="h2o_settings_push" groups="base.group_system">
+                    <setting string="Firebase Cloud Messaging"
+                             help="Firebase project and service account used to send pushes to the mobile apps.">
+                        <div class="content-group">
+                            <div class="row mt8">
+                                <label for="h2o_push_fcm_project_id" class="col-lg-4 o_light_label"/>
+                                <field name="h2o_push_fcm_project_id" placeholder="h2open-12345"/>
+                            </div>
+                            <div class="row">
+                                <label for="h2o_push_fcm_service_account" class="col-lg-4 o_light_label"/>
+                                <field name="h2o_push_fcm_service_account" password="True"
+                                       placeholder="Paste the service account JSON key"/>
+                            </div>
+                        </div>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

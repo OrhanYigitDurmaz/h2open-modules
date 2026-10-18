@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_stop_view_list" model="ir.ui.view">
+        <field name="name">h2o.stop.list</field>
+        <field name="model">h2o.stop</field>
+        <field name="arch" type="xml">
+            <list decoration-success="state == 'delivered'" decoration-danger="state == 'failed'"
+                  decoration-muted="state == 'skipped'">
+                <field name="date"/>
+                <field name="trip_id"/>
+                <field name="sequence" optional="hide"/>
+                <field name="partner_id"/>
+                <field name="zone_id" optional="show"/>
+                <field name="order_id" optional="show"/>
+                <field name="time_window" optional="hide"/>
+                <field name="driver_id" widget="many2one_avatar_user" optional="show"/>
+                <field name="empties_collected" sum="Empties" optional="show"/>
+                <field name="payment_method" optional="show"/>
+                <field name="amount_due" sum="Due" optional="hide"/>
+                <field name="payment_amount" sum="Collected"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="failure_reason" optional="hide"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'delivered'" decoration-danger="state == 'failed'"
+                       decoration-info="state == 'pending'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="h2o_stop_view_form" model="ir.ui.view">
+        <field name="name">h2o.stop.form</field>
+        <field name="model">h2o.stop</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_deliver" type="object" string="Deliver as Planned" class="btn-primary"
+                            invisible="state != 'pending'"
+                            help="Deliver the planned quantities and collect the empties expected."/>
+                    <button name="action_skip" type="object" string="Skip" invisible="state != 'pending'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="pending,delivered"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="partner_id" readonly="state != 'pending'"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="trip_id" readonly="state != 'pending'"/>
+                            <field name="order_id" readonly="state != 'pending'"/>
+                            <field name="commercial_partner_id" invisible="commercial_partner_id == partner_id"/>
+                            <field name="zone_id"/>
+                            <field name="time_window"/>
+                            <field name="sequence"/>
+                        </group>
+                        <group>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="amount_due"/>
+                            <field name="payment_method" readonly="state != 'pending'"/>
+                            <field name="payment_amount" readonly="state != 'pending'"/>
+                            <field name="empties_product_id" readonly="state != 'pending'"/>
+                            <field name="empties_collected" readonly="state != 'pending'"/>
+                            <field name="done_at" invisible="not done_at"/>
+                            <field name="failure_reason" invisible="state != 'failed'"/>
+                            <field name="failure_note" invisible="state != 'failed'"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Products" name="lines">
+                            <field name="line_ids" readonly="state != 'pending'">
+                                <list editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="sale_line_id" optional="hide"/>
+                                    <field name="qty_planned"/>
+                                    <field name="qty_delivered" readonly="1"/>
+                                    <field name="product_uom_id" groups="uom.group_uom"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Proof of Delivery" name="proof">
+                            <group>
+                                <group>
+                                    <field name="signature" widget="signature"/>
+                                    <field name="latitude"/>
+                                    <field name="longitude"/>
+                                </group>
+                                <group>
+                                    <field name="photo" widget="image"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="note" placeholder="Notes from the driver..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="h2o_stop_view_search" model="ir.ui.view">
+        <field name="name">h2o.stop.search</field>
+        <field name="model">h2o.stop</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id"/>
+                <field name="commercial_partner_id"/>
+                <field name="trip_id"/>
+                <field name="order_id"/>
+                <field name="driver_id"/>
+                <field name="zone_id"/>
+                <filter string="Pending" name="pending" domain="[('state', '=', 'pending')]"/>
+                <filter string="Delivered" name="delivered" domain="[('state', '=', 'delivered')]"/>
+                <filter string="Failed or Skipped" name="failed" domain="[('state', 'in', ('failed', 'skipped'))]"/>
+                <separator/>
+                <filter string="Today" name="today" domain="[('date', '=', 'today')]"/>
+                <filter string="Date" name="date" date="date"/>
+                <group>
+                    <filter string="Trip" name="group_trip" context="{'group_by': 'trip_id'}"/>
+                    <filter string="Driver" name="group_driver" context="{'group_by': 'driver_id'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                    <filter string="Failure Reason" name="group_failure" context="{'group_by': 'failure_reason'}"/>
+                    <filter string="Payment Method" name="group_payment" context="{'group_by': 'payment_method'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="h2o_stop_action" model="ir.actions.act_window">
+        <field name="name">Stops</field>
+        <field name="res_model">h2o.stop</field>
+        <field name="view_mode">list,form,pivot,graph</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No delivery stops yet</p>
+            <p>Stops are added to trips by the planning, or by hand on a trip.</p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Driver app user: login "driver", password "driver". -->
+    <record id="user_driver" model="res.users">
+        <field name="name">Ali Şoför</field>
+        <field name="login">driver</field>
+        <field name="password">driver</field>
+        <field name="tz">Europe/Istanbul</field>
+        <field name="group_ids" eval="[Command.set([ref('h2o_base.group_h2o_driver')])]"/>
+    </record>
+
+    <!-- Delivery vans -->
+    <record id="vehicle_model_transit" model="fleet.vehicle.model">
+        <field name="name">Transit Courier</field>
+        <field name="brand_id" ref="fleet.brand_ford"/>
+        <field name="vehicle_type">car</field>
+        <field name="default_fuel_type">diesel</field>
+    </record>
+    <record id="vehicle_model_doblo" model="fleet.vehicle.model">
+        <field name="name">Doblò Cargo</field>
+        <field name="brand_id" ref="fleet.brand_fiat"/>
+        <field name="vehicle_type">car</field>
+        <field name="default_fuel_type">diesel</field>
+    </record>
+    <record id="vehicle_istanbul" model="fleet.vehicle">
+        <field name="license_plate">34 H2O 001</field>
+        <field name="model_id" ref="vehicle_model_transit"/>
+        <field name="h2o_is_delivery_vehicle" eval="True"/>
+        <field name="h2o_capacity">120</field>
+        <field name="h2o_driver_user_id" ref="user_driver"/>
+    </record>
+    <record id="vehicle_kutahya" model="fleet.vehicle">
+        <field name="license_plate">43 H2O 002</field>
+        <field name="model_id" ref="vehicle_model_doblo"/>
+        <field name="h2o_is_delivery_vehicle" eval="True"/>
+        <field name="h2o_capacity">60</field>
+    </record>
+
+    <!-- Routes over the demo zones -->
+    <record id="route_istanbul_anadolu" model="h2o.route">
+        <field name="name">İstanbul Anadolu Yakası</field>
+        <field name="code">IST-AND</field>
+        <field name="sequence">10</field>
+        <field name="vehicle_id" ref="vehicle_istanbul"/>
+        <field name="driver_id" ref="user_driver"/>
+        <field name="weekday_ids" eval="[Command.set([ref('h2o_base.weekday_mon'), ref('h2o_base.weekday_tue'),
+            ref('h2o_base.weekday_wed'), ref('h2o_base.weekday_thu'), ref('h2o_base.weekday_fri'),
+            ref('h2o_base.weekday_sat')])]"/>
+        <field name="color">4</field>
+    </record>
+    <record id="route_kutahya" model="h2o.route">
+        <field name="name">Kütahya</field>
+        <field name="code">KTH</field>
+        <field name="sequence">20</field>
+        <field name="vehicle_id" ref="vehicle_kutahya"/>
+        <field name="weekday_ids" eval="[Command.set([ref('h2o_base.weekday_mon'), ref('h2o_base.weekday_tue'),
+            ref('h2o_base.weekday_wed'), ref('h2o_base.weekday_fri')])]"/>
+        <field name="color">10</field>
+    </record>
+
+    <record id="h2o_customer.zone_kadikoy" model="h2o.zone">
+        <field name="h2o_route_id" ref="route_istanbul_anadolu"/>
+    </record>
+    <record id="h2o_customer.zone_uskudar" model="h2o.zone">
+        <field name="h2o_route_id" ref="route_istanbul_anadolu"/>
+    </record>
+    <record id="h2o_customer.zone_atasehir" model="h2o.zone">
+        <field name="h2o_route_id" ref="route_istanbul_anadolu"/>
+    </record>
+    <record id="h2o_customer.zone_kutahya_merkez" model="h2o.zone">
+        <field name="h2o_route_id" ref="route_kutahya"/>
+    </record>
+    <record id="h2o_customer.zone_tavsanli" model="h2o.zone">
+        <field name="h2o_route_id" ref="route_kutahya"/>
+    </record>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_h2o_cash_handovers" name="Cash Handovers" parent="h2o_base.menu_h2o_billing"
+              sequence="10" action="h2o_cash_handover_action"/>
+    <menuitem id="menu_h2o_statements" name="Monthly Statements" parent="h2o_base.menu_h2o_billing"
+              sequence="20" action="h2o_statement_action"/>
+    <menuitem id="menu_h2o_statement_wizard" name="Create Monthly Statements" parent="h2o_base.menu_h2o_billing"
+              sequence="25" action="h2o_statement_wizard_action"/>
+    <menuitem id="menu_h2o_invoices" name="Invoices" parent="h2o_base.menu_h2o_billing"
+              sequence="30" action="h2o_invoice_action"/>
+</odoo>

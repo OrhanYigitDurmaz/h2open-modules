@@ -1,0 +1,10 @@
+id,name,model_id,group_id/id,operation,domain
+access_h2o_container_move_driver,h2o.container.move driver,h2o.container.move,h2o_base.group_h2o_driver,r,
+access_h2o_container_move_accountant,h2o.container.move accountant,h2o.container.move,h2o_base.group_h2o_accountant,cru,
+access_h2o_container_move_manager,h2o.container.move manager,h2o.container.move,h2o_base.group_h2o_manager,crud,
+rule_h2o_container_move_company,h2o.container.move multi-company,h2o.container.move,,crud,"[('company_id', 'in', company_ids)]"
+access_h2o_container_balance_driver,h2o.container.balance driver,h2o.container.balance,h2o_base.group_h2o_driver,r,
+access_h2o_container_balance_accountant,h2o.container.balance accountant,h2o.container.balance,h2o_base.group_h2o_accountant,r,
+rule_h2o_container_balance_company,h2o.container.balance multi-company,h2o.container.balance,,crud,"[('company_id', 'in', company_ids)]"
+access_product_template_h2o_manager,product.template H2Open manager,product.template,h2o_base.group_h2o_manager,cud,"[('h2o_product_kind', '!=', False)]"
+access_product_product_h2o_manager,product.product H2Open manager,product.product,h2o_base.group_h2o_manager,cud,"[('h2o_product_kind', '!=', False)]"

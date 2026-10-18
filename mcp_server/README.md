@@ -83,5 +83,4 @@ uv run --extra test pytest            # helper tests; live tests are skipped
 count, reports) against a real Odoo with the `h2o_*` demo data when
 `H2OPEN_URL`, `H2OPEN_DB` and `H2OPEN_API_KEY` are set, plus
 `H2OPEN_TEST_DRIVER_KEY` (a driver's key) for the access test. It changes
-data, so use a throwaway database. CI runs it on every pull request
-(`.github/workflows/tests.yml`, job `mcp`).
+data, so use a throwaway database. CI does not run these tests.

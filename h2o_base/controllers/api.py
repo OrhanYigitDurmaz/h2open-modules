@@ -1,10 +1,13 @@
 """Shared JSON API for the H2Open mobile apps.
 
-Apps sign in once with ``POST /h2o/api/v1/login`` and get an API key scoped to
-``h2o_app``. Every other app route is declared with :func:`h2o_route`, which
-requires that key as ``Authorization: Bearer <token>``. Bodies and responses
-are plain JSON (Odoo's ``json2`` route type); errors come back as JSON with
-an HTTP error status.
+Apps sign in once with ``POST /h2o/api/v1/login`` and get a short-lived
+access token (an API key scoped to ``h2o_app``) plus a long-lived refresh
+token. Every other app route is declared with :func:`h2o_route`, which
+requires the access token as ``Authorization: Bearer <token>``. Before it
+expires, or after a 401, the app swaps the refresh token for a new pair with
+``POST /h2o/api/v1/token/refresh``; the old pair stops working. Bodies and
+responses are plain JSON (Odoo's ``json2`` route type); errors come back as
+JSON with an HTTP error status.
 """
 import logging
 
@@ -15,7 +18,7 @@ from odoo.exceptions import AccessDenied
 from odoo.http import request
 from odoo.tools import SQL
 
-from odoo.addons.h2o_base.models.res_users import H2O_APP_SCOPE
+from odoo.addons.h2o_base.models.h2o_app_session import H2O_APP_SCOPE
 
 _logger = logging.getLogger(__name__)
 
@@ -51,13 +54,29 @@ class H2oApiController(http.Controller):
         user = request.env['res.users'].sudo().browse(auth_info['uid'])
         if not user._h2o_app_roles():
             raise Unauthorized("This user has no H2Open role")
-        token = user._h2o_issue_app_token(device_name)
-        return {'token': token, 'user': user._h2o_app_profile()}
+        tokens = user._h2o_app_login(device_name)
+        # 'token' is the old name of access_token, kept until the driver app reads access_token.
+        return tokens | {'token': tokens['access_token'], 'user': user._h2o_app_profile()}
+
+    @http.route(f'{API_PREFIX}/token/refresh', type='json2', auth='public', methods=['POST'],
+                csrf=False, save_session=False)
+    def h2o_token_refresh(self, refresh_token=None, **kw):
+        tokens = request.env['h2o.app.session'].sudo()._h2o_refresh(refresh_token)
+        if not tokens:
+            # A response, not an exception: a reused token has just signed the
+            # device out, and that must be committed.
+            return request.dispatcher.handle_error(Unauthorized("Sign in again"))
+        return tokens
 
     @h2o_route(f'{API_PREFIX}/logout')
     def h2o_logout(self, **kw):
-        # Only the key used for this request is removed; other devices stay signed in.
-        # The bearer check already validated the token, so its 8-char index identifies it.
+        # Only this device is signed out; other devices stay signed in.
+        session = request.env['h2o.app.session']._h2o_current()
+        if session:
+            session._h2o_revoke('logout')
+            return {'ok': True}
+        # A key issued before device sessions existed: the bearer check already
+        # validated it, so its 8-char index identifies it.
         token = request.httprequest.headers.get('Authorization', '').split(' ', 1)[-1].strip()
         request.env.cr.execute(SQL(
             "DELETE FROM res_users_apikeys WHERE user_id = %s AND scope = %s AND index = %s",

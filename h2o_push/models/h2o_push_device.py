@@ -37,13 +37,16 @@ class H2oPushDevice(models.Model):
     platform = fields.Selection([('android', "Android"), ('ios', "iOS")], required=True, default='android')
     app = fields.Selection([('driver', "Driver app"), ('customer', "Customer app")], required=True, default='driver')
     device_name = fields.Char(string="Device")
+    session_id = fields.Many2one('h2o.app.session', string="App Sign-in", ondelete='set null', index='btree_not_null',
+                                 groups='h2o_base.group_h2o_manager',
+                                 help="The app sign-in that registered this device; signing it out stops the pushes.")
     last_seen = fields.Datetime(default=fields.Datetime.now)
     active = fields.Boolean(default=True)
 
     _token_unique = models.Constraint('UNIQUE(token)', 'This push token is already registered.')
 
     @api.model
-    def _h2o_register(self, token, platform, app, device_name=None):
+    def _h2o_register(self, token, platform, app, device_name=None, session=None):
         """Register the FCM token of the current user's device and return the device.
 
         A token belongs to one app installation: when it was registered before,
@@ -60,6 +63,7 @@ class H2oPushDevice(models.Model):
             'device_name': device_name,
             'last_seen': fields.Datetime.now(),
             'active': True,
+            'session_id': session.id if session else False,
         }
         if device:
             device.write(vals)

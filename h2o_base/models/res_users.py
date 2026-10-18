@@ -1,12 +1,21 @@
-from datetime import timedelta
-
 from odoo import fields, models
 
-H2O_APP_SCOPE = 'h2o_app'
 
 
 class ResUsers(models.Model):
     _inherit = 'res.users'
+
+    h2o_app_session_ids = fields.One2many('h2o.app.session', 'user_id', string="App Devices",
+                                          groups='h2o_base.group_h2o_manager')
+
+    def write(self, vals):
+        res = super().write(vals)
+        if vals.get('active') is False or vals.get('password'):
+            # A stolen phone is handled by archiving the user or resetting the password.
+            self.env['h2o.app.session'].sudo().search([
+                ('user_id', 'in', self.ids), ('state', '=', 'active'),
+            ])._h2o_revoke('user')
+        return res
 
     def _h2o_app_roles(self):
         """Return the H2Open roles of the user, most powerful first."""
@@ -22,17 +31,16 @@ class ResUsers(models.Model):
                 roles.append(role)
         return roles
 
-    def _h2o_issue_app_token(self, device_name):
-        """Create a scoped API key for a mobile app login and return it.
-
-        The key only works on H2Open app routes (scope ``h2o_app``), not on
-        Odoo's generic JSON-RPC, and expires after the company setting.
-        """
+    def _h2o_app_login(self, device_name):
+        """Sign the user in on a new device; return the token dict for the app
+        (see ``h2o.app.session._h2o_issue_tokens``)."""
         self.ensure_one()
-        days = self.company_id.h2o_app_token_days or 30
-        expiration = fields.Datetime.now() + timedelta(days=days)
-        name = "H2Open app: %s" % (device_name or "unknown device")
-        return self.env['res.users.apikeys'].with_user(self).sudo()._generate(H2O_APP_SCOPE, name, expiration)
+        return self.env['h2o.app.session']._h2o_start(self, device_name)
+
+    def _h2o_issue_app_token(self, device_name):
+        """Sign the user in on a new device and return only the access token
+        (bearer for the H2Open app routes). Handy in tests."""
+        return self._h2o_app_login(device_name)['access_token']
 
     def _h2o_app_profile(self):
         """Public profile returned to the mobile apps."""

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 20.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 03:42+0000\n"
-"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"POT-Creation-Date: 2026-10-18 15:59+0000\n"
+"PO-Revision-Date: 2026-10-18 15:59+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -40,6 +40,16 @@ msgstr ""
 #. module: h2o_push
 #: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__app
 msgid "App"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model,name:h2o_push.model_h2o_app_session
+msgid "App Device Session"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__session_id
+msgid "App Sign-in"
 msgstr ""
 
 #. module: h2o_push
@@ -102,6 +112,7 @@ msgid ""
 msgstr ""
 
 #. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_app_session__display_name
 #: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__display_name
 #: model:ir.model.fields,field_description:h2o_push.field_h2o_push_log__display_name
 #: model:ir.model.fields,field_description:h2o_push.field_res_config_settings__display_name
@@ -162,6 +173,7 @@ msgid "H2Open Push Notifications"
 msgstr ""
 
 #. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_app_session__id
 #: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__id
 #: model:ir.model.fields,field_description:h2o_push.field_h2o_push_log__id
 #: model:ir.model.fields,field_description:h2o_push.field_res_config_settings__id
@@ -264,6 +276,13 @@ msgstr ""
 #. odoo-python
 #: code:addons/h2o_push/models/h2o_push_device.py:0
 msgid "The FCM service account is not valid JSON."
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,help:h2o_push.field_h2o_push_device__session_id
+msgid ""
+"The app sign-in that registered this device; signing it out stops the "
+"pushes."
 msgstr ""
 
 #. module: h2o_push

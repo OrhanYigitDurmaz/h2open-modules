@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 20.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 03:42+0000\n"
-"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"POT-Creation-Date: 2026-10-18 15:59+0000\n"
+"PO-Revision-Date: 2026-10-18 15:59+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,36 @@ msgid ""
 "* security groups (driver, dispatcher, accountant, manager),\n"
 "* weekdays used by zones, routes, customers and subscriptions,\n"
 "* shared company settings (order cut-off hour),\n"
-"* the bearer-token API used by the driver and customer mobile apps.\n"
+"* the bearer-token API used by the driver and customer mobile apps, with\n"
+"  rotating refresh tokens and a list of signed-in devices.\n"
+msgstr ""
+
+#. module: h2o_base
+#: model_terms:ir.actions.act_window,help:h2o_base.h2o_app_session_action
+msgid ""
+"A device appears here when a driver or customer signs in to an H2Open app. "
+"Sign it out if the phone is lost."
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields,help:h2o_base.field_res_company__h2o_app_refresh_days
+#: model:ir.model.fields,help:h2o_base.field_res_config_settings__h2o_app_refresh_days
+msgid "A mobile app that is not used for this many days has to sign in again."
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__access_expires_at
+msgid "Access Expires"
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__api_key_id
+msgid "Access Key"
+msgstr ""
+
+#. module: h2o_base
+#: model_terms:ir.ui.view,arch_db:h2o_base.res_config_settings_view_form
+msgid "Access token validity"
 msgstr ""
 
 #. module: h2o_base
@@ -36,9 +65,28 @@ msgid "Accountant"
 msgstr ""
 
 #. module: h2o_base
-#: model:ir.model.fields,field_description:h2o_base.field_res_company__h2o_app_token_days
-#: model:ir.model.fields,field_description:h2o_base.field_res_config_settings__h2o_app_token_days
-msgid "App Login Validity (days)"
+#: model:ir.model.fields,field_description:h2o_base.field_res_company__h2o_app_access_hours
+#: model:ir.model.fields,field_description:h2o_base.field_res_config_settings__h2o_app_access_hours
+msgid "App Access Token Validity (hours)"
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model,name:h2o_base.model_h2o_app_session
+msgid "App Device Session"
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.actions.act_window,name:h2o_base.h2o_app_session_action
+#: model:ir.model.fields,field_description:h2o_base.field_res_users__h2o_app_session_ids
+#: model:ir.ui.menu,name:h2o_base.menu_h2o_app_session
+#: model_terms:ir.ui.view,arch_db:h2o_base.view_users_form_h2o_app_sessions
+msgid "App Devices"
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_res_company__h2o_app_refresh_days
+#: model:ir.model.fields,field_description:h2o_base.field_res_config_settings__h2o_app_refresh_days
+msgid "App Sign-in Validity (days)"
 msgstr ""
 
 #. module: h2o_base
@@ -67,11 +115,13 @@ msgid "Configuration"
 msgstr ""
 
 #. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__create_uid
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__create_date
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__create_date
 msgid "Created on"
 msgstr ""
@@ -83,7 +133,12 @@ msgstr ""
 
 #. module: h2o_base
 #: model_terms:ir.ui.view,arch_db:h2o_base.res_config_settings_view_form
-msgid "Days before a driver or customer app has to sign in again."
+msgid "Days without use before a driver or customer app has to sign in again."
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__device_name
+msgid "Device"
 msgstr ""
 
 #. module: h2o_base
@@ -92,10 +147,12 @@ msgid "Dispatcher"
 msgstr ""
 
 #. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__display_name
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__display_name
 #: model:ir.model.fields,field_description:h2o_base.field_res_company__display_name
 #: model:ir.model.fields,field_description:h2o_base.field_res_config_settings__display_name
 #: model:ir.model.fields,field_description:h2o_base.field_res_users__display_name
+#: model:ir.model.fields,field_description:h2o_base.field_res_users_apikeys__display_name
 msgid "Display Name"
 msgstr ""
 
@@ -107,6 +164,11 @@ msgstr ""
 #. module: h2o_base
 #: model:ir.model.constraint,message:h2o_base.constraint_h2o_weekday_code_unique
 msgid "Each weekday can only exist once."
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__is_expired
+msgid "Expired"
 msgstr ""
 
 #. module: h2o_base
@@ -132,18 +194,25 @@ msgid "H2Open Base"
 msgstr ""
 
 #. module: h2o_base
-#: model:ir.model.fields,help:h2o_base.field_res_company__h2o_app_token_days
-#: model:ir.model.fields,help:h2o_base.field_res_config_settings__h2o_app_token_days
-msgid ""
-"How long a mobile app login stays valid before the user has to sign in "
-"again."
+#: model_terms:ir.ui.view,arch_db:h2o_base.res_config_settings_view_form
+msgid "Hours one access token works before the app renews it on its own."
 msgstr ""
 
 #. module: h2o_base
+#: model:ir.model.fields,help:h2o_base.field_res_company__h2o_app_access_hours
+#: model:ir.model.fields,help:h2o_base.field_res_config_settings__h2o_app_access_hours
+msgid ""
+"How long one mobile app access token works; the app then renews it on its "
+"own."
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__id
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__id
 #: model:ir.model.fields,field_description:h2o_base.field_res_company__id
 #: model:ir.model.fields,field_description:h2o_base.field_res_config_settings__id
 #: model:ir.model.fields,field_description:h2o_base.field_res_users__id
+#: model:ir.model.fields,field_description:h2o_base.field_res_users_apikeys__id
 msgid "ID"
 msgstr ""
 
@@ -153,18 +222,20 @@ msgid "Invoices, deposits, monthly statements and driver cash handovers."
 msgstr ""
 
 #. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__write_uid
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__write_date
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__write_date
 msgid "Last Updated on"
 msgstr ""
 
 #. module: h2o_base
-#: model_terms:ir.ui.view,arch_db:h2o_base.res_config_settings_view_form
-msgid "Login validity"
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__last_used
+msgid "Last Used"
 msgstr ""
 
 #. module: h2o_base
@@ -197,6 +268,22 @@ msgstr ""
 #. module: h2o_base
 #: model:res.groups.privilege,placeholder:h2o_base.res_groups_privilege_h2open
 msgid "No"
+msgstr ""
+
+#. module: h2o_base
+#: model_terms:ir.actions.act_window,help:h2o_base.h2o_app_session_action
+msgid "No phone signed in yet"
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields.selection,name:h2o_base.selection__h2o_app_session__revoke_reason__reuse
+msgid "Old sign-in token reused"
+msgstr ""
+
+#. module: h2o_base
+#. odoo-python
+#: code:addons/h2o_base/models/h2o_app_session.py:0
+msgid "Only H2Open managers can sign devices out."
 msgstr ""
 
 #. module: h2o_base
@@ -234,8 +321,23 @@ msgid "Orders taken after this hour go to the next delivery day."
 msgstr ""
 
 #. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__previous_hash
+msgid "Previous Hash"
+msgstr ""
+
+#. module: h2o_base
 #: model:ir.model.fields,help:h2o_base.field_h2o_weekday__code
 msgid "Python weekday number: 0 is Monday, 6 is Sunday."
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__ref
+msgid "Ref"
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__refresh_hash
+msgid "Refresh Hash"
 msgstr ""
 
 #. module: h2o_base
@@ -244,14 +346,92 @@ msgid "Reporting"
 msgstr ""
 
 #. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__rotated_at
+msgid "Rotated At"
+msgstr ""
+
+#. module: h2o_base
 #: model:h2o.weekday,name:h2o_base.weekday_sat
 msgid "Saturday"
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.constraint,message:h2o_base.constraint_h2o_app_session_ref_unique
+msgid "Session references must be unique."
 msgstr ""
 
 #. module: h2o_base
 #: model:ir.actions.act_window,name:h2o_base.h2o_config_settings_action
 #: model:ir.ui.menu,name:h2o_base.menu_h2o_config_settings
 msgid "Settings"
+msgstr ""
+
+#. module: h2o_base
+#: model_terms:ir.ui.view,arch_db:h2o_base.h2o_app_session_view_form
+#: model_terms:ir.ui.view,arch_db:h2o_base.h2o_app_session_view_list
+#: model_terms:ir.ui.view,arch_db:h2o_base.view_users_form_h2o_app_sessions
+msgid "Sign out"
+msgstr ""
+
+#. module: h2o_base
+#: model_terms:ir.ui.view,arch_db:h2o_base.h2o_app_session_view_form
+#: model_terms:ir.ui.view,arch_db:h2o_base.h2o_app_session_view_list
+#: model_terms:ir.ui.view,arch_db:h2o_base.view_users_form_h2o_app_sessions
+msgid "Sign this device out? The app will have to sign in again."
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__refresh_expires_at
+msgid "Sign-in Expires"
+msgstr ""
+
+#. module: h2o_base
+#: model_terms:ir.ui.view,arch_db:h2o_base.res_config_settings_view_form
+msgid "Sign-in validity"
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__revoke_reason
+msgid "Sign-out Reason"
+msgstr ""
+
+#. module: h2o_base
+#: model_terms:ir.ui.view,arch_db:h2o_base.h2o_app_session_view_form
+#: model_terms:ir.ui.view,arch_db:h2o_base.h2o_app_session_view_list
+#: model_terms:ir.ui.view,arch_db:h2o_base.view_users_form_h2o_app_sessions
+msgid "Signed In On"
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__revoked_at
+msgid "Signed Out On"
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields.selection,name:h2o_base.selection__h2o_app_session__state__active
+#: model_terms:ir.ui.view,arch_db:h2o_base.h2o_app_session_view_search
+msgid "Signed in"
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields.selection,name:h2o_base.selection__h2o_app_session__state__revoked
+#: model_terms:ir.ui.view,arch_db:h2o_base.h2o_app_session_view_search
+msgid "Signed out"
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields.selection,name:h2o_base.selection__h2o_app_session__revoke_reason__manager
+msgid "Signed out by a manager"
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields.selection,name:h2o_base.selection__h2o_app_session__revoke_reason__logout
+msgid "Signed out on the phone"
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__state
+msgid "State"
 msgstr ""
 
 #. module: h2o_base
@@ -262,6 +442,11 @@ msgstr ""
 #. module: h2o_base
 #: model:res.groups,comment:h2o_base.group_h2o_dispatcher
 msgid "Takes orders, manages customers, plans routes and trips."
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields,help:h2o_base.field_h2o_app_session__refresh_expires_at
+msgid "The app has to sign in again if it is not used before this time."
 msgstr ""
 
 #. module: h2o_base
@@ -276,7 +461,19 @@ msgstr ""
 
 #. module: h2o_base
 #: model:ir.model,name:h2o_base.model_res_users
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__user_id
+#: model_terms:ir.ui.view,arch_db:h2o_base.h2o_app_session_view_search
 msgid "User"
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model,name:h2o_base.model_res_users_apikeys
+msgid "User API Key"
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.model.fields.selection,name:h2o_base.selection__h2o_app_session__revoke_reason__user
+msgid "User deactivated or password changed"
 msgstr ""
 
 #. module: h2o_base

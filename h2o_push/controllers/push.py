@@ -17,7 +17,8 @@ class H2oPushController(http.Controller):
             raise BadRequest("platform must be android or ios")
         if app not in dict(Device._fields['app'].selection):
             raise BadRequest("app must be driver or customer")
-        device = Device._h2o_register(token, platform, app, device_name)
+        session = request.env['h2o.app.session']._h2o_current()
+        device = Device._h2o_register(token, platform, app, device_name, session=session)
         return {'id': device.id}
 
     @h2o_route(f'{API_PREFIX}/push/unregister')

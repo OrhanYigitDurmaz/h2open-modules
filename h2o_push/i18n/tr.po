@@ -51,6 +51,16 @@ msgid "App"
 msgstr "Uygulama"
 
 #. module: h2o_push
+#: model:ir.model,name:h2o_push.model_h2o_app_session
+msgid "App Device Session"
+msgstr "Uygulama Cihaz Oturumu"
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__session_id
+msgid "App Sign-in"
+msgstr "Uygulama Girişi"
+
+#. module: h2o_push
 #: model_terms:ir.ui.view,arch_db:h2o_push.h2o_push_device_view_form
 #: model_terms:ir.ui.view,arch_db:h2o_push.h2o_push_device_view_search
 msgid "Archived"
@@ -114,6 +124,7 @@ msgstr ""
 "burada görünür."
 
 #. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_app_session__display_name
 #: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__display_name
 #: model:ir.model.fields,field_description:h2o_push.field_h2o_push_log__display_name
 #: model:ir.model.fields,field_description:h2o_push.field_res_config_settings__display_name
@@ -177,6 +188,7 @@ msgid "H2Open Push Notifications"
 msgstr "H2Open Anlık Bildirimler"
 
 #. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_app_session__id
 #: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__id
 #: model:ir.model.fields,field_description:h2o_push.field_h2o_push_log__id
 #: model:ir.model.fields,field_description:h2o_push.field_res_config_settings__id
@@ -280,6 +292,14 @@ msgstr "FCM hizmet hesabı yapılandırılmamış."
 #: code:addons/h2o_push/models/h2o_push_device.py:0
 msgid "The FCM service account is not valid JSON."
 msgstr "FCM hizmet hesabı geçerli bir JSON değil."
+
+#. module: h2o_push
+#: model:ir.model.fields,help:h2o_push.field_h2o_push_device__session_id
+msgid ""
+"The app sign-in that registered this device; signing it out stops the "
+"pushes."
+msgstr ""
+"Bu cihazı kaydeden uygulama girişi; oturumu kapatılınca bildirimler durur."
 
 #. module: h2o_push
 #: model:ir.model.constraint,message:h2o_push.constraint_h2o_push_device_token_unique

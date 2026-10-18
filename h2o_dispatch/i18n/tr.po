@@ -394,6 +394,21 @@ msgid "Empties"
 msgstr "Boşlar"
 
 #. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__empties_expected
+msgid "Empties Expected"
+msgstr "Beklenen Boşlar"
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_stop__empties_expected
+msgid "Empty bottles the customer said they will hand back, from the order."
+msgstr "Müşterinin iade edeceğini söylediği boş damacanalar, siparişten alınır."
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_list
+msgid "Expected"
+msgstr "Beklenen"
+
+#. module: h2o_dispatch
 #: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__empties_collected
 msgid "Empties Collected"
 msgstr "Toplanan Boşlar"

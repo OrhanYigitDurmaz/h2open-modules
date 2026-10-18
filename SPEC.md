@@ -266,7 +266,8 @@ Drivers are `res.users` in `h2o_base.group_h2o_driver`.
   `state` `pending|delivered|failed|skipped`, `failure_reason` selection
   `not_home|refused|no_access|no_payment|other`, `failure_note`,
   `line_ids` (`h2o.stop.line`: `product_id`, `sale_line_id`, `qty_planned`,
-  `qty_delivered`), `empties_collected` (Integer),
+  `qty_delivered`), `empties_expected` (related `order_id.h2o_empties_expected`,
+  stored), `empties_collected` (Integer),
   `empties_product_id` (container product, default the 19 L bottle),
   `payment_method` selection `cash|card|account|none`, `payment_amount`
   (Monetary), `amount_due` (computed from the order total for the delivered
@@ -320,7 +321,8 @@ Every route checks the user is a driver and only touches their own trips.
 
 * `GET trips?date=YYYY-MM-DD` (default today) → trips with stop counts.
 * `GET trips/<id>` → trip with ordered stops (address, phone, notes, floor,
-  time window, lines, bottle balance, amount due, payment mode, coordinates).
+  time window, lines, bottle balance, `empties_expected`, amount due, payment
+  mode, coordinates).
 * `POST trips/<id>/start`, `POST trips/<id>/close`.
 * `POST stops/<id>/deliver` body as `h2o.stop.action_deliver` vals
   (signature/photo base64).

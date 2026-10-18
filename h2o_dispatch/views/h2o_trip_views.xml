@@ -119,6 +119,7 @@
                                     <field name="amount_due" optional="show"/>
                                     <field name="payment_method" readonly="state != 'pending'" optional="show"/>
                                     <field name="payment_amount" readonly="1" optional="show"/>
+                                    <field name="empties_expected" optional="show"/>
                                     <field name="empties_collected" readonly="1" optional="show"/>
                                     <field name="failure_reason" optional="hide"/>
                                     <field name="state" widget="badge"

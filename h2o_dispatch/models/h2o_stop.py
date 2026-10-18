@@ -54,6 +54,10 @@ class H2oStop(models.Model):
     )
     failure_note = fields.Text()
     line_ids = fields.One2many('h2o.stop.line', 'stop_id', string="Products", copy=True)
+    empties_expected = fields.Integer(
+        related='order_id.h2o_empties_expected', store=True, string="Empties Expected",
+        help="Empty bottles the customer said they will hand back, from the order.",
+    )
     empties_collected = fields.Integer(
         help="Empty bottles taken back. Defaults to the empties expected on the order when delivering.",
     )

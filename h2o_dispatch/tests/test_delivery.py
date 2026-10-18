@@ -21,6 +21,13 @@ class TestDelivery(H2oDispatchCase):
     def _ledger(self):
         return self.env['h2o.container.move'].search([('partner_id', '=', self.cash_customer.id)])
 
+    def test_stop_shows_empties_expected(self):
+        """Drivers have no rights on sales orders but still see the empties to collect."""
+        stop = self._stop(self._planned_trip()).with_user(self.driver_a)
+        self.assertEqual(stop.empties_expected, 1)
+        self.order.h2o_empties_expected = 3
+        self.assertEqual(stop.empties_expected, 3)
+
     def test_deliver_as_planned(self):
         trip = self._started_trip()
         stop = self._stop(trip).with_user(self.driver_a)

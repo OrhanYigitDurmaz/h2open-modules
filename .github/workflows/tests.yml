@@ -34,12 +34,15 @@ jobs:
       # image as docker-compose.yml and runs their tests only (not those of
       # the standard apps they depend on).
       - name: Install modules and run tests
+        # The image's entrypoint turns HOST/USER/PASSWORD into --db_* flags
+        # (default host "db"), overriding any passed on the command line.
         run: |
+          set -o pipefail
           modules=$(ls -d h2o_*/ | tr -d / | paste -sd,)
           tags=$(ls -d h2o_*/ | tr -d / | sed 's|^|/|' | paste -sd,)
-          docker run --rm --network host -v "$PWD:/mnt/extra-addons:ro" odoo:20 \
-            odoo -d h2open_test --db_host=localhost --db_user=odoo --db_password=odoo \
-            -i "$modules" --test-enable --test-tags "$tags" \
+          docker run --rm --network host -v "$PWD:/mnt/extra-addons:ro" \
+            -e HOST=localhost -e USER=odoo -e PASSWORD=odoo odoo:20 \
+            odoo -d h2open_test -i "$modules" --test-enable --test-tags "$tags" \
             --stop-after-init --log-level=test 2>&1 | tee odoo.log
       # Odoo can exit 0 after a failed test or install step, so also fail on
       # any ERROR or CRITICAL line.

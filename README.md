@@ -28,6 +28,23 @@ contract between the modules (models, fields, groups, APIs).
 
 ## Running locally
 
+### With Docker (recommended)
+
+Needs Docker Engine with the compose plugin. From the repo root:
+
+```bash
+docker compose up -d db
+docker compose run --rm odoo odoo -d h2open -i h2o_reporting --without-demo=all --stop-after-init
+docker compose up -d
+```
+
+Then open http://localhost:8069 and log in as `admin` / `admin`. The repo is
+mounted into the container, so after changing a module run
+`docker compose run --rm odoo odoo -d h2open -u <module> --stop-after-init`
+and `docker compose restart odoo`. `docker compose down -v` wipes the database.
+
+### From an Odoo source checkout
+
 ```bash
 # Odoo 20 source checkout next to this repo
 ./odoo-bin -d h2open --addons-path=addons,../h2open-modules -i h2o_reporting

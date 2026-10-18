@@ -68,6 +68,16 @@ class TestContainerLedger(TransactionCase):
         self.Move._h2o_record(self.customer, self.bottle, qty_in=2)
         self.assertEqual(self.customer._h2o_bottle_balance_by_product(), {})
 
+    def test_balance_view_with_unset_quantities(self):
+        """A move created with only one quantity (opening balance, import) stores NULL for the other."""
+        self.Move.create({'partner_id': self.customer.id, 'product_id': self.bottle.id, 'qty_out': 3,
+                          'source': 'opening'}).action_done()
+        self.Move.create({'partner_id': self.customer.id, 'product_id': self.bottle.id, 'qty_in': 1,
+                          'source': 'adjustment'}).action_done()
+        self.env.flush_all()
+        balance = self.env['h2o.container.balance'].search([('partner_id', '=', self.customer.id)])
+        self.assertEqual((balance.qty, balance.qty_out, balance.qty_in), (2, 3, 1))
+
     def test_cancel_and_protection(self):
         move = self.Move._h2o_record(self.customer, self.bottle, qty_out=2)
         with self.assertRaises(UserError):

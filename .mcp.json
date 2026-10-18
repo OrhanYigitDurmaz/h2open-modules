@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "h2open": {
+      "command": "uv",
+      "args": ["run", "--directory", "mcp_server", "h2open-mcp"],
+      "env": {
+        "H2OPEN_URL": "${H2OPEN_URL:-http://localhost:8069}",
+        "H2OPEN_DB": "${H2OPEN_DB:-h2open}",
+        "H2OPEN_API_KEY": "${H2OPEN_API_KEY}"
+      }
+    }
+  }
+}

@@ -58,6 +58,14 @@ Installing `h2o_reporting` pulls in every other module.
 Every pull request also installs all `h2o_*` modules into a fresh database
 on the `odoo:20` image and runs their tests (`.github/workflows/tests.yml`).
 
+## MCP server
+
+[`mcp_server/`](mcp_server/README.md) is an MCP server that lets Claude work
+with H2Open like a dispatcher or manager (find customers, take phone orders,
+plan trips, record deliveries, count cash, reports) through the modules' own
+methods, with the rights of the Odoo user whose API key it uses. Claude Code
+started in this repo picks it up from `.mcp.json` once `H2OPEN_API_KEY` is set.
+
 ## Linting
 
 Every pull request runs [pre-commit](https://pre-commit.com) on the files it

@@ -5,3 +5,6 @@ __pycache__/
 *.log
 .idea/
 .vscode/
+*.egg-info/
+.pytest_cache/
+mcp_server/uv.lock

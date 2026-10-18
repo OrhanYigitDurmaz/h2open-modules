@@ -34,10 +34,11 @@ class H2oContainerBalance(models.Model):
                        company.currency_id,
                        partner.h2o_zone_id AS zone_id,
                        partner.h2o_customer_type AS customer_type,
-                       SUM(move.qty_out - move.qty_in) AS qty,
-                       SUM(move.qty_out) AS qty_out,
-                       SUM(move.qty_in) AS qty_in,
-                       SUM(move.deposit_amount) AS deposit_amount,
+                       -- moves created without a quantity (imports, demo data) store NULL
+                       SUM(COALESCE(move.qty_out, 0) - COALESCE(move.qty_in, 0)) AS qty,
+                       SUM(COALESCE(move.qty_out, 0)) AS qty_out,
+                       SUM(COALESCE(move.qty_in, 0)) AS qty_in,
+                       SUM(COALESCE(move.deposit_amount, 0)) AS deposit_amount,
                        MAX(move.date) AS last_date
                   FROM h2o_container_move move
                   JOIN res_company company ON company.id = move.company_id

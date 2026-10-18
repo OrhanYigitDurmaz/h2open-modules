@@ -30,6 +30,11 @@ class H2oStop(models.Model):
         self._h2o_push_trip_changed(removed, 'removed')
         return res
 
+    def action_release(self):
+        orders = super().action_release()
+        orders.filtered(lambda o: o._h2o_is_open())._h2o_push_order_open()
+        return orders
+
     def _h2o_by_trip_in_progress(self):
         """``{trip: stop ids}`` for the stops on loaded or started trips."""
         result = defaultdict(list)

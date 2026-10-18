@@ -3,11 +3,15 @@
 Every route checks the user is a driver and only looks up trips whose driver
 is the user (dispatchers using the app see their own trips too). Records of
 other drivers answer 404, wrong states 422 (``UserError``), bad input 400.
+
+Open orders (confirmed, not on a trip yet) are listed to every driver of the
+company; a driver takes one with ``orders/<id>/claim``, which answers 409 when
+it was taken in the meantime.
 """
 import base64
 import binascii
 
-from werkzeug.exceptions import BadRequest, Forbidden, NotFound
+from werkzeug.exceptions import BadRequest, Conflict, Forbidden, NotFound
 
 from odoo import fields, http
 from odoo.http import request
@@ -82,8 +86,6 @@ class H2oDriverController(http.Controller):
         return self._trip_summary(trip) | {'stops': [self._stop_data(stop) for stop in trip.stop_ids]}
 
     def _stop_data(self, stop):
-        partner = stop.partner_id
-        customer = stop.commercial_partner_id
         # Drivers have no rights on sales orders: read only what the app shows.
         order = stop.order_id.sudo()
         return {
@@ -98,24 +100,7 @@ class H2oDriverController(http.Controller):
                 'empties_expected': order.h2o_empties_expected,
             } or None,
             'time_window': stop.time_window or 'any',
-            'partner': {
-                'id': partner.id,
-                'name': partner.name,
-                'customer_name': customer.name,
-                'customer_type': customer.h2o_customer_type or None,
-                'street': partner.street or '',
-                'street2': partner.street2 or '',
-                'city': partner.city or '',
-                'zip': partner.zip or '',
-                'state': partner.state_id.name or '',
-                'phone': partner.phone or customer.phone or '',
-                'floor': partner.h2o_floor,
-                'has_elevator': partner.h2o_has_elevator,
-                'delivery_notes': partner.h2o_delivery_notes or customer.h2o_delivery_notes or '',
-                'latitude': partner.partner_latitude or None,
-                'longitude': partner.partner_longitude or None,
-                'bottle_balance': partner.h2o_bottle_balance,
-            },
+            'partner': self._partner_data(stop.partner_id),
             'zone': _ref(stop.zone_id),
             'lines': [{
                 'id': line.id,
@@ -130,7 +115,7 @@ class H2oDriverController(http.Controller):
             'empties_product_id': stop.empties_product_id.id or None,
             'empties_expected': stop.empties_expected,
             'empties_collected': stop.empties_collected,
-            'payment_mode': customer.h2o_payment_mode or None,
+            'payment_mode': stop.commercial_partner_id.h2o_payment_mode or None,
             'payment_method': stop.payment_method,
             'amount_due': stop.amount_due,
             'payment_amount': stop.payment_amount,
@@ -139,6 +124,54 @@ class H2oDriverController(http.Controller):
             'failure_note': stop.failure_note or '',
             'note': stop.note or '',
             'done_at': _datetime(stop.done_at),
+            'claimed': stop.claimed,
+        }
+
+    def _partner_data(self, partner):
+        customer = partner.commercial_partner_id
+        return {
+            'id': partner.id,
+            'name': partner.name,
+            'customer_name': customer.name,
+            'customer_type': customer.h2o_customer_type or None,
+            'street': partner.street or '',
+            'street2': partner.street2 or '',
+            'city': partner.city or '',
+            'zip': partner.zip or '',
+            'state': partner.state_id.name or '',
+            'phone': partner.phone or customer.phone or '',
+            'floor': partner.h2o_floor,
+            'has_elevator': partner.h2o_has_elevator,
+            'delivery_notes': partner.h2o_delivery_notes or customer.h2o_delivery_notes or '',
+            'latitude': partner.partner_latitude or None,
+            'longitude': partner.partner_longitude or None,
+            'bottle_balance': partner.h2o_bottle_balance,
+        }
+
+    def _order_data(self, order):
+        """An open order as the Orders tab shows it. ``order`` is read with sudo."""
+        route = order.h2o_zone_id.h2o_route_id
+        return {
+            'id': order.id,
+            'name': order.name,
+            'delivery_date': fields.Date.to_string(order.h2o_delivery_date) or None,
+            'time_window': order.h2o_time_window or 'any',
+            'zone': _ref(order.h2o_zone_id),
+            'my_zone': bool(route) and route._h2o_driver() == request.env.user,
+            'partner': self._partner_data(order.partner_shipping_id),
+            'note': order.h2o_delivery_notes or '',
+            'empties_expected': order.h2o_empties_expected,
+            'payment_mode': order.partner_id.commercial_partner_id.h2o_payment_mode or None,
+            'amount_total': order.amount_total,
+            'currency': order.currency_id.name,
+            'lines': [{
+                'product_id': line.product_id.id,
+                'product_name': line.product_id.display_name,
+                'product_kind': line.product_id.h2o_product_kind or None,
+                'uom': line.product_uom_id.name,
+                'qty': line.product_uom_qty - line.qty_delivered,
+            } for line in order.order_line
+                if not line.display_type and line.product_id and line.product_uom_qty > line.qty_delivered],
         }
 
     # ------------------------------------------------------------------
@@ -151,7 +184,7 @@ class H2oDriverController(http.Controller):
         # GET parameters come in the query string, not in the JSON body.
         day = request.httprequest.args.get('date') or kw.get('date')
         try:
-            day = fields.Date.to_date(day) if day else fields.Date.context_today(request.env.user)
+            day = fields.Date.to_date(day) if day else request.env.user._h2o_today()
         except ValueError:
             raise BadRequest("date must be YYYY-MM-DD") from None
         trips = request.env['h2o.trip'].search([
@@ -246,3 +279,38 @@ class H2oDriverController(http.Controller):
                 stop.sudo().sequence = sequence
         trip.invalidate_recordset(['stop_ids'])
         return self._trip_detail(trip)
+
+    # ------------------------------------------------------------------
+    # Open orders
+    # ------------------------------------------------------------------
+
+    @h2o_route(f'{DRIVER_PREFIX}/orders', methods=('GET',))
+    def h2o_driver_orders(self, **kw):
+        """Orders waiting for a driver, by delivery date: the driver's own zones first."""
+        self._check_driver()
+        SaleOrder = request.env['sale.order']
+        # sudo: drivers have no rights on sales orders; the domain keeps to the open ones.
+        orders = SaleOrder.sudo().search(SaleOrder._h2o_open_orders_domain(), order='h2o_delivery_date, id', limit=200)
+        data = [self._order_data(order) for order in orders]
+        return sorted(data, key=lambda o: (o['delivery_date'] or '', not o['my_zone']))
+
+    @h2o_route(f'{DRIVER_PREFIX}/orders/<int:order_id>/claim')
+    def h2o_driver_order_claim(self, order_id, **kw):
+        """Take an open order: it becomes a stop on the driver's trip of today."""
+        self._check_driver()
+        SaleOrder = request.env['sale.order']
+        order = SaleOrder.sudo().search([('id', '=', order_id)] + SaleOrder._h2o_open_orders_domain()).sudo(False)
+        if not order:
+            if SaleOrder.sudo().search_count([('id', '=', order_id)]):
+                raise Conflict("This order was already taken")
+            raise NotFound("Order not found")
+        stop = order._h2o_claim()
+        return {'trip': self._trip_summary(stop.trip_id), 'stop': self._stop_data(stop)}
+
+    @h2o_route(f'{DRIVER_PREFIX}/stops/<int:stop_id>/release')
+    def h2o_driver_stop_release(self, stop_id, **kw):
+        """Give back an order the driver took: it is open again for every driver."""
+        stop = self._get_stop(stop_id)
+        trip = stop.trip_id
+        stop.action_release()
+        return self._trip_summary(trip)

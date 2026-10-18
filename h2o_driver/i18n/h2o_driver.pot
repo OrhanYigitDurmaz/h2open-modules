@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 20.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 03:42+0000\n"
-"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"POT-Creation-Date: 2026-10-18 23:25+0000\n"
+"PO-Revision-Date: 2026-10-18 23:25+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,9 @@ msgid ""
 "  (address, phone, notes, products, bottle balance, amount due, coordinates),\n"
 "* start and close a trip, deliver, fail or skip a stop, reorder the remaining stops,\n"
 "* report the vehicle position,\n"
-"* a push to the driver's phone when the dispatcher adds or removes a stop on a trip in progress.\n"
+"* a push to the driver's phone when the dispatcher adds or removes a stop on a trip in progress,\n"
+"* open orders: drivers are notified when an order is placed, list the orders no driver has\n"
+"  yet and take one onto their trip of the day, or give it back.\n"
 "\n"
 "Drivers only ever see and change their own trips.\n"
 msgstr ""
@@ -39,6 +41,7 @@ msgstr ""
 
 #. module: h2o_driver
 #: model:ir.model.fields,field_description:h2o_driver.field_h2o_stop__display_name
+#: model:ir.model.fields,field_description:h2o_driver.field_sale_order__display_name
 msgid "Display Name"
 msgstr ""
 
@@ -49,6 +52,7 @@ msgstr ""
 
 #. module: h2o_driver
 #: model:ir.model.fields,field_description:h2o_driver.field_h2o_stop__id
+#: model:ir.model.fields,field_description:h2o_driver.field_sale_order__id
 msgid "ID"
 msgstr ""
 
@@ -56,4 +60,9 @@ msgstr ""
 #: model:ir.module.module,summary:base.module_h2o_driver
 msgid ""
 "JSON API for the H2Open driver app: trips, stops, deliveries and positions"
+msgstr ""
+
+#. module: h2o_driver
+#: model:ir.model,name:h2o_driver.model_sale_order
+msgid "Sales Order"
 msgstr ""

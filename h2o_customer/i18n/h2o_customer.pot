@@ -1,0 +1,395 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* h2o_customer
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 03:42+0000\n"
+"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: h2o_customer
+#: model:ir.module.module,description:base.module_h2o_customer
+msgid ""
+"\n"
+"H2Open customers\n"
+"================\n"
+"* Customer type (home, office, reseller) and payment mode (cash, card, monthly account) on contacts,\n"
+"* delivery zones (il, ilçe/mahalle names, postal codes, delivery days),\n"
+"  matched automatically from the customer's address,\n"
+"* delivery preferences: days, floor, elevator, notes for the driver.\n"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__active
+msgid "Active"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.h2o_zone_view_form
+#: model_terms:ir.ui.view,arch_db:h2o_customer.h2o_zone_view_search
+msgid "Archived"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.h2o_zone_view_form
+msgid "Assign Matching Customers"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields.selection,name:h2o_customer.selection__res_partner__h2o_payment_mode__card
+msgid "Card"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields.selection,name:h2o_customer.selection__res_partner__h2o_payment_mode__cash
+msgid "Cash"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,help:h2o_customer.field_res_partner__h2o_payment_mode
+#: model:ir.model.fields,help:h2o_customer.field_res_users__h2o_payment_mode
+msgid ""
+"Cash and card customers pay on delivery; account customers get a monthly "
+"invoice."
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__code
+msgid "Code"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__color
+msgid "Color"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,help:h2o_customer.field_h2o_zone__district_names
+msgid ""
+"Comma-separated ilçe or mahalle names. A customer whose city or second "
+"address line contains one of them belongs to this zone."
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,help:h2o_customer.field_h2o_zone__zip_codes
+msgid ""
+"Comma-separated postal codes. They are checked before the district names."
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__company_id
+msgid "Company"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model,name:h2o_customer.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__country_id
+msgid "Country"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.actions.act_window,help:h2o_customer.h2o_zone_action
+msgid "Create a delivery zone"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.actions.act_window,help:h2o_customer.h2o_customer_action
+msgid "Create a water customer"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_form_h2o
+msgid "Customer"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__partner_count
+msgid "Customer Count"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_search_h2o
+msgid "Customer Type"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__partner_ids
+#: model:ir.ui.menu,name:h2o_customer.menu_h2o_customer_partners
+#: model_terms:ir.ui.view,arch_db:h2o_customer.h2o_zone_view_form
+msgid "Customers"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_form_h2o
+msgid "Delivery"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__weekday_ids
+msgid "Delivery Days"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_res_partner__h2o_delivery_notes
+#: model:ir.model.fields,field_description:h2o_customer.field_res_users__h2o_delivery_notes
+msgid "Delivery Notes"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model,name:h2o_customer.model_h2o_zone
+#: model:ir.model.fields,field_description:h2o_customer.field_res_partner__h2o_zone_id
+#: model:ir.model.fields,field_description:h2o_customer.field_res_users__h2o_zone_id
+#: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_search_h2o
+msgid "Delivery Zone"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.actions.act_window,name:h2o_customer.h2o_zone_action
+msgid "Delivery Zones"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__display_name
+#: model:ir.model.fields,field_description:h2o_customer.field_res_partner__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__district_names
+msgid "Districts / Neighbourhoods"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_form_h2o
+msgid "Door code, where to leave the bottles, ..."
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_res_partner__h2o_has_elevator
+#: model:ir.model.fields,field_description:h2o_customer.field_res_users__h2o_has_elevator
+msgid "Elevator"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,help:h2o_customer.field_res_partner__h2o_customer_type
+#: model:ir.model.fields,help:h2o_customer.field_res_users__h2o_customer_type
+msgid "Empty when the contact is not a water delivery customer."
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,help:h2o_customer.field_res_partner__h2o_zone_id
+#: model:ir.model.fields,help:h2o_customer.field_res_users__h2o_zone_id
+msgid "Filled automatically from the address when empty."
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_res_partner__h2o_floor
+#: model:ir.model.fields,field_description:h2o_customer.field_res_users__h2o_floor
+msgid "Floor"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.module.module,shortdesc:base.module_h2o_customer
+msgid "H2Open Customers"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields.selection,name:h2o_customer.selection__res_partner__h2o_customer_type__home
+#: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_search_h2o
+msgid "Home"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.actions.act_window,help:h2o_customer.h2o_customer_action
+msgid ""
+"Home, office and reseller customers, with their delivery zone, days and "
+"notes for the driver."
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__id
+#: model:ir.model.fields,field_description:h2o_customer.field_res_partner__id
+msgid "ID"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.h2o_zone_view_form
+msgid "Internal notes about this zone..."
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,help:h2o_customer.field_res_partner__h2o_weekday_ids
+#: model:ir.model.fields,help:h2o_customer.field_res_users__h2o_weekday_ids
+msgid "Leave empty to use the delivery days of the zone."
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields.selection,name:h2o_customer.selection__res_partner__h2o_payment_mode__account
+#: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_search_h2o
+msgid "Monthly Account"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__name
+#: model_terms:ir.ui.view,arch_db:h2o_customer.h2o_customer_view_list
+msgid "Name"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_search_h2o
+msgid "No Zone"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__note
+msgid "Note"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields.selection,name:h2o_customer.selection__res_partner__h2o_customer_type__office
+#: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_search_h2o
+msgid "Office"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_res_partner__h2o_payment_mode
+#: model:ir.model.fields,field_description:h2o_customer.field_res_users__h2o_payment_mode
+msgid "Payment Mode"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__zip_codes
+msgid "Postal Codes"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_res_partner__h2o_weekday_ids
+#: model:ir.model.fields,field_description:h2o_customer.field_res_users__h2o_weekday_ids
+msgid "Preferred Delivery Days"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.h2o_zone_view_search
+msgid "Province"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__state_id
+msgid "Province (İl)"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.h2o_zone_view_form
+msgid ""
+"Put the water customers without a zone whose address matches this zone into "
+"it."
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields.selection,name:h2o_customer.selection__res_partner__h2o_customer_type__reseller
+#: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_search_h2o
+msgid "Reseller"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,help:h2o_customer.field_res_partner__h2o_delivery_notes
+#: model:ir.model.fields,help:h2o_customer.field_res_users__h2o_delivery_notes
+msgid "Shown to the driver: door code, where to leave the bottles, ..."
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.constraint,message:h2o_customer.constraint_h2o_zone_code_company_unique
+msgid "The zone code must be unique per company."
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_res_partner__h2o_customer_type
+#: model:ir.model.fields,field_description:h2o_customer.field_res_users__h2o_customer_type
+msgid "Water Customer Type"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.actions.act_window,name:h2o_customer.h2o_customer_action
+#: model_terms:ir.ui.view,arch_db:h2o_customer.h2o_customer_view_list
+#: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_search_h2o
+msgid "Water Customers"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_form_h2o
+msgid "Water Delivery"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.module.module,summary:base.module_h2o_customer
+msgid "Water delivery customers, delivery zones and delivery preferences"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_form_h2o
+msgid "Zone days"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.ui.menu,name:h2o_customer.menu_h2o_config_zones
+msgid "Zones"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.actions.act_window,help:h2o_customer.h2o_zone_action
+msgid ""
+"Zones group customers by district or postal code and define the days water "
+"is delivered there."
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.h2o_zone_view_form
+msgid "e.g. 34710, 34714"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.h2o_zone_view_form
+msgid "e.g. Kadıköy - Moda"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.h2o_zone_view_form
+msgid "e.g. Kadıköy, Moda, Caferağa"
+msgstr ""

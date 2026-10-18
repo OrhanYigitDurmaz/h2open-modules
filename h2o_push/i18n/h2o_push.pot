@@ -1,0 +1,289 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* h2o_push
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 03:42+0000\n"
+"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: h2o_push
+#: model:ir.module.module,description:base.module_h2o_push
+msgid ""
+"\n"
+"H2Open push notifications\n"
+"=========================\n"
+"* Registers the FCM tokens of the driver and customer apps.\n"
+"* Sends data and notification messages through the FCM HTTP v1 API,\n"
+"  authenticated with a Google service account (OAuth2, JWT RS256).\n"
+"* Keeps a 30-day log of every push sent.\n"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__active
+msgid "Active"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields.selection,name:h2o_push.selection__h2o_push_device__platform__android
+msgid "Android"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__app
+msgid "App"
+msgstr ""
+
+#. module: h2o_push
+#: model_terms:ir.ui.view,arch_db:h2o_push.h2o_push_device_view_form
+#: model_terms:ir.ui.view,arch_db:h2o_push.h2o_push_device_view_search
+msgid "Archived"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model,name:h2o_push.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,help:h2o_push.field_res_config_settings__h2o_push_fcm_service_account
+msgid ""
+"Content of the JSON key file of a Google service account allowed to send "
+"Firebase messages."
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__create_uid
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_log__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__create_date
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_log__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields.selection,name:h2o_push.selection__h2o_push_device__app__customer
+#: model_terms:ir.ui.view,arch_db:h2o_push.h2o_push_device_view_search
+msgid "Customer app"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_log__data
+msgid "Data"
+msgstr ""
+
+#. module: h2o_push
+#: model_terms:ir.ui.view,arch_db:h2o_push.h2o_push_log_view_form
+#: model_terms:ir.ui.view,arch_db:h2o_push.h2o_push_log_view_list
+msgid "Date"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__device_name
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_log__device_id
+msgid "Device"
+msgstr ""
+
+#. module: h2o_push
+#: model_terms:ir.actions.act_window,help:h2o_push.h2o_push_device_action
+msgid ""
+"Devices appear here when a driver or customer signs in to an H2Open app."
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__display_name
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_log__display_name
+#: model:ir.model.fields,field_description:h2o_push.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields.selection,name:h2o_push.selection__h2o_push_device__app__driver
+#: model_terms:ir.ui.view,arch_db:h2o_push.h2o_push_device_view_search
+msgid "Driver app"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_log__error
+msgid "Error"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_res_config_settings__h2o_push_fcm_project_id
+msgid "FCM Project ID"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_res_config_settings__h2o_push_fcm_service_account
+msgid "FCM Service Account"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__token
+msgid "FCM Token"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields.selection,name:h2o_push.selection__h2o_push_log__state__failed
+#: model_terms:ir.ui.view,arch_db:h2o_push.h2o_push_log_view_search
+msgid "Failed"
+msgstr ""
+
+#. module: h2o_push
+#: model_terms:ir.ui.view,arch_db:h2o_push.res_config_settings_view_form
+msgid "Firebase Cloud Messaging"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.module.module,summary:base.module_h2o_push
+msgid "Firebase Cloud Messaging push notifications to the H2Open mobile apps"
+msgstr ""
+
+#. module: h2o_push
+#: model_terms:ir.ui.view,arch_db:h2o_push.res_config_settings_view_form
+msgid ""
+"Firebase project and service account used to send pushes to the mobile apps."
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.module.module,shortdesc:base.module_h2o_push
+msgid "H2Open Push Notifications"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__id
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_log__id
+#: model:ir.model.fields,field_description:h2o_push.field_res_config_settings__id
+msgid "ID"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__last_seen
+msgid "Last Seen"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__write_uid
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_log__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__write_date
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_log__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: h2o_push
+#: model_terms:ir.actions.act_window,help:h2o_push.h2o_push_device_action
+msgid "No device registered yet"
+msgstr ""
+
+#. module: h2o_push
+#: model_terms:ir.actions.act_window,help:h2o_push.h2o_push_log_action
+msgid "No push sent in the last 30 days"
+msgstr ""
+
+#. module: h2o_push
+#: model_terms:ir.ui.view,arch_db:h2o_push.res_config_settings_view_form
+msgid "Paste the service account JSON key"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__platform
+msgid "Platform"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model,name:h2o_push.model_h2o_push_device
+msgid "Push Device"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.actions.act_window,name:h2o_push.h2o_push_device_action
+#: model:ir.ui.menu,name:h2o_push.menu_h2o_push_device
+msgid "Push Devices"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.actions.act_window,name:h2o_push.h2o_push_log_action
+#: model:ir.ui.menu,name:h2o_push.menu_h2o_push_log
+msgid "Push Log"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model,name:h2o_push.model_h2o_push_log
+msgid "Push Notification Log"
+msgstr ""
+
+#. module: h2o_push
+#: model_terms:ir.ui.view,arch_db:h2o_push.res_config_settings_view_form
+msgid "Push notifications"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields.selection,name:h2o_push.selection__h2o_push_log__state__sent
+msgid "Sent"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_log__state
+msgid "State"
+msgstr ""
+
+#. module: h2o_push
+#. odoo-python
+#: code:addons/h2o_push/models/h2o_push_device.py:0
+msgid "The FCM project ID is not configured."
+msgstr ""
+
+#. module: h2o_push
+#. odoo-python
+#: code:addons/h2o_push/models/h2o_push_device.py:0
+msgid "The FCM service account has no client_email or private_key."
+msgstr ""
+
+#. module: h2o_push
+#. odoo-python
+#: code:addons/h2o_push/models/h2o_push_device.py:0
+msgid "The FCM service account is not configured."
+msgstr ""
+
+#. module: h2o_push
+#. odoo-python
+#: code:addons/h2o_push/models/h2o_push_device.py:0
+msgid "The FCM service account is not valid JSON."
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.constraint,message:h2o_push.constraint_h2o_push_device_token_unique
+msgid "This push token is already registered."
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_device__user_id
+#: model:ir.model.fields,field_description:h2o_push.field_h2o_push_log__user_id
+#: model_terms:ir.ui.view,arch_db:h2o_push.h2o_push_device_view_search
+msgid "User"
+msgstr ""
+
+#. module: h2o_push
+#: model_terms:ir.ui.view,arch_db:h2o_push.res_config_settings_view_form
+msgid "h2open-12345"
+msgstr ""
+
+#. module: h2o_push
+#: model:ir.model.fields.selection,name:h2o_push.selection__h2o_push_device__platform__ios
+msgid "iOS"
+msgstr ""

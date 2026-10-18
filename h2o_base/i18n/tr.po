@@ -1,0 +1,334 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* h2o_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 03:42+0000\n"
+"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: h2o_base
+#: model:ir.module.module,description:base.module_h2o_base
+msgid ""
+"\n"
+"H2Open base\n"
+"===========\n"
+"Common foundation for every H2Open module:\n"
+"\n"
+"* the H2Open top menu and its sections,\n"
+"* security groups (driver, dispatcher, accountant, manager),\n"
+"* weekdays used by zones, routes, customers and subscriptions,\n"
+"* shared company settings (order cut-off hour),\n"
+"* the bearer-token API used by the driver and customer mobile apps.\n"
+msgstr ""
+"\n"
+"H2Open temel modül\n"
+"==================\n"
+"Tüm H2Open modüllerinin ortak temeli:\n"
+"\n"
+"* H2Open üst menüsü ve bölümleri,\n"
+"* güvenlik grupları (şoför, sevkiyat sorumlusu, muhasebeci, yönetici),\n"
+"* bölgeler, güzergahlar, müşteriler ve abonelikler için kullanılan haftanın günleri,\n"
+"* ortak şirket ayarları (sipariş kesim saati),\n"
+"* şoför ve müşteri mobil uygulamalarının kullandığı bearer token API'si.\n"
+
+#. module: h2o_base
+#: model:res.groups,name:h2o_base.group_h2o_accountant
+msgid "Accountant"
+msgstr "Muhasebeci"
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_res_company__h2o_app_token_days
+#: model:ir.model.fields,field_description:h2o_base.field_res_config_settings__h2o_app_token_days
+msgid "App Login Validity (days)"
+msgstr "Uygulama Oturum Süresi (gün)"
+
+#. module: h2o_base
+#: model:ir.ui.menu,name:h2o_base.menu_h2o_billing
+msgid "Billing"
+msgstr "Faturalama"
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__code
+msgid "Code"
+msgstr "Kod"
+
+#. module: h2o_base
+#: model:ir.model,name:h2o_base.model_res_company
+msgid "Company"
+msgstr "Firma"
+
+#. module: h2o_base
+#: model:ir.model,name:h2o_base.model_res_config_settings
+msgid "Config Settings"
+msgstr "Yapılandırma Ayarları"
+
+#. module: h2o_base
+#: model:ir.ui.menu,name:h2o_base.menu_h2o_config
+msgid "Configuration"
+msgstr "Yapılandırma"
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__create_uid
+msgid "Created by"
+msgstr "Oluşturan"
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__create_date
+msgid "Created on"
+msgstr "Oluşturulma"
+
+#. module: h2o_base
+#: model:ir.ui.menu,name:h2o_base.menu_h2o_customers
+msgid "Customers"
+msgstr "Müşteriler"
+
+#. module: h2o_base
+#: model_terms:ir.ui.view,arch_db:h2o_base.res_config_settings_view_form
+msgid "Days before a driver or customer app has to sign in again."
+msgstr ""
+"Şoför veya müşteri uygulamasının yeniden giriş yapması gerekene kadar geçen "
+"gün sayısı."
+
+#. module: h2o_base
+#: model:res.groups,name:h2o_base.group_h2o_dispatcher
+msgid "Dispatcher"
+msgstr "Sevkiyat Sorumlusu"
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__display_name
+#: model:ir.model.fields,field_description:h2o_base.field_res_company__display_name
+#: model:ir.model.fields,field_description:h2o_base.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:h2o_base.field_res_users__display_name
+msgid "Display Name"
+msgstr "İsim Göster"
+
+#. module: h2o_base
+#: model:res.groups,name:h2o_base.group_h2o_driver
+msgid "Driver"
+msgstr "Şoför"
+
+#. module: h2o_base
+#: model:ir.model.constraint,message:h2o_base.constraint_h2o_weekday_code_unique
+msgid "Each weekday can only exist once."
+msgstr "Her gün yalnızca bir kez tanımlanabilir."
+
+#. module: h2o_base
+#: model:h2o.weekday,name:h2o_base.weekday_fri
+msgid "Friday"
+msgstr "Cuma"
+
+#. module: h2o_base
+#: model:res.groups,comment:h2o_base.group_h2o_manager
+msgid "Full access to H2Open, including configuration."
+msgstr "Yapılandırma dahil H2Open'a tam erişim."
+
+#. module: h2o_base
+#: model:ir.module.category,name:h2o_base.module_category_h2open
+#: model:ir.ui.menu,name:h2o_base.menu_h2o_root
+#: model_terms:ir.ui.view,arch_db:h2o_base.res_config_settings_view_form
+msgid "H2Open"
+msgstr ""
+
+#. module: h2o_base
+#: model:ir.module.module,shortdesc:base.module_h2o_base
+msgid "H2Open Base"
+msgstr "H2Open Temel"
+
+#. module: h2o_base
+#: model:ir.model.fields,help:h2o_base.field_res_company__h2o_app_token_days
+#: model:ir.model.fields,help:h2o_base.field_res_config_settings__h2o_app_token_days
+msgid ""
+"How long a mobile app login stays valid before the user has to sign in "
+"again."
+msgstr ""
+"Mobil uygulama oturumunun, kullanıcının yeniden giriş yapması gerekmeden "
+"önce ne kadar geçerli kalacağı."
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__id
+#: model:ir.model.fields,field_description:h2o_base.field_res_company__id
+#: model:ir.model.fields,field_description:h2o_base.field_res_config_settings__id
+#: model:ir.model.fields,field_description:h2o_base.field_res_users__id
+msgid "ID"
+msgstr ""
+
+#. module: h2o_base
+#: model:res.groups,comment:h2o_base.group_h2o_accountant
+msgid "Invoices, deposits, monthly statements and driver cash handovers."
+msgstr "Faturalar, depozitolar, aylık ekstreler ve şoför kasa teslimleri."
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__write_uid
+msgid "Last Updated by"
+msgstr "Son Güncelleyen"
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__write_date
+msgid "Last Updated on"
+msgstr "Son Güncelleme"
+
+#. module: h2o_base
+#: model_terms:ir.ui.view,arch_db:h2o_base.res_config_settings_view_form
+msgid "Login validity"
+msgstr "Oturum süresi"
+
+#. module: h2o_base
+#: model:res.groups,name:h2o_base.group_h2o_manager
+msgid "Manager"
+msgstr "Yönetici"
+
+#. module: h2o_base
+#: model:ir.module.module,summary:base.module_h2o_base
+msgid ""
+"Menus, security groups, shared settings and app API for H2Open water "
+"delivery"
+msgstr ""
+"H2Open su dağıtımı için menüler, güvenlik grupları, ortak ayarlar ve "
+"uygulama API'si"
+
+#. module: h2o_base
+#: model_terms:ir.ui.view,arch_db:h2o_base.res_config_settings_view_form
+msgid "Mobile apps"
+msgstr "Mobil uygulamalar"
+
+#. module: h2o_base
+#: model:h2o.weekday,name:h2o_base.weekday_mon
+msgid "Monday"
+msgstr "Pazartesi"
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__name
+msgid "Name"
+msgstr "Ad"
+
+#. module: h2o_base
+#: model:res.groups.privilege,placeholder:h2o_base.res_groups_privilege_h2open
+msgid "No"
+msgstr "Yok"
+
+#. module: h2o_base
+#: model:ir.ui.menu,name:h2o_base.menu_h2o_operations
+msgid "Operations"
+msgstr "Operasyon"
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_res_company__h2o_order_cutoff_hour
+#: model:ir.model.fields,field_description:h2o_base.field_res_config_settings__h2o_order_cutoff_hour
+msgid "Order Cut-off Hour"
+msgstr "Sipariş Kesim Saati"
+
+#. module: h2o_base
+#: model_terms:ir.ui.view,arch_db:h2o_base.res_config_settings_view_form
+msgid "Order cut-off hour"
+msgstr "Sipariş kesim saati"
+
+#. module: h2o_base
+#: model_terms:ir.ui.view,arch_db:h2o_base.res_config_settings_view_form
+msgid "Orders"
+msgstr "Siparişler"
+
+#. module: h2o_base
+#: model:ir.model.fields,help:h2o_base.field_res_company__h2o_order_cutoff_hour
+#: model:ir.model.fields,help:h2o_base.field_res_config_settings__h2o_order_cutoff_hour
+msgid ""
+"Orders taken after this hour (company time zone) are delivered on the next "
+"delivery day."
+msgstr ""
+"Bu saatten sonra alınan siparişler (şirket saat dilimi) bir sonraki teslimat"
+" gününde teslim edilir."
+
+#. module: h2o_base
+#: model_terms:ir.ui.view,arch_db:h2o_base.res_config_settings_view_form
+msgid "Orders taken after this hour go to the next delivery day."
+msgstr "Bu saatten sonra alınan siparişler bir sonraki teslimat gününe kalır."
+
+#. module: h2o_base
+#: model:ir.model.fields,help:h2o_base.field_h2o_weekday__code
+msgid "Python weekday number: 0 is Monday, 6 is Sunday."
+msgstr "Python gün numarası: 0 Pazartesi, 6 Pazar."
+
+#. module: h2o_base
+#: model:ir.ui.menu,name:h2o_base.menu_h2o_reporting
+msgid "Reporting"
+msgstr "Raporlama"
+
+#. module: h2o_base
+#: model:h2o.weekday,name:h2o_base.weekday_sat
+msgid "Saturday"
+msgstr "Cumartesi"
+
+#. module: h2o_base
+#: model:ir.actions.act_window,name:h2o_base.h2o_config_settings_action
+#: model:ir.ui.menu,name:h2o_base.menu_h2o_config_settings
+msgid "Settings"
+msgstr "Ayarlar"
+
+#. module: h2o_base
+#: model:h2o.weekday,name:h2o_base.weekday_sun
+msgid "Sunday"
+msgstr "Pazar"
+
+#. module: h2o_base
+#: model:res.groups,comment:h2o_base.group_h2o_dispatcher
+msgid "Takes orders, manages customers, plans routes and trips."
+msgstr "Sipariş alır, müşterileri yönetir, güzergahları ve seferleri planlar."
+
+#. module: h2o_base
+#: model:h2o.weekday,name:h2o_base.weekday_thu
+msgid "Thursday"
+msgstr "Perşembe"
+
+#. module: h2o_base
+#: model:h2o.weekday,name:h2o_base.weekday_tue
+msgid "Tuesday"
+msgstr "Salı"
+
+#. module: h2o_base
+#: model:ir.model,name:h2o_base.model_res_users
+msgid "User"
+msgstr "Kullanıcı"
+
+#. module: h2o_base
+#: model:res.groups,comment:h2o_base.group_h2o_driver
+msgid ""
+"Uses the driver app: sees own trips and stops, delivers, collects empties "
+"and payments."
+msgstr ""
+"Şoför uygulamasını kullanır: kendi seferlerini ve duraklarını görür, "
+"teslimat yapar, boş damacana ve ödeme toplar."
+
+#. module: h2o_base
+#: model:res.groups.privilege,name:h2o_base.res_groups_privilege_h2open
+msgid "Water Delivery"
+msgstr "Su Dağıtımı"
+
+#. module: h2o_base
+#: model:h2o.weekday,name:h2o_base.weekday_wed
+msgid "Wednesday"
+msgstr "Çarşamba"
+
+#. module: h2o_base
+#: model:ir.model,name:h2o_base.model_h2o_weekday
+msgid "Weekday"
+msgstr "Gün"
+
+#. module: h2o_base
+#: model:ir.model.constraint,message:h2o_base.constraint_h2o_weekday_code_range
+msgid "Weekday code must be between 0 and 6."
+msgstr "Gün kodu 0 ile 6 arasında olmalıdır."
+
+#. module: h2o_base
+#: model:ir.actions.act_window,name:h2o_base.h2o_weekday_action
+#: model:ir.ui.menu,name:h2o_base.menu_h2o_config_weekdays
+msgid "Weekdays"
+msgstr "Günler"

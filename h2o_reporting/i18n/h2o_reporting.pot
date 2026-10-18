@@ -1,0 +1,260 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* h2o_reporting
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 03:42+0000\n"
+"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: h2o_reporting
+#: model:ir.module.module,description:base.module_h2o_reporting
+msgid ""
+"\n"
+"H2Open reporting\n"
+"================\n"
+"Pivot and graph reports for the water delivery business:\n"
+"\n"
+"* deliveries per day, zone, route and driver,\n"
+"* bottles outstanding per customer and zone,\n"
+"* cash collected at the door and handed in by drivers,\n"
+"* route performance: stops per trip and delivery success rate.\n"
+"\n"
+"Installing this module installs every H2Open module.\n"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__bottle_qty
+msgid "Bottles Delivered"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.actions.act_window,name:h2o_reporting.h2o_report_bottles_action
+#: model:ir.ui.menu,name:h2o_reporting.menu_h2o_report_bottles
+#: model_terms:ir.ui.view,arch_db:h2o_reporting.h2o_container_balance_view_graph
+msgid "Bottles Outstanding"
+msgstr ""
+
+#. module: h2o_reporting
+#: model_terms:ir.ui.view,arch_db:h2o_reporting.h2o_report_delivery_view_search
+msgid "Card"
+msgstr ""
+
+#. module: h2o_reporting
+#: model_terms:ir.ui.view,arch_db:h2o_reporting.h2o_report_delivery_view_search
+msgid "Cash"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.actions.act_window,name:h2o_reporting.h2o_report_cash_action
+#: model:ir.ui.menu,name:h2o_reporting.menu_h2o_report_cash
+msgid "Cash Collected"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.actions.act_window,name:h2o_reporting.h2o_report_handover_action
+#: model:ir.ui.menu,name:h2o_reporting.menu_h2o_report_handovers
+#: model_terms:ir.ui.view,arch_db:h2o_reporting.h2o_cash_handover_view_pivot
+msgid "Cash Handovers"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__payment_amount
+msgid "Collected"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__company_id
+msgid "Company"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__partner_id
+msgid "Customer"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__customer_type
+#: model_terms:ir.ui.view,arch_db:h2o_reporting.h2o_report_delivery_view_search
+msgid "Customer Type"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__date
+#: model_terms:ir.ui.view,arch_db:h2o_reporting.h2o_report_delivery_view_search
+msgid "Date"
+msgstr ""
+
+#. module: h2o_reporting
+#: model_terms:ir.ui.view,arch_db:h2o_reporting.h2o_report_delivery_view_search
+msgid "Day"
+msgstr ""
+
+#. module: h2o_reporting
+#: model_terms:ir.ui.view,arch_db:h2o_reporting.h2o_report_delivery_view_search
+msgid "Delivered"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__delivered_count
+msgid "Delivered Stops"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.actions.act_window,name:h2o_reporting.h2o_report_delivery_action
+#: model:ir.ui.menu,name:h2o_reporting.menu_h2o_report_deliveries
+#: model_terms:ir.ui.view,arch_db:h2o_reporting.h2o_report_delivery_view_graph
+msgid "Deliveries"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.module.module,summary:base.module_h2o_reporting
+msgid "Deliveries, bottles outstanding, cash collected and route performance"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model,name:h2o_reporting.model_h2o_report_delivery
+#: model_terms:ir.ui.view,arch_db:h2o_reporting.h2o_report_delivery_view_pivot
+msgid "Delivery Analysis"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__driver_id
+#: model_terms:ir.ui.view,arch_db:h2o_reporting.h2o_report_delivery_view_search
+msgid "Driver"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__empties_collected
+msgid "Empties Collected"
+msgstr ""
+
+#. module: h2o_reporting
+#: model_terms:ir.ui.view,arch_db:h2o_reporting.h2o_report_delivery_view_search
+msgid "Failed or Skipped"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__failure_reason
+#: model_terms:ir.ui.view,arch_db:h2o_reporting.h2o_report_delivery_view_search
+msgid "Failure Reason"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.module.module,shortdesc:base.module_h2o_reporting
+msgid "H2Open Reporting"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__id
+msgid "ID"
+msgstr ""
+
+#. module: h2o_reporting
+#: model_terms:ir.actions.act_window,help:h2o_reporting.h2o_report_delivery_action
+msgid "No deliveries yet"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,help:h2o_reporting.field_h2o_report_delivery__packaged_qty
+msgid "Non-returnable water delivered, in units of the order line."
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__packaged_qty
+msgid "Packaged Units Delivered"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__payment_method
+#: model_terms:ir.ui.view,arch_db:h2o_reporting.h2o_report_delivery_view_search
+msgid "Payment Method"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,help:h2o_reporting.field_h2o_report_delivery__bottle_qty
+msgid "Returnable water bottles delivered."
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__route_id
+#: model_terms:ir.ui.view,arch_db:h2o_reporting.h2o_report_delivery_view_search
+msgid "Route"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.actions.act_window,name:h2o_reporting.h2o_report_route_action
+#: model:ir.ui.menu,name:h2o_reporting.menu_h2o_report_routes
+msgid "Route Performance"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,help:h2o_reporting.field_h2o_report_delivery__success_rate
+msgid ""
+"Share of stops delivered; failed and skipped stops count as misses, pending "
+"stops are left out."
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__state
+msgid "Status"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__stop_id
+msgid "Stop"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__stop_count
+msgid "Stops"
+msgstr ""
+
+#. module: h2o_reporting
+#: model_terms:ir.actions.act_window,help:h2o_reporting.h2o_report_delivery_action
+msgid "Stops of planned and finished trips show up here."
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__success_rate
+msgid "Success Rate (%)"
+msgstr ""
+
+#. module: h2o_reporting
+#: model_terms:ir.ui.view,arch_db:h2o_reporting.h2o_report_delivery_view_list
+msgid "Total"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__trip_id
+msgid "Trip"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__vehicle_id
+msgid "Vehicle"
+msgstr ""
+
+#. module: h2o_reporting
+#: model:ir.model.fields,field_description:h2o_reporting.field_h2o_report_delivery__zone_id
+#: model_terms:ir.ui.view,arch_db:h2o_reporting.h2o_report_delivery_view_search
+msgid "Zone"
+msgstr ""

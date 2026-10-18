@@ -1,0 +1,1098 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* h2o_dispatch
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 03:42+0000\n"
+"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: h2o_dispatch
+#: model:ir.module.module,description:base.module_h2o_dispatch
+msgid ""
+"\n"
+"H2Open dispatch\n"
+"===============\n"
+"* Delivery routes grouping zones, with their days, vehicle and driver,\n"
+"* daily trips: a driver and a vehicle load out, visit ordered stops and come back\n"
+"  with the empties and the cash,\n"
+"* delivery stops: delivered quantities, empties collected, payment, signature and photo;\n"
+"  a delivery updates the order and the customer's bottle ledger,\n"
+"* failed or skipped stops send the order back to planning,\n"
+"* a planning wizard that fills the day's trips with the orders to deliver.\n"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.actions.act_window,help:h2o_dispatch.h2o_route_action
+msgid ""
+"A route groups delivery zones served by one vehicle and driver on its "
+"running days."
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_trip.py:0
+msgid "A trip with delivered stops cannot be cancelled; close it instead."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__active
+msgid "Active"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.actions.act_window,help:h2o_dispatch.h2o_vehicle_action
+msgid "Add a delivery vehicle"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__payment_amount
+msgid "Amount Collected"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__amount_due
+msgid "Amount Due"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_route_view_form
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_route_view_search
+msgid "Archived"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__load_qty
+msgid "Bottles Loaded"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__planned_bottle_qty
+msgid "Bottles Planned"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_form
+msgid "Cancel"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_trip__state__cancelled
+msgid "Cancelled"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_fleet_vehicle__h2o_capacity
+msgid "Capacity (bottles)"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_stop__payment_method__card
+msgid "Card"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_stop__payment_method__cash
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_list
+msgid "Cash"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__cash_expected
+msgid "Cash Expected"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__cash_handed_in
+msgid "Cash Handed In"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_trip__cash_expected
+msgid "Cash collected on the delivered stops, to be handed in by the driver."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_trip__cash_handed_in
+msgid "Cash the driver handed in after the trip."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_form
+msgid "Close"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_trip__state__closed
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_search
+msgid "Closed"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__code
+msgid "Code"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_list
+msgid "Collected"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__color
+msgid "Color"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__company_id
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__company_id
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__company_id
+msgid "Company"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_plan_view_form
+msgid ""
+"Confirmed orders still to plan in the zones of the selected routes, with a delivery\n"
+"                    date up to this day, are added as stops to the day's planned trip of their route."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.actions.act_window,help:h2o_dispatch.h2o_route_action
+msgid "Create a delivery route"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__create_uid
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__create_uid
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop_line__create_uid
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__create_uid
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip_plan__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__create_date
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__create_date
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop_line__create_date
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__create_date
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip_plan__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__currency_id
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__commercial_partner_id
+msgid "Customer"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__date
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__date
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip_plan__date
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_search
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_search
+msgid "Date"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_route__weekday_ids
+msgid "Days the route runs. Leave empty to run every day."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_form
+msgid "Deliver as Planned"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_form
+msgid "Deliver the planned quantities and collect the empties expected."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop_line__qty_delivered
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__delivered_count
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_stop__state__delivered
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_search
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_list
+msgid "Delivered"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_stop.py:0
+msgid "Delivered quantities must be positive numbers."
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_stop.py:0
+msgid "Delivered stops cannot be deleted."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__partner_id
+msgid "Delivery Address"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model,name:h2o_dispatch.model_h2o_route
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_zone__h2o_route_id
+msgid "Delivery Route"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model,name:h2o_dispatch.model_h2o_stop
+msgid "Delivery Stop"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model,name:h2o_dispatch.model_h2o_stop_line
+msgid "Delivery Stop Product"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_sale_order__h2o_stop_ids
+msgid "Delivery Stops"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model,name:h2o_dispatch.model_h2o_trip
+#: model:ir.model.fields,field_description:h2o_dispatch.field_sale_order__h2o_trip_id
+msgid "Delivery Trip"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.actions.act_window,name:h2o_dispatch.h2o_vehicle_action
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.fleet_vehicle_view_list_h2o
+msgid "Delivery Vehicles"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model,name:h2o_dispatch.model_h2o_zone
+msgid "Delivery Zone"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.module.module,summary:base.module_h2o_dispatch
+msgid "Delivery routes, vehicles, daily trips and delivery stops"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.actions.act_window,help:h2o_dispatch.h2o_vehicle_action
+msgid ""
+"Delivery vehicles carry the trips; give them a capacity and a usual driver."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_plan_view_form
+msgid "Discard"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_fleet_vehicle__display_name
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__display_name
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__display_name
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop_line__display_name
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__display_name
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip_plan__display_name
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_zone__display_name
+#: model:ir.model.fields,field_description:h2o_dispatch.field_sale_order__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__done_at
+msgid "Done At"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__driver_id
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__driver_id
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__driver_id
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_search
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_search
+msgid "Driver"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_fleet_vehicle__h2o_driver_user_id
+msgid ""
+"Driver app user who usually drives this vehicle; proposed on its trips."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_route__driver_id
+msgid ""
+"Driver of the route's trips. Defaults to the usual driver of the vehicle."
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_stop.py:0
+msgid "Drivers can only update their pending stops through the driver app."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_list
+msgid "Due"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_list
+msgid "Empties"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__empties_collected
+msgid "Empties Collected"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__returned_empty_qty
+msgid "Empties Returned"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_stop.py:0
+msgid "Empties collected must be a positive whole number."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__empties_product_id
+msgid "Empty Bottle"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_trip__returned_empty_qty
+msgid ""
+"Empty bottles brought back to the depot. Computed when the trip closes."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_stop__empties_collected
+msgid ""
+"Empty bottles taken back. Defaults to the empties expected on the order when"
+" delivering."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_route_view_form
+msgid "Every day"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__failed_count
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_stop__state__failed
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_list
+msgid "Failed"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_search
+msgid "Failed or Skipped"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__failure_note
+msgid "Failure Note"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__failure_reason
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_search
+msgid "Failure Reason"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_stop__zone_id
+msgid "Filled automatically from the address when empty."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__returned_full_qty
+msgid "Full Bottles Returned"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_trip__returned_full_qty
+msgid "Full bottles brought back to the depot. Computed when the trip closes."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_trip__load_qty
+msgid ""
+"Full bottles loaded on the vehicle. Set to the bottles planned when loading "
+"if empty."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_trip__planned_bottle_qty
+msgid "Full returnable bottles to deliver on the pending and delivered stops."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.module.module,shortdesc:base.module_h2o_dispatch
+msgid "H2Open Dispatch"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_fleet_vehicle__id
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__id
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__id
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop_line__id
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__id
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip_plan__id
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_zone__id
+#: model:ir.model.fields,field_description:h2o_dispatch.field_sale_order__id
+msgid "ID"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_trip__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_trip__message_has_error
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_trip__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_search
+msgid "In Progress"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_route_view_form
+msgid "Internal notes about this route..."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__last_latitude
+msgid "Last Latitude"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__last_longitude
+msgid "Last Longitude"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__last_position_at
+msgid "Last Position"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__write_uid
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__write_uid
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop_line__write_uid
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__write_uid
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip_plan__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__write_date
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__write_date
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop_line__write_date
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__write_date
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip_plan__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__latitude
+msgid "Latitude"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_form
+msgid "Load"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_trip__state__loaded
+msgid "Loaded"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__longitude
+msgid "Longitude"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_search
+msgid "My Trips"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__name
+msgid "Name"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_stop__failure_reason__no_access
+msgid "No Access"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_stop__failure_reason__no_payment
+msgid "No Payment"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.actions.act_window,help:h2o_dispatch.h2o_stop_action
+msgid "No delivery stops yet"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.actions.act_window,help:h2o_dispatch.h2o_trip_action
+msgid "No trips planned"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_stop__failure_reason__not_home
+msgid "Nobody Home"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_stop__payment_method__none
+msgid "None"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__note
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__note
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__note
+msgid "Note"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_route_view_form
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_form
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_form
+msgid "Notes"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_form
+msgid "Notes about this trip..."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_form
+msgid "Notes from the driver..."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_fleet_vehicle__h2o_capacity
+msgid "Number of 19 L bottles the vehicle can carry."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_trip__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_trip__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_stop__payment_method__account
+msgid "On Account"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_trip__state__on_road
+msgid "On the Road"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_trip.py:0
+msgid "Only dispatchers can do this."
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_trip.py:0
+msgid "Only planned or cancelled trips can be deleted."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__order_id
+msgid "Order"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop_line__sale_line_id
+msgid "Order Line"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_stop__amount_due
+msgid ""
+"Order total, taxes included, for the quantities delivered (planned while "
+"pending)."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_stop__failure_reason__other
+msgid "Other"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_stop__payment_amount
+msgid ""
+"Paid on delivery. Defaults to the amount due for cash and card payments."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__payment_method
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_search
+msgid "Payment Method"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__pending_count
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_stop__state__pending
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_search
+msgid "Pending"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_form
+msgid "Pending stops will be skipped and their orders planned again."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__photo
+msgid "Photo"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_plan_view_form
+msgid "Plan"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model,name:h2o_dispatch.model_h2o_trip_plan
+msgid "Plan Delivery Trips"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.actions.act_window,name:h2o_dispatch.h2o_trip_plan_action
+#: model:ir.ui.menu,name:h2o_dispatch.menu_h2o_trip_plan
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_plan_view_form
+msgid "Plan Trips"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop_line__qty_planned
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_trip__state__planned
+msgid "Planned"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop_line__product_id
+msgid "Product"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_stop.py:0
+msgid "Product %s is not on this stop."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__line_ids
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_form
+msgid "Products"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_form
+msgid "Proof of Delivery"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__name
+msgid "Reference"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_stop__failure_reason__refused
+msgid "Refused"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_form
+msgid "Reset to Planned"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__route_id
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_search
+msgid "Route"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_zone__h2o_route_id
+msgid "Route whose trips deliver this zone."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.actions.act_window,name:h2o_dispatch.h2o_route_action
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip_plan__route_ids
+#: model:ir.ui.menu,name:h2o_dispatch.menu_h2o_config_routes
+msgid "Routes"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_trip_plan__route_ids
+msgid "Routes to plan. Defaults to the routes running on that day."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__weekday_ids
+msgid "Running Days"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model,name:h2o_dispatch.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/wizard/h2o_trip_plan.py:0
+msgid "Select the routes to plan."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__sequence
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_trip.py:0
+msgid "Set a vehicle and a driver on trip %s before loading it."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__signature
+msgid "Signature"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_form
+msgid "Skip"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields.selection,name:h2o_dispatch.selection__h2o_stop__state__skipped
+msgid "Skipped"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_form
+msgid "Start"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_stop.py:0
+msgid "Start trip %s before delivering, failing or skipping its stops."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__state
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__state
+msgid "State"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_search
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_search
+msgid "Status"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop_line__stop_id
+msgid "Stop"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_stop.py:0
+msgid "Stop %s is already done."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.actions.act_window,name:h2o_dispatch.h2o_stop_action
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__stop_ids
+#: model:ir.ui.menu,name:h2o_dispatch.menu_h2o_stops
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_form
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_list
+msgid "Stops"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__stop_count
+msgid "Stops Count"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.actions.act_window,help:h2o_dispatch.h2o_stop_action
+msgid "Stops are added to trips by the planning, or by hand on a trip."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_h2o_trip__failed_count
+msgid "Stops failed or skipped."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.constraint,message:h2o_dispatch.constraint_h2o_route_code_company_unique
+msgid "The route code must be unique per company."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_fleet_vehicle__h2o_is_delivery_vehicle
+msgid "The vehicle can be used for water delivery trips."
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/wizard/h2o_trip_plan.py:0
+msgid "There is nothing to plan on these routes for this day."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__time_window
+msgid "Time Window"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_search
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_search
+msgid "Today"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__trip_id
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_stop_view_search
+msgid "Trip"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_trip.py:0
+msgid "Trip %(trip)s cannot be %(action)s in state %(state)s."
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_trip.py:0
+msgid "Trip %(trip)s still has %(count)s stop(s) to deliver, fail or skip."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__trip_count
+msgid "Trip Count"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,help:h2o_dispatch.field_sale_order__h2o_trip_id
+msgid "Trip of the order's last delivery stop."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.actions.act_window,name:h2o_dispatch.h2o_trip_action
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__trip_ids
+#: model:ir.ui.menu,name:h2o_dispatch.menu_h2o_trips
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_route_view_form
+msgid "Trips"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop_line__product_uom_id
+msgid "Unit"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_stop.py:0
+msgid "Unknown delivery values: %s"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_stop.py:0
+msgid "Unknown failure reason: %s"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.actions.act_window,help:h2o_dispatch.h2o_trip_action
+msgid "Use Plan Trips to fill the day's trips with the orders to deliver."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_fleet_vehicle__h2o_driver_user_id
+msgid "Usual Driver"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model,name:h2o_dispatch.model_fleet_vehicle
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__vehicle_id
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_trip__vehicle_id
+msgid "Vehicle"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.ui.menu,name:h2o_dispatch.menu_h2o_config_vehicles
+msgid "Vehicles"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_fleet_vehicle__h2o_is_delivery_vehicle
+msgid "Water Delivery Vehicle"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_trip.py:0
+msgid "You can only act on your own trips."
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_stop__zone_id
+msgid "Zone"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model:ir.model.fields,field_description:h2o_dispatch.field_h2o_route__zone_ids
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_route_view_form
+msgid "Zones"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_trip.py:0
+msgid "cancelled"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_trip.py:0
+msgid "closed"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_route_view_form
+msgid "e.g. Kadıköy - Üsküdar"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_kanban
+msgid "failed"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_trip.py:0
+msgid "loaded"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_trip.py:0
+msgid "reset to planned"
+msgstr ""
+
+#. module: h2o_dispatch
+#. odoo-python
+#: code:addons/h2o_dispatch/models/h2o_trip.py:0
+msgid "started"
+msgstr ""
+
+#. module: h2o_dispatch
+#: model_terms:ir.ui.view,arch_db:h2o_dispatch.h2o_trip_view_kanban
+msgid "stops delivered"
+msgstr ""

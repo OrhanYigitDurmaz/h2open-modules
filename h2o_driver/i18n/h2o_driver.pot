@@ -1,0 +1,59 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* h2o_driver
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 03:42+0000\n"
+"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: h2o_driver
+#: model:ir.module.module,description:base.module_h2o_driver
+msgid ""
+"\n"
+"H2Open driver app API\n"
+"=====================\n"
+"JSON endpoints under /h2o/api/v1/driver/ used by the Android driver app:\n"
+"\n"
+"* the driver's trips of a day and their ordered stops, with everything needed at the door\n"
+"  (address, phone, notes, products, bottle balance, amount due, coordinates),\n"
+"* start and close a trip, deliver, fail or skip a stop, reorder the remaining stops,\n"
+"* report the vehicle position,\n"
+"* a push to the driver's phone when the dispatcher adds or removes a stop on a trip in progress.\n"
+"\n"
+"Drivers only ever see and change their own trips.\n"
+msgstr ""
+
+#. module: h2o_driver
+#: model:ir.model,name:h2o_driver.model_h2o_stop
+msgid "Delivery Stop"
+msgstr ""
+
+#. module: h2o_driver
+#: model:ir.model.fields,field_description:h2o_driver.field_h2o_stop__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: h2o_driver
+#: model:ir.module.module,shortdesc:base.module_h2o_driver
+msgid "H2Open Driver App API"
+msgstr ""
+
+#. module: h2o_driver
+#: model:ir.model.fields,field_description:h2o_driver.field_h2o_stop__id
+msgid "ID"
+msgstr ""
+
+#. module: h2o_driver
+#: model:ir.module.module,summary:base.module_h2o_driver
+msgid ""
+"JSON API for the H2Open driver app: trips, stops, deliveries and positions"
+msgstr ""

@@ -1,0 +1,375 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* h2o_stock
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 03:42+0000\n"
+"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: h2o_stock
+#: model:ir.module.module,description:base.module_h2o_stock
+msgid ""
+"\n"
+"H2Open stock\n"
+"============\n"
+"* Water and empty bottle products are storable: the warehouse knows its full and empty bottles,\n"
+"* one stock location per delivery vehicle, under its depot warehouse,\n"
+"* trip load lines: products planned from the stops, loaded, delivered, empties collected and returned,\n"
+"* stock moves once per trip, never per stop: a load-out transfer when the trip is loaded and, when it\n"
+"  closes, the deliveries, the empties taken back and the return of what is left to the depot,\n"
+"* vehicle stock for dispatchers.\n"
+"\n"
+"Sale orders do not create their own transfers (``sale_stock`` is not used): the trips move the goods.\n"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.constraint,message:h2o_stock.constraint_h2o_trip_load_line_trip_product_uniq
+msgid "A product can only be once on the load of a trip."
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__qty_collected
+msgid "Collected"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__company_id
+msgid "Company"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_h2o_trip_load_line__product_uom_id
+msgid "Default unit of measure used for all stock operations."
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__qty_delivered
+msgid "Delivered"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields.selection,name:h2o_stock.selection__stock_picking__h2o_trip_role__delivery
+msgid "Deliveries"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_h2o_route
+msgid "Delivery Route"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_h2o_stop_line
+msgid "Delivery Stop Product"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_h2o_trip
+msgid "Delivery Trip"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_location__h2o_vehicle_id
+msgid "Delivery Vehicle"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_fleet_vehicle__h2o_warehouse_id
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_route__h2o_warehouse_id
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip__h2o_warehouse_id
+msgid "Depot"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_fleet_vehicle__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_route__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_stop_line__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_product_product__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_product_template__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_location__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_picking__display_name
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_warehouse__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields.selection,name:h2o_stock.selection__stock_picking__h2o_trip_role__empties
+msgid "Empties Collected"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_h2o_trip_load_line__qty_collected
+msgid "Empty bottles taken back from the customers."
+msgstr ""
+
+#. module: h2o_stock
+#: model_terms:ir.ui.view,arch_db:h2o_stock.h2o_trip_view_form_h2o_stock
+msgid "Full returnable bottles on the load lines."
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.module.module,shortdesc:base.module_h2o_stock
+msgid "H2Open Stock"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_fleet_vehicle__id
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_route__id
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_stop_line__id
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip__id
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__id
+#: model:ir.model.fields,field_description:h2o_stock.field_product_product__id
+#: model:ir.model.fields,field_description:h2o_stock.field_product_template__id
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_location__id
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_picking__id
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_warehouse__id
+msgid "ID"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_fleet_vehicle__h2o_location_id
+msgid "Internal location holding what the vehicle carries."
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_stock_location
+msgid "Inventory Location"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip__h2o_load_line_ids
+#: model_terms:ir.ui.view,arch_db:h2o_stock.h2o_trip_view_form_h2o_stock
+msgid "Load"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields.selection,name:h2o_stock.selection__stock_picking__h2o_trip_role__load
+msgid "Load-out"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__qty_loaded
+msgid "Loaded"
+msgstr ""
+
+#. module: h2o_stock
+#: model_terms:ir.ui.view,arch_db:h2o_stock.stock_quant_view_search_h2o_vehicle
+msgid "Negative"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_stock_warehouse__h2o_vehicle_location_id
+msgid "Parent location of the delivery vehicles based at this warehouse."
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__qty_planned
+msgid "Planned"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_product_template
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__product_id
+#: model_terms:ir.ui.view,arch_db:h2o_stock.stock_quant_view_search_h2o_vehicle
+msgid "Product"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_product_product
+msgid "Product Variant"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_h2o_trip_load_line__qty_returned
+msgid ""
+"Quantity brought back to the depot, computed when the trip closes: loaded - "
+"delivered + collected."
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_h2o_trip_load_line__qty_delivered
+msgid "Quantity delivered on the trip's stops."
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_h2o_trip_load_line__qty_loaded
+msgid ""
+"Quantity loaded on the vehicle. Follows the planned quantity until the trip "
+"is loaded."
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_h2o_trip_load_line__qty_planned
+msgid "Quantity to deliver on the trip's pending and delivered stops."
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields.selection,name:h2o_stock.selection__stock_picking__h2o_trip_role__return
+msgid "Return to Depot"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__qty_returned
+msgid "Returned"
+msgstr ""
+
+#. module: h2o_stock
+#. odoo-python
+#: code:addons/h2o_stock/models/h2o_trip.py:0
+msgid "Set a depot warehouse on trip %s."
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_stock_location__h2o_vehicle_id
+msgid "The delivery vehicle whose load this location holds."
+msgstr ""
+
+#. module: h2o_stock
+#: model_terms:ir.actions.act_window,help:h2o_stock.h2o_vehicle_stock_action
+msgid "The vehicles are empty"
+msgstr ""
+
+#. module: h2o_stock
+#: model_terms:ir.ui.view,arch_db:h2o_stock.stock_quant_view_list_h2o_vehicle
+msgid "Total"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_stock_picking
+msgid "Transfer"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip__h2o_picking_ids
+#: model_terms:ir.ui.view,arch_db:h2o_stock.h2o_trip_view_form_h2o_stock
+msgid "Transfers"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip__h2o_picking_count
+msgid "Transfers Count"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__trip_id
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_picking__h2o_trip_id
+msgid "Trip"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_h2o_trip_load_line
+msgid "Trip Load Line"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__state
+msgid "Trip Status"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_picking__h2o_trip_role
+msgid "Trip Transfer"
+msgstr ""
+
+#. module: h2o_stock
+#: model_terms:ir.actions.act_window,help:h2o_stock.h2o_vehicle_stock_action
+msgid ""
+"Trips load the vehicles when they leave and unload them when they close."
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_h2o_trip_load_line__product_uom_id
+msgid "Unit"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_fleet_vehicle
+#: model_terms:ir.ui.view,arch_db:h2o_stock.stock_quant_view_search_h2o_vehicle
+msgid "Vehicle"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_fleet_vehicle__h2o_location_id
+msgid "Vehicle Location"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.actions.act_window,name:h2o_stock.h2o_vehicle_stock_action
+#: model:ir.ui.menu,name:h2o_stock.menu_h2o_vehicle_stock
+#: model_terms:ir.ui.view,arch_db:h2o_stock.stock_quant_view_list_h2o_vehicle
+msgid "Vehicle Stock"
+msgstr ""
+
+#. module: h2o_stock
+#. odoo-python
+#: code:addons/h2o_stock/models/h2o_trip.py:0
+msgid "Vehicle of trip %s has no stock location; is it a delivery vehicle?"
+msgstr ""
+
+#. module: h2o_stock
+#. odoo-python
+#: code:addons/h2o_stock/models/stock_warehouse.py:0
+msgid "Vehicles"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,field_description:h2o_stock.field_stock_warehouse__h2o_vehicle_location_id
+msgid "Vehicles Location"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model,name:h2o_stock.model_stock_warehouse
+msgid "Warehouse"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.module.module,summary:base.module_h2o_stock
+msgid ""
+"Warehouse and vehicle stock of full and empty bottles, moved once per trip"
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_h2o_route__h2o_warehouse_id
+msgid "Warehouse the route's trips load out from and return to."
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_h2o_trip__h2o_warehouse_id
+msgid "Warehouse the trip loads out from and returns to: the route's depot."
+msgstr ""
+
+#. module: h2o_stock
+#: model:ir.model.fields,help:h2o_stock.field_fleet_vehicle__h2o_warehouse_id
+msgid ""
+"Warehouse the vehicle is based at; its stock location is created under it."
+msgstr ""

@@ -1,0 +1,719 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* h2o_container
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-18 03:42+0000\n"
+"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: h2o_container
+#: model:ir.module.module,description:base.module_h2o_container
+msgid ""
+"\n"
+"H2Open bottles and deposits\n"
+"===========================\n"
+"* Water products: returnable 19 L bottles, packaged water, empty bottles and deposit products,\n"
+"* the bottle ledger: every bottle given to or taken back from a customer, with the deposit charged or refunded,\n"
+"* bottle and deposit balances per customer, always computed from the ledger,\n"
+"* deposits booked on a liability account.\n"
+msgstr ""
+
+#. module: h2o_container
+#. odoo-python
+#: code:addons/h2o_container/models/h2o_container_move.py:0
+msgid "%s is not a returnable container product."
+msgstr ""
+
+#. module: h2o_container
+#: model:product.template,name:h2o_container.product_water_05l_product_template
+msgid "0.5 L Drinking Water"
+msgstr ""
+
+#. module: h2o_container
+#: model:product.template,name:h2o_container.product_deposit_19l_product_template
+msgid "19 L Bottle Deposit"
+msgstr ""
+
+#. module: h2o_container
+#: model:product.template,name:h2o_container.product_water_19l_product_template
+msgid "19 L Drinking Water (Damacana)"
+msgstr ""
+
+#. module: h2o_container
+#: model:product.template,name:h2o_container.product_bottle_19l_product_template
+msgid "19 L Returnable Bottle (empty)"
+msgstr ""
+
+#. module: h2o_container
+#: model:product.template,name:h2o_container.product_water_5l_product_template
+msgid "5 L Drinking Water"
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.ui.view,arch_db:h2o_container.res_partner_view_form_h2o_container
+msgid "<span class=\"o_stat_text\">Bottles Held</span>"
+msgstr ""
+
+#. module: h2o_container
+#. odoo-python
+#: code:addons/h2o_container/models/h2o_container_move.py:0
+msgid "A bottle ledger entry needs a quantity or a deposit amount."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields.selection,name:h2o_container.selection__h2o_container_move__source__closing
+msgid "Account Closing"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields.selection,name:h2o_container.selection__h2o_container_move__source__adjustment
+msgid "Adjustment"
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_move_view_search
+msgid "Adjustments"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model,name:h2o_container.model_h2o_container_balance
+msgid "Bottle Balance"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.actions.act_window,name:h2o_container.h2o_container_balance_action
+#: model:ir.ui.menu,name:h2o_container.menu_h2o_container_balances
+msgid "Bottle Balances"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_res_company__h2o_deposit_account_id
+#: model:ir.model.fields,field_description:h2o_container.field_res_config_settings__h2o_deposit_account_id
+msgid "Bottle Deposit Account"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.actions.act_window,name:h2o_container.h2o_container_move_action
+#: model:ir.ui.menu,name:h2o_container.menu_h2o_container_moves
+msgid "Bottle Ledger"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model,name:h2o_container.model_h2o_container_move
+msgid "Bottle Ledger Entry"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.constraint,message:h2o_container.constraint_h2o_container_move_qty_positive
+msgid "Bottle quantities cannot be negative."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_balance__qty
+#: model:ir.model.fields,field_description:h2o_container.field_res_partner__h2o_bottle_balance
+#: model:ir.model.fields,field_description:h2o_container.field_res_users__h2o_bottle_balance
+msgid "Bottles Held"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_balance__qty_in
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__qty_in
+msgid "Bottles In"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_balance__qty_out
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__qty_out
+msgid "Bottles Out"
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.ui.view,arch_db:h2o_container.res_config_settings_view_form_h2o_container
+msgid "Bottles and deposits"
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.actions.act_window,help:h2o_container.h2o_container_balance_action
+msgid ""
+"Bottles and deposits each customer holds, computed from the bottle ledger."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,help:h2o_container.field_h2o_container_move__qty_out
+msgid "Bottles given to the customer."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,help:h2o_container.field_h2o_container_move__qty_balance
+msgid "Bottles out minus bottles in."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,help:h2o_container.field_h2o_container_move__qty_in
+msgid "Bottles taken back from the customer."
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_move_view_form
+msgid "Cancel"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields.selection,name:h2o_container.selection__h2o_container_move__state__cancel
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_move_view_search
+msgid "Cancelled"
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_move_view_form
+msgid ""
+"Cancelling a done entry changes the customer's bottle balance. Continue?"
+msgstr ""
+
+#. module: h2o_container
+#: model:uom.uom,name:h2o_container.uom_case_24
+msgid "Case of 24"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model,name:h2o_container.model_res_company
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_balance__company_id
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__company_id
+msgid "Company"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model,name:h2o_container.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_move_view_form
+msgid "Confirm"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model,name:h2o_container.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_balance__product_id
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__product_id
+#: model:ir.model.fields,field_description:h2o_container.field_product_product__h2o_container_product_id
+#: model:ir.model.fields,field_description:h2o_container.field_product_template__h2o_container_product_id
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_balance_view_search
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_move_view_search
+msgid "Container"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields.selection,name:h2o_container.selection__product_template__h2o_product_kind__deposit
+msgid "Container Deposit"
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.ui.view,arch_db:h2o_container.product_template_search_view_h2o
+msgid "Containers"
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.actions.act_window,help:h2o_container.h2o_product_action
+msgid "Create a water product"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_balance__currency_id
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_balance__partner_id
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__partner_id
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_move_view_search
+msgid "Customer"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_balance__customer_type
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_balance_view_search
+msgid "Customer Type"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__date
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_move_view_search
+msgid "Date"
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_move_view_search
+msgid "Deliveries"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields.selection,name:h2o_container.selection__h2o_container_move__source__delivery
+msgid "Delivery"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__address_id
+msgid "Delivery Address"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_balance__zone_id
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_balance_view_search
+msgid "Delivery Zone"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__deposit_amount
+msgid "Deposit"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_balance__deposit_amount
+#: model:ir.model.fields,field_description:h2o_container.field_res_partner__h2o_deposit_balance
+#: model:ir.model.fields,field_description:h2o_container.field_res_users__h2o_deposit_balance
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_balance_view_search
+msgid "Deposit Held"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_product_product__h2o_deposit_product_id
+#: model:ir.model.fields,field_description:h2o_container.field_product_template__h2o_deposit_product_id
+msgid "Deposit Product"
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.ui.view,arch_db:h2o_container.res_config_settings_view_form_h2o_container
+msgid "Deposit account"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,help:h2o_container.field_h2o_container_move__deposit_amount
+msgid "Deposit charged (positive) or refunded (negative) with this entry."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,help:h2o_container.field_res_partner__h2o_deposit_balance
+#: model:ir.model.fields,help:h2o_container.field_res_users__h2o_deposit_balance
+msgid "Deposits charged minus deposits refunded, from the bottle ledger."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_balance__display_name
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__display_name
+#: model:ir.model.fields,field_description:h2o_container.field_product_template__display_name
+#: model:ir.model.fields,field_description:h2o_container.field_res_company__display_name
+#: model:ir.model.fields,field_description:h2o_container.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:h2o_container.field_res_partner__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,help:h2o_container.field_h2o_container_move__origin
+msgid "Document this entry comes from, e.g. the order or stop."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields.selection,name:h2o_container.selection__h2o_container_move__state__done
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_move_view_search
+msgid "Done"
+msgstr ""
+
+#. module: h2o_container
+#. odoo-python
+#: code:addons/h2o_container/models/h2o_container_move.py:0
+msgid ""
+"Done bottle ledger entries cannot be changed. Cancel the entry and record a "
+"new one."
+msgstr ""
+
+#. module: h2o_container
+#. odoo-python
+#: code:addons/h2o_container/models/h2o_container_move.py:0
+msgid "Done bottle ledger entries cannot be deleted; cancel them instead."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields.selection,name:h2o_container.selection__h2o_container_move__state__draft
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_move_view_search
+msgid "Draft"
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.actions.act_window,help:h2o_container.h2o_container_move_action
+msgid ""
+"Every returnable bottle given to or taken back from a customer is recorded here, mostly by deliveries.\n"
+"               Record opening balances and corrections as adjustments."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.module.module,shortdesc:base.module_h2o_container
+msgid "H2Open Bottles and Deposits"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_balance_view_search
+msgid "Holding Bottles"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_account_move_line__id
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_balance__id
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__id
+#: model:ir.model.fields,field_description:h2o_container.field_product_template__id
+#: model:ir.model.fields,field_description:h2o_container.field_res_company__id
+#: model:ir.model.fields,field_description:h2o_container.field_res_config_settings__id
+#: model:ir.model.fields,field_description:h2o_container.field_res_partner__id
+msgid "ID"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,help:h2o_container.field_h2o_container_move__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,help:h2o_container.field_h2o_container_move__message_has_error
+#: model:ir.model.fields,help:h2o_container.field_h2o_container_move__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model,name:h2o_container.model_account_move_line
+msgid "Journal Item"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_balance__last_date
+msgid "Last Movement"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_res_partner__h2o_container_move_count
+#: model:ir.model.fields,field_description:h2o_container.field_res_users__h2o_container_move_count
+msgid "Ledger Entries"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,help:h2o_container.field_res_company__h2o_deposit_account_id
+#: model:ir.model.fields,help:h2o_container.field_res_config_settings__h2o_deposit_account_id
+msgid ""
+"Liability account credited when a bottle deposit is invoiced, and debited "
+"when it is refunded."
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.ui.view,arch_db:h2o_container.res_config_settings_view_form_h2o_container
+msgid "Liability account for bottle deposits charged on invoices."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__qty_balance
+msgid "Net"
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.actions.act_window,help:h2o_container.h2o_container_move_action
+msgid "No bottle movements yet"
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.actions.act_window,help:h2o_container.h2o_container_balance_action
+msgid "No customer holds bottles"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__note
+msgid "Note"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,help:h2o_container.field_h2o_container_move__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,help:h2o_container.field_h2o_container_move__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: h2o_container
+#. odoo-python
+#: code:addons/h2o_container/models/h2o_container_move.py:0
+msgid "Only cancelled entries can be reset to draft."
+msgstr ""
+
+#. module: h2o_container
+#. odoo-python
+#: code:addons/h2o_container/models/product_template.py:0
+msgid ""
+"Only containers can have a deposit product, and it must be a deposit product"
+" (%s)."
+msgstr ""
+
+#. module: h2o_container
+#. odoo-python
+#: code:addons/h2o_container/models/h2o_container_move.py:0
+msgid "Only draft entries can be confirmed."
+msgstr ""
+
+#. module: h2o_container
+#. odoo-python
+#: code:addons/h2o_container/models/product_template.py:0
+msgid ""
+"Only returnable water can have a container, and it must be a container "
+"product (%s)."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields.selection,name:h2o_container.selection__h2o_container_move__source__opening
+msgid "Opening Balance"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__origin
+msgid "Origin"
+msgstr ""
+
+#. module: h2o_container
+#: model:uom.uom,name:h2o_container.uom_pack_4
+msgid "Pack of 4"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields.selection,name:h2o_container.selection__product_template__h2o_product_kind__water_packaged
+#: model_terms:ir.ui.view,arch_db:h2o_container.product_template_search_view_h2o
+msgid "Packaged Water"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model,name:h2o_container.model_product_template
+msgid "Product"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__name
+msgid "Reference"
+msgstr ""
+
+#. module: h2o_container
+#: model:product.template,description_sale:h2o_container.product_deposit_19l_product_template
+msgid "Refundable deposit for one returnable 19 L bottle."
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_move_view_form
+msgid "Reset to Draft"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields.selection,name:h2o_container.selection__product_template__h2o_product_kind__container
+msgid "Returnable Container"
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.ui.view,arch_db:h2o_container.product_template_search_view_h2o
+msgid "Returnable Water"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,help:h2o_container.field_res_partner__h2o_bottle_balance
+#: model:ir.model.fields,help:h2o_container.field_res_users__h2o_bottle_balance
+msgid ""
+"Returnable bottles the customer currently holds, from the bottle ledger."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,help:h2o_container.field_product_product__h2o_product_kind
+#: model:ir.model.fields,help:h2o_container.field_product_template__h2o_product_kind
+msgid ""
+"Returnable water is delivered in a container tracked on the customer's "
+"bottle ledger; packaged water is a plain product. Containers are the empty "
+"bottles themselves, deposits the amount charged per container held by a "
+"customer."
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.actions.act_window,help:h2o_container.h2o_product_action
+msgid ""
+"Returnable water, packaged water, the returnable bottles themselves and "
+"their deposits."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__source
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_move_view_search
+msgid "Source"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__origin_ref
+msgid "Source Document"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_h2o_container_move__state
+msgid "State"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,help:h2o_container.field_h2o_container_move__partner_id
+msgid ""
+"The commercial partner holding the bottles; delivery addresses are stored "
+"separately."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,help:h2o_container.field_product_product__h2o_deposit_product_id
+#: model:ir.model.fields,help:h2o_container.field_product_template__h2o_deposit_product_id
+msgid ""
+"The deposit charged per container; its sales price is the deposit amount."
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,help:h2o_container.field_product_product__h2o_container_product_id
+#: model:ir.model.fields,help:h2o_container.field_product_template__h2o_container_product_id
+msgid "The returnable bottle this water comes in."
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_balance_view_list
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_move_view_list
+msgid "Total"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_product_product__h2o_volume
+#: model:ir.model.fields,field_description:h2o_container.field_product_template__h2o_volume
+msgid "Volume (L)"
+msgstr ""
+
+#. module: h2o_container
+#: model:product.category,name:h2o_container.product_category_water
+msgid "Water"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields,field_description:h2o_container.field_product_product__h2o_product_kind
+#: model:ir.model.fields,field_description:h2o_container.field_product_template__h2o_product_kind
+msgid "Water Product Kind"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.actions.act_window,name:h2o_container.h2o_product_action
+#: model:ir.ui.menu,name:h2o_container.menu_h2o_config_products
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_product_template_view_list
+#: model_terms:ir.ui.view,arch_db:h2o_container.product_template_search_view_h2o
+msgid "Water Products"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.model.fields.selection,name:h2o_container.selection__product_template__h2o_product_kind__water_returnable
+msgid "Water in Returnable Bottle"
+msgstr ""
+
+#. module: h2o_container
+#: model:ir.module.module,summary:base.module_h2o_container
+msgid ""
+"Water products, returnable bottle ledger per customer and bottle deposits"
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_move_view_form
+msgid "Why this entry was recorded..."
+msgstr ""
+
+#. module: h2o_container
+#: model_terms:ir.ui.view,arch_db:h2o_container.h2o_container_move_view_search
+msgid "With Deposit"
+msgstr ""

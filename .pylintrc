@@ -1,0 +1,81 @@
+# pylint-odoo checks for the h2o_* addons (Odoo 20).
+# Plain Python errors (undefined names, unused imports, ...) are left to ruff,
+# so pylint only runs the Odoo-specific checks listed under `enable`.
+
+[MASTER]
+load-plugins=pylint_odoo
+score=n
+
+[ODOOLINT]
+valid-odoo-versions=20.0
+manifest-required-keys=license
+license-allowed=LGPL-3
+
+[MESSAGES CONTROL]
+disable=all
+# Left out on purpose:
+# - OCA repository conventions: manifest-required-author with OCA, missing-readme,
+#   development-status-allowed, manifest-maintainers-list, category-allowed,
+#   website-manifest-key-not-valid-uri, manifest-deprecated-key (we keep
+#   `description` in manifests), manifest-superfluous-key.
+# - Style only: attribute-string-redundant.
+# - False positives for this codebase: missing-return (flags compute methods and
+#   our _h2o_on_* hooks, which return nothing), no-search-all (crons and install
+#   hooks loop over every company on purpose), odoo-addons-relative-import
+#   (controllers import constants from their own module's models).
+enable=
+    manifest-required-key,
+    license-allowed,
+    manifest-version-format,
+    manifest-author-string,
+    manifest-data-duplicated,
+    manifest-external-assets,
+    manifest-behind-migrations,
+    manifest-summary-multiline,
+    missing-odoo-file,
+    test-folder-imported,
+    no-wizard-in-models,
+    resource-not-exist,
+    method-compute,
+    method-search,
+    method-inverse,
+    method-required-super,
+    super-method-mismatch,
+    prohibited-method-override,
+    inheritable-method-string,
+    inheritable-method-lambda,
+    no-write-in-compute,
+    no-raise-unlink,
+    context-overridden,
+    renamed-field-parameter,
+    attribute-deprecated,
+    deprecated-name-get,
+    deprecated-odoo-model-method,
+    deprecated-self-cr,
+    deprecated-inselect-operator,
+    bad-builtin-groupby,
+    sql-injection,
+    external-request-timeout,
+    invalid-commit,
+    odoo-exception-warning,
+    except-pass,
+    print-used,
+    use-vim-comment,
+    invalid-email,
+    translation-required,
+    translation-field,
+    translation-injection,
+    translation-unsupported-format,
+    translation-format-truncated,
+    translation-too-many-args,
+    translation-too-few-args,
+    translation-contains-variable,
+    translation-positional-used,
+    translation-not-lazy,
+    translation-format-interpolation,
+    translation-fstring-interpolation,
+    prefer-env-translation,
+
+[REPORTS]
+output-format=colorized
+msg-template={path}:{line}: [{msg_id}({symbol}), {obj}] {msg}

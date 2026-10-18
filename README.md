@@ -54,3 +54,17 @@ and `docker compose restart odoo`. `docker compose down -v` wipes the database.
 ```
 
 Installing `h2o_reporting` pulls in every other module.
+
+## Linting
+
+Every pull request runs [pre-commit](https://pre-commit.com) on the files it
+changes (`.github/workflows/lint.yml`): ruff, pylint-odoo, the OCA manifest and
+XML checks, and `tools/lint/check_xml_client_eval.py`, which rejects `ref()` and
+`Command` in XML values the web client evaluates (an action's `context` or
+`domain`, view attributes). To run the same checks locally:
+
+```bash
+pip install pre-commit
+pre-commit install          # lint the staged files on every commit
+pre-commit run --all-files  # lint the whole repo
+```

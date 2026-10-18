@@ -152,7 +152,7 @@ class H2oDriverController(http.Controller):
         try:
             day = fields.Date.to_date(day) if day else fields.Date.context_today(request.env.user)
         except ValueError:
-            raise BadRequest("date must be YYYY-MM-DD")
+            raise BadRequest("date must be YYYY-MM-DD") from None
         trips = request.env['h2o.trip'].search([
             ('driver_id', '=', request.env.uid),
             ('date', '=', day),
@@ -208,7 +208,7 @@ class H2oDriverController(http.Controller):
                 try:
                     base64.b64decode(vals[key], validate=True)
                 except (binascii.Error, TypeError, ValueError):
-                    raise BadRequest(f"{key} must be base64")
+                    raise BadRequest(f"{key} must be base64") from None
         stop.action_deliver(vals)
         return self._stop_data(stop)
 

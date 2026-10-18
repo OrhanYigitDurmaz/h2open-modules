@@ -1,0 +1,16 @@
+target-version = "py312"
+line-length = 120
+
+[lint]
+# pyflakes, pycodestyle errors/warnings and bugbear: real mistakes, not style.
+select = ["E", "F", "W", "B"]
+ignore = [
+    "E501",  # long lines are fine in Odoo field definitions and domains
+    "E741",  # `l` for lines in filtered/mapped lambdas is idiomatic Odoo
+    "B023",  # recordset.filtered(lambda ...) inside a loop runs immediately
+]
+
+[lint.per-file-ignores]
+"__init__.py" = ["F401"]       # Odoo loads submodules through these imports
+"__manifest__.py" = ["B018"]   # a manifest is a bare dict expression
+"*/tests/*" = ["B017"]         # assertRaises(Exception) for database errors

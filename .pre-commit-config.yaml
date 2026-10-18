@@ -1,0 +1,41 @@
+# Lint setup for the h2o_* Odoo 20 addons. Runs on every pull request
+# (.github/workflows/lint.yml) and locally:
+#   pip install pre-commit && pre-commit install   # then on each commit
+#   pre-commit run --all-files                     # whole repo
+exclude: ^docker-compose\.yml$
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-xml
+      - id: check-yaml
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: check-added-large-files
+      - id: debug-statements
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.1
+    hooks:
+      - id: ruff-check
+  - repo: https://github.com/OCA/pylint-odoo
+    rev: v10.0.12
+    hooks:
+      - id: pylint_odoo
+        args: [--rcfile=.pylintrc]
+        files: ^h2o_
+  - repo: https://github.com/OCA/odoo-pre-commit-hooks
+    rev: v0.2.27
+    hooks:
+      # Manifest, XML and CSV checks per addon, configured in .oca_hooks.cfg.
+      - id: oca-checks-odoo-module
+      - id: oca-checks-po
+  - repo: local
+    hooks:
+      - id: xml-client-eval
+        name: no ref()/Command in client-evaluated XML values
+        entry: python tools/lint/check_xml_client_eval.py
+        language: python
+        additional_dependencies: [lxml]
+        types: [xml]

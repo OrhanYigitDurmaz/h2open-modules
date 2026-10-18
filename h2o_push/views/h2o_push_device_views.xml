@@ -31,6 +31,7 @@
                         </group>
                         <group>
                             <field name="last_seen"/>
+                            <field name="session_id" groups="h2o_base.group_h2o_manager"/>
                             <field name="active" invisible="1"/>
                         </group>
                     </group>

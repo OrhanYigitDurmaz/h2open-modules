@@ -62,3 +62,18 @@ class TestPushApi(HttpCase):
         res = self.url_open('/h2o/api/v1/push/register', data=json.dumps({'token': 'x'}),
                             headers={'Content-Type': 'application/json'})
         self.assertEqual(res.status_code, 401)
+
+    def test_signed_out_device_stops_receiving_pushes(self):
+        payload = {'token': 'fcm-session', 'platform': 'android', 'app': 'driver', 'device_name': 'Galaxy A54'}
+        res = self._post('/h2o/api/v1/push/register', payload, self.driver_token)
+        self.assertEqual(res.status_code, 200, res.text)
+        device = self.env['h2o.push.device'].browse(res.json()['id'])
+        other = self.env['h2o.push.device'].sudo().create({
+            'user_id': self.driver.id, 'token': 'fcm-other', 'device_name': 'tablet'})
+        session = device.session_id
+        self.assertEqual(session.user_id, self.driver)
+        self.assertEqual(session.device_name, 'test phone')
+
+        session.action_h2o_sign_out()
+        self.assertFalse(device.active)
+        self.assertTrue(other.active)

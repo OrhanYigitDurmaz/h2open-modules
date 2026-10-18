@@ -15,8 +15,11 @@
                         </setting>
                     </block>
                     <block title="Mobile apps" id="h2o_settings_apps">
-                        <setting string="Login validity" help="Days before a driver or customer app has to sign in again.">
-                            <field name="h2o_app_token_days"/>
+                        <setting string="Sign-in validity" help="Days without use before a driver or customer app has to sign in again.">
+                            <field name="h2o_app_refresh_days"/>
+                        </setting>
+                        <setting string="Access token validity" help="Hours one access token works before the app renews it on its own.">
+                            <field name="h2o_app_access_hours"/>
                         </setting>
                     </block>
                 </app>

@@ -1,6 +1,6 @@
 {
     'name': 'H2Open Push Notifications',
-    'version': '20.0.1.0.0',
+    'version': '20.0.1.1.0',
     'category': 'H2Open',
     'summary': 'Firebase Cloud Messaging push notifications to the H2Open mobile apps',
     'description': """

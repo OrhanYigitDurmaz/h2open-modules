@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_app_session_view_list" model="ir.ui.view">
+        <field name="name">h2o.app.session.list</field>
+        <field name="model">h2o.app.session</field>
+        <field name="arch" type="xml">
+            <list create="false" delete="false" decoration-muted="state == 'revoked' or is_expired">
+                <field name="user_id"/>
+                <field name="device_name"/>
+                <field name="create_date" string="Signed In On"/>
+                <field name="last_used"/>
+                <field name="refresh_expires_at"/>
+                <field name="state" widget="badge" decoration-success="state == 'active'"/>
+                <field name="revoke_reason" optional="hide"/>
+                <field name="is_expired" column_invisible="True"/>
+                <button name="action_h2o_sign_out" type="object" string="Sign out" icon="fa-sign-out"
+                        invisible="state != 'active'"
+                        confirm="Sign this device out? The app will have to sign in again."/>
+            </list>
+        </field>
+    </record>
+
+    <record id="h2o_app_session_view_form" model="ir.ui.view">
+        <field name="name">h2o.app.session.form</field>
+        <field name="model">h2o.app.session</field>
+        <field name="arch" type="xml">
+            <form create="false" delete="false" edit="false">
+                <header>
+                    <button name="action_h2o_sign_out" type="object" string="Sign out" class="btn-primary"
+                            invisible="state != 'active'"
+                            confirm="Sign this device out? The app will have to sign in again."/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="device_name"/>
+                            <field name="create_date" string="Signed In On"/>
+                            <field name="last_used"/>
+                        </group>
+                        <group>
+                            <field name="access_expires_at"/>
+                            <field name="refresh_expires_at"/>
+                            <field name="revoked_at" invisible="state != 'revoked'"/>
+                            <field name="revoke_reason" invisible="state != 'revoked'"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="h2o_app_session_view_search" model="ir.ui.view">
+        <field name="name">h2o.app.session.search</field>
+        <field name="model">h2o.app.session</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="user_id"/>
+                <field name="device_name"/>
+                <filter name="filter_active" string="Signed in" domain="[('state', '=', 'active')]"/>
+                <filter name="filter_revoked" string="Signed out" domain="[('state', '=', 'revoked')]"/>
+                <group>
+                    <filter name="group_user" string="User" context="{'group_by': 'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="h2o_app_session_action" model="ir.actions.act_window">
+        <field name="name">App Devices</field>
+        <field name="res_model">h2o.app.session</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_filter_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No phone signed in yet</p>
+            <p>A device appears here when a driver or customer signs in to an H2Open app. Sign it out if the phone is lost.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_h2o_app_session" name="App Devices" parent="menu_h2o_config"
+              sequence="65" action="h2o_app_session_action"/>
+
+    <record id="view_users_form_h2o_app_sessions" model="ir.ui.view">
+        <field name="name">res.users.form.h2o.app.sessions</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="h2o_app_sessions" string="App Devices" groups="h2o_base.group_h2o_manager"
+                      invisible="not id">
+                    <field name="h2o_app_session_ids" readonly="1">
+                        <list decoration-muted="state == 'revoked' or is_expired">
+                            <field name="device_name"/>
+                            <field name="create_date" string="Signed In On"/>
+                            <field name="last_used"/>
+                            <field name="refresh_expires_at"/>
+                            <field name="state" widget="badge" decoration-success="state == 'active'"/>
+                            <field name="is_expired" column_invisible="True"/>
+                            <button name="action_h2o_sign_out" type="object" string="Sign out" icon="fa-sign-out"
+                                    invisible="state != 'active'"
+                                    confirm="Sign this device out? The app will have to sign in again."/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

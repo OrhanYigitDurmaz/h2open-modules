@@ -63,11 +63,35 @@ Depends: `base`, `mail`.
   XML ids `h2o_base.weekday_mon` … `weekday_sun`.
   `env['h2o.weekday']._h2o_from_date(date)`.
 * `res.company`: `h2o_order_cutoff_hour` (float, default 16.0),
-  `h2o_app_token_days` (int, default 30). Both on settings.
+  `h2o_app_access_hours` (int, default 24), `h2o_app_refresh_days` (int,
+  default 90). All on settings.
 * `res.users`: `_h2o_app_roles()` → list of `manager|dispatcher|accountant|driver`,
-  `_h2o_issue_app_token(device_name)` → API key string, `_h2o_app_profile()` → dict.
-* API: `POST /h2o/api/v1/login {login, password, device_name}` →
-  `{token, user}`; `POST /h2o/api/v1/logout`; `GET|POST /h2o/api/v1/me`.
+  `_h2o_app_login(device_name)` → token dict (below),
+  `_h2o_issue_app_token(device_name)` → access token string (signs in a new
+  device; handy in tests), `_h2o_app_profile()` → dict.
+* `h2o.app.session` (one per signed-in phone): `user_id`, `device_name`,
+  `access_expires_at`, `refresh_expires_at`, `last_used`, `state`
+  `active|revoked`, `revoked_at`, `revoke_reason`
+  `logout|manager|reuse|user`. `_h2o_current()` → session of the request's
+  bearer token; `_h2o_revoke(reason)` (extend it to clean up per device).
+  Managers see them under Configuration > App Devices and on the user form,
+  with a Sign out button. Archiving a user or changing their password signs
+  out all their devices.
+* API: `POST /h2o/api/v1/login {login, password, device_name}` → token dict
+  plus `user`; `POST /h2o/api/v1/token/refresh {refresh_token}` (no bearer)
+  → token dict; `POST /h2o/api/v1/logout` (signs out this device);
+  `GET|POST /h2o/api/v1/me`. Token dict: `access_token`, `access_expires_at`
+  (ISO UTC, `Z`), `access_expires_in` (s), `refresh_token`,
+  `refresh_expires_at`, `refresh_expires_in`.
+
+Built notes (h2o_base tokens): the access token is an `h2o_app` scoped
+`res.users.apikeys` key; the refresh token is `<ref>.<secret>` and only its
+SHA-256 is stored. Each refresh replaces both (sliding refresh expiry). A
+rotated refresh token presented again signs the device out (401), except
+once within 60 s of the rotation (a retry after a lost answer), which gets a
+fresh pair. Bad, expired or revoked refresh tokens get 401 "Sign in again".
+Login still returns `token` (= `access_token`) until the driver app reads
+`access_token`.
 
 ## h2o_customer
 
@@ -316,7 +340,9 @@ else's record), 422 (wrong state). Coordinates come from
 Depends: `h2o_base`.
 
 * `h2o.push.device`: `user_id`, `token` (unique), `platform` `android|ios`,
-  `app` `driver|customer`, `device_name`, `last_seen`, `active`.
+  `app` `driver|customer`, `device_name`, `last_seen`, `active`, `session_id`
+  (the `h2o.app.session` that registered it; signing that session out
+  archives the device).
 * Settings (system parameters, on the H2Open settings page): FCM project id
   `h2o_push.fcm_project_id`, service account JSON `h2o_push.fcm_service_account`.
 * `env['h2o.push.device']._h2o_send(users, data, notification=None, priority='high', ttl=60, app=None)`:

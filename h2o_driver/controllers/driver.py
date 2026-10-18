@@ -128,6 +128,7 @@ class H2oDriverController(http.Controller):
                 'price_unit': line.sale_line_id.sudo().price_reduce_taxinc,
             } for line in stop.line_ids],
             'empties_product_id': stop.empties_product_id.id or None,
+            'empties_expected': stop.empties_expected,
             'empties_collected': stop.empties_collected,
             'payment_mode': customer.h2o_payment_mode or None,
             'payment_method': stop.payment_method,

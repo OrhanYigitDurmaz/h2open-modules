@@ -14,6 +14,7 @@
                 <field name="order_id" optional="show"/>
                 <field name="time_window" optional="hide"/>
                 <field name="driver_id" widget="many2one_avatar_user" optional="show"/>
+                <field name="empties_expected" sum="Expected" optional="show"/>
                 <field name="empties_collected" sum="Empties" optional="show"/>
                 <field name="payment_method" optional="show"/>
                 <field name="amount_due" sum="Due" optional="hide"/>
@@ -58,6 +59,7 @@
                             <field name="payment_method" readonly="state != 'pending'"/>
                             <field name="payment_amount" readonly="state != 'pending'"/>
                             <field name="empties_product_id" readonly="state != 'pending'"/>
+                            <field name="empties_expected"/>
                             <field name="empties_collected" readonly="state != 'pending'"/>
                             <field name="done_at" invisible="not done_at"/>
                             <field name="failure_reason" invisible="state != 'failed'"/>

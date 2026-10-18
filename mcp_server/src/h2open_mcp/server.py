@@ -88,7 +88,7 @@ TRIP_FIELDS = [
 ]
 STOP_FIELDS = [
     "sequence", "trip_id", "partner_id", "commercial_partner_id", "order_id", "zone_id", "state",
-    "time_window", "line_ids", "empties_collected", "payment_method", "payment_amount", "amount_due",
+    "time_window", "line_ids", "empties_expected", "empties_collected", "payment_method", "payment_amount", "amount_due",
     "failure_reason", "failure_note", "done_at", "note",
 ]
 HANDOVER_FIELDS = [

@@ -49,6 +49,7 @@ class TestDriverApi(HttpCase, H2oDispatchCase):
         stop = trip['stops'][0]
         self.assertEqual(stop['order']['name'], self.order_1.name)
         self.assertEqual(stop['order']['empties_expected'], 1)
+        self.assertEqual(stop['empties_expected'], 1)
         self.assertEqual(stop['partner']['name'], 'Cash Customer')
         self.assertEqual(stop['partner']['latitude'], 39.92)
         self.assertEqual(stop['payment_mode'], 'cash')

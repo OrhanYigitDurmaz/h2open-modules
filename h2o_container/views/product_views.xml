@@ -55,7 +55,7 @@
         <field name="res_model">product.template</field>
         <field name="view_mode">list,kanban,form</field>
         <field name="domain">[('h2o_product_kind', '!=', False)]</field>
-        <field name="context">{'default_h2o_product_kind': 'water_packaged', 'default_categ_id': ref('h2o_container.product_category_water')}</field>
+        <field name="context" eval="{'default_h2o_product_kind': 'water_packaged', 'default_categ_id': ref('h2o_container.product_category_water')}"/>
         <field name="view_ids" eval="[Command.clear(),
             Command.create({'view_mode': 'list', 'view_id': ref('h2o_product_template_view_list')}),
             Command.create({'view_mode': 'kanban'}),

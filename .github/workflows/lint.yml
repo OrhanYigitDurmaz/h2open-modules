@@ -1,0 +1,35 @@
+name: Lint
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/pre-commit
+          key: pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
+      - run: pip install pre-commit
+      # Pull requests are checked on the files they change; pushes to main on
+      # the whole repo.
+      - name: Lint changed files
+        if: github.event_name == 'pull_request'
+        run: >-
+          pre-commit run --show-diff-on-failure --color=always
+          --from-ref "origin/${{ github.base_ref }}" --to-ref HEAD
+      - name: Lint all files
+        if: github.event_name == 'push'
+        run: pre-commit run --show-diff-on-failure --color=always --all-files

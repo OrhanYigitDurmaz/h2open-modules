@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- After Delivery Orders: H2Open opens the first menu, and a popup there leaves a blank page. -->
     <menuitem id="menu_h2o_quick_order" name="New Phone Order" parent="h2o_base.menu_h2o_operations"
-              sequence="5" action="h2o_quick_order_action" groups="h2o_base.group_h2o_dispatcher"/>
+              sequence="15" action="h2o_quick_order_action" groups="h2o_base.group_h2o_dispatcher"/>
     <menuitem id="menu_h2o_delivery_orders" name="Delivery Orders" parent="h2o_base.menu_h2o_operations"
               sequence="10" action="h2o_delivery_order_action" groups="h2o_base.group_h2o_dispatcher"/>
 </odoo>

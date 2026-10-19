@@ -1,0 +1,6 @@
+.o_h2o_location_map_canvas {
+    height: 320px;
+    // Own stacking context: Leaflet's panes must stay under dropdowns and dialogs.
+    position: relative;
+    z-index: 0;
+}

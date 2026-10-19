@@ -29,7 +29,7 @@ msgid ""
 "* weekdays used by zones, routes, customers and subscriptions,\n"
 "* shared company settings (order cut-off hour),\n"
 "* the bearer-token API used by the driver and customer mobile apps, with\n"
-"  rotating refresh tokens and a list of signed-in devices.\n"
+"  rotating refresh tokens, a list of signed-in devices and app crash reports.\n"
 msgstr ""
 "\n"
 "H2Open temel modül\n"
@@ -41,7 +41,7 @@ msgstr ""
 "* bölgeler, güzergahlar, müşteriler ve abonelikler için kullanılan haftanın günleri,\n"
 "* ortak şirket ayarları (sipariş kesim saati),\n"
 "* şoför ve müşteri mobil uygulamalarının kullandığı, dönen yenileme anahtarlı\n"
-"  bearer token API'si ve giriş yapmış cihazların listesi.\n"
+"  bearer token API'si, giriş yapmış cihazların listesi ve uygulama çökme raporları.\n"
 
 #. module: h2o_base
 #: model_terms:ir.actions.act_window,help:h2o_base.h2o_app_session_action
@@ -80,10 +80,31 @@ msgid "Accountant"
 msgstr "Muhasebeci"
 
 #. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_crash__os_version
+msgid "Android Version"
+msgstr "Android Sürümü"
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_crash__app
+msgid "App"
+msgstr "Uygulama"
+
+#. module: h2o_base
 #: model:ir.model.fields,field_description:h2o_base.field_res_company__h2o_app_access_hours
 #: model:ir.model.fields,field_description:h2o_base.field_res_config_settings__h2o_app_access_hours
 msgid "App Access Token Validity (hours)"
 msgstr "Uygulama Erişim Anahtarı Geçerliliği (saat)"
+
+#. module: h2o_base
+#: model:ir.model,name:h2o_base.model_h2o_app_crash
+msgid "App Crash Report"
+msgstr "Uygulama Çökme Raporu"
+
+#. module: h2o_base
+#: model:ir.actions.act_window,name:h2o_base.h2o_app_crash_action
+#: model:ir.ui.menu,name:h2o_base.menu_h2o_app_crash
+msgid "App Crashes"
+msgstr "Uygulama Çökmeleri"
 
 #. module: h2o_base
 #: model:ir.model,name:h2o_base.model_h2o_app_session
@@ -103,6 +124,12 @@ msgstr "Uygulama Cihazları"
 #: model:ir.model.fields,field_description:h2o_base.field_res_config_settings__h2o_app_refresh_days
 msgid "App Sign-in Validity (days)"
 msgstr "Uygulama Giriş Geçerliliği (gün)"
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_crash__app_version
+#: model_terms:ir.ui.view,arch_db:h2o_base.h2o_app_crash_view_search
+msgid "App Version"
+msgstr "Uygulama Sürümü"
 
 #. module: h2o_base
 #: model:ir.ui.menu,name:h2o_base.menu_h2o_billing
@@ -130,12 +157,19 @@ msgid "Configuration"
 msgstr "Yapılandırma"
 
 #. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_crash__occurred_at
+msgid "Crashed At"
+msgstr "Çökme Zamanı"
+
+#. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_crash__create_uid
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__create_uid
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__create_uid
 msgid "Created by"
 msgstr "Oluşturan"
 
 #. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_crash__create_date
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__create_date
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__create_date
 msgid "Created on"
@@ -154,6 +188,7 @@ msgstr ""
 "kullanılmadan geçen gün sayısı."
 
 #. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_crash__device
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__device_name
 msgid "Device"
 msgstr "Cihaz"
@@ -164,6 +199,7 @@ msgid "Dispatcher"
 msgstr "Sevkiyat Sorumlusu"
 
 #. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_crash__display_name
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__display_name
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__display_name
 #: model:ir.model.fields,field_description:h2o_base.field_res_company__display_name
@@ -184,9 +220,20 @@ msgid "Each weekday can only exist once."
 msgstr "Her gün yalnızca bir kez tanımlanabilir."
 
 #. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_crash__exception
+#: model_terms:ir.ui.view,arch_db:h2o_base.h2o_app_crash_view_search
+msgid "Exception"
+msgstr "Hata"
+
+#. module: h2o_base
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__is_expired
 msgid "Expired"
 msgstr "Süresi Doldu"
+
+#. module: h2o_base
+#: model:ir.model.fields,help:h2o_base.field_h2o_app_crash__exception
+msgid "First line of the stack trace."
+msgstr "Hata kaydının ilk satırı."
 
 #. module: h2o_base
 #: model:h2o.weekday,name:h2o_base.weekday_fri
@@ -228,6 +275,7 @@ msgstr ""
 " kendiliğinden yeniler."
 
 #. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_crash__id
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__id
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__id
 #: model:ir.model.fields,field_description:h2o_base.field_res_company__id
@@ -243,12 +291,14 @@ msgid "Invoices, deposits, monthly statements and driver cash handovers."
 msgstr "Faturalar, depozitolar, aylık ekstreler ve şoför kasa teslimleri."
 
 #. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_crash__write_uid
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__write_uid
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__write_uid
 msgid "Last Updated by"
 msgstr "Son Güncelleyen"
 
 #. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_crash__write_date
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__write_date
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_weekday__write_date
 msgid "Last Updated on"
@@ -292,6 +342,11 @@ msgstr "Ad"
 #: model:res.groups.privilege,placeholder:h2o_base.res_groups_privilege_h2open
 msgid "No"
 msgstr "Yok"
+
+#. module: h2o_base
+#: model_terms:ir.actions.act_window,help:h2o_base.h2o_app_crash_action
+msgid "No app crash so far"
+msgstr "Henüz uygulama çökmesi yok"
 
 #. module: h2o_base
 #: model_terms:ir.actions.act_window,help:h2o_base.h2o_app_session_action
@@ -457,6 +512,11 @@ msgid "Signed out on the phone"
 msgstr "Telefondan kapatıldı"
 
 #. module: h2o_base
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_crash__stack_trace
+msgid "Stack Trace"
+msgstr "Hata Kaydı"
+
+#. module: h2o_base
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__state
 msgid "State"
 msgstr "Durum"
@@ -489,6 +549,7 @@ msgstr "Salı"
 
 #. module: h2o_base
 #: model:ir.model,name:h2o_base.model_res_users
+#: model:ir.model.fields,field_description:h2o_base.field_h2o_app_crash__user_id
 #: model:ir.model.fields,field_description:h2o_base.field_h2o_app_session__user_id
 #: model_terms:ir.ui.view,arch_db:h2o_base.h2o_app_session_view_search
 msgid "User"
@@ -538,3 +599,12 @@ msgstr "Gün kodu 0 ile 6 arasında olmalıdır."
 #: model:ir.ui.menu,name:h2o_base.menu_h2o_config_weekdays
 msgid "Weekdays"
 msgstr "Günler"
+
+#. module: h2o_base
+#: model_terms:ir.actions.act_window,help:h2o_base.h2o_app_crash_action
+msgid ""
+"When the driver app crashes, it sends the report here the next time it runs."
+" Reports are kept 90 days."
+msgstr ""
+"Şoför uygulaması çöktüğünde raporu bir sonraki açılışta buraya gönderir. "
+"Raporlar 90 gün saklanır."

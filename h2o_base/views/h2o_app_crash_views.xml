@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="h2o_app_crash_view_list" model="ir.ui.view">
+        <field name="name">h2o.app.crash.list</field>
+        <field name="model">h2o.app.crash</field>
+        <field name="arch" type="xml">
+            <list create="false">
+                <field name="occurred_at"/>
+                <field name="user_id"/>
+                <field name="app" optional="hide"/>
+                <field name="app_version"/>
+                <field name="device" optional="show"/>
+                <field name="os_version" optional="hide"/>
+                <field name="exception"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="h2o_app_crash_view_form" model="ir.ui.view">
+        <field name="name">h2o.app.crash.form</field>
+        <field name="model">h2o.app.crash</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="occurred_at"/>
+                            <field name="user_id"/>
+                            <field name="app"/>
+                        </group>
+                        <group>
+                            <field name="app_version"/>
+                            <field name="device"/>
+                            <field name="os_version"/>
+                        </group>
+                    </group>
+                    <field name="stack_trace" class="font-monospace"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="h2o_app_crash_view_search" model="ir.ui.view">
+        <field name="name">h2o.app.crash.search</field>
+        <field name="model">h2o.app.crash</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="exception"/>
+                <field name="user_id"/>
+                <field name="app_version"/>
+                <field name="device"/>
+                <group>
+                    <filter name="group_exception" string="Exception" context="{'group_by': 'exception'}"/>
+                    <filter name="group_app_version" string="App Version" context="{'group_by': 'app_version'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="h2o_app_crash_action" model="ir.actions.act_window">
+        <field name="name">App Crashes</field>
+        <field name="res_model">h2o.app.crash</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No app crash so far</p>
+            <p>When the driver app crashes, it sends the report here the next time it runs. Reports are kept 90 days.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_h2o_app_crash" name="App Crashes" parent="menu_h2o_config"
+              sequence="66" action="h2o_app_crash_action"/>
+</odoo>

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 20.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 03:42+0000\n"
-"PO-Revision-Date: 2026-10-18 03:42+0000\n"
+"POT-Creation-Date: 2026-10-19 01:42+0000\n"
+"PO-Revision-Date: 2026-10-19 01:42+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,9 @@ msgid ""
 "* Customer type (home, office, reseller) and payment mode (cash, card, monthly account) on contacts,\n"
 "* delivery zones (il, ilçe/mahalle names, postal codes, delivery days),\n"
 "  matched automatically from the customer's address,\n"
-"* delivery preferences: days, floor, elevator, notes for the driver.\n"
+"* delivery preferences: days, floor, elevator, notes for the driver,\n"
+"* the exact location of the address, set on a map (OpenStreetMap) by\n"
+"  clicking, searching the address or pasting a location or Google Maps link.\n"
 msgstr ""
 
 #. module: h2o_customer
@@ -62,6 +64,12 @@ msgid ""
 msgstr ""
 
 #. module: h2o_customer
+#. odoo-javascript
+#: code:addons/h2o_customer/static/src/location_map/location_map.xml:0
+msgid "Click the map or drag the pin onto the exact building."
+msgstr ""
+
+#. module: h2o_customer
 #: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__code
 msgid "Code"
 msgstr ""
@@ -92,6 +100,12 @@ msgstr ""
 #. module: h2o_customer
 #: model:ir.model,name:h2o_customer.model_res_partner
 msgid "Contact"
+msgstr ""
+
+#. module: h2o_customer
+#. odoo-python
+#: code:addons/h2o_customer/models/res_partner.py:0
+msgid "Could not open this link. Check the connection and try again."
 msgstr ""
 
 #. module: h2o_customer
@@ -199,9 +213,20 @@ msgid "Empty when the contact is not a water delivery customer."
 msgstr ""
 
 #. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_form_h2o
+msgid "Exact Location"
+msgstr ""
+
+#. module: h2o_customer
 #: model:ir.model.fields,help:h2o_customer.field_res_partner__h2o_zone_id
 #: model:ir.model.fields,help:h2o_customer.field_res_users__h2o_zone_id
 msgid "Filled automatically from the address when empty."
+msgstr ""
+
+#. module: h2o_customer
+#. odoo-javascript
+#: code:addons/h2o_customer/static/src/location_map/location_map.xml:0
+msgid "Find"
 msgstr ""
 
 #. module: h2o_customer
@@ -213,6 +238,12 @@ msgstr ""
 #. module: h2o_customer
 #: model:ir.module.module,shortdesc:base.module_h2o_customer
 msgid "H2Open Customers"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_res_partner__h2o_has_location
+#: model:ir.model.fields,field_description:h2o_customer.field_res_users__h2o_has_location
+msgid "Has Location"
 msgstr ""
 
 #. module: h2o_customer
@@ -250,9 +281,21 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: h2o_customer
+#. odoo-javascript
+#: code:addons/h2o_customer/static/src/location_map/location_map.js:0
+msgid "Latitude"
+msgstr ""
+
+#. module: h2o_customer
 #: model:ir.model.fields,help:h2o_customer.field_res_partner__h2o_weekday_ids
 #: model:ir.model.fields,help:h2o_customer.field_res_users__h2o_weekday_ids
 msgid "Leave empty to use the delivery days of the zone."
+msgstr ""
+
+#. module: h2o_customer
+#. odoo-javascript
+#: code:addons/h2o_customer/static/src/location_map/location_map.js:0
+msgid "Longitude"
 msgstr ""
 
 #. module: h2o_customer
@@ -269,7 +312,18 @@ msgstr ""
 
 #. module: h2o_customer
 #: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_search_h2o
+msgid "No Location"
+msgstr ""
+
+#. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_search_h2o
 msgid "No Zone"
+msgstr ""
+
+#. module: h2o_customer
+#. odoo-javascript
+#: code:addons/h2o_customer/static/src/location_map/location_map.xml:0
+msgid "No place found. Click the map to set the pin by hand."
 msgstr ""
 
 #. module: h2o_customer
@@ -281,6 +335,12 @@ msgstr ""
 #: model:ir.model.fields.selection,name:h2o_customer.selection__res_partner__h2o_customer_type__office
 #: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_search_h2o
 msgid "Office"
+msgstr ""
+
+#. module: h2o_customer
+#. odoo-python
+#: code:addons/h2o_customer/models/res_partner.py:0
+msgid "Only employees can look up locations."
 msgstr ""
 
 #. module: h2o_customer
@@ -318,9 +378,21 @@ msgid ""
 msgstr ""
 
 #. module: h2o_customer
+#. odoo-javascript
+#: code:addons/h2o_customer/static/src/location_map/location_map.xml:0
+msgid "Remove pin"
+msgstr ""
+
+#. module: h2o_customer
 #: model:ir.model.fields.selection,name:h2o_customer.selection__res_partner__h2o_customer_type__reseller
 #: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_search_h2o
 msgid "Reseller"
+msgstr ""
+
+#. module: h2o_customer
+#. odoo-javascript
+#: code:addons/h2o_customer/static/src/location_map/location_map.xml:0
+msgid "Search an address, or paste a location or Google Maps link"
 msgstr ""
 
 #. module: h2o_customer
@@ -335,8 +407,20 @@ msgid "Shown to the driver: door code, where to leave the bottles, ..."
 msgstr ""
 
 #. module: h2o_customer
+#. odoo-python
+#: code:addons/h2o_customer/models/res_partner.py:0
+msgid "The address search is not available right now. Place the pin by hand."
+msgstr ""
+
+#. module: h2o_customer
 #: model:ir.model.constraint,message:h2o_customer.constraint_h2o_zone_code_company_unique
 msgid "The zone code must be unique per company."
+msgstr ""
+
+#. module: h2o_customer
+#. odoo-javascript
+#: code:addons/h2o_customer/static/src/location_map/location_map.xml:0
+msgid "Use the address"
 msgstr ""
 
 #. module: h2o_customer
@@ -360,6 +444,12 @@ msgstr ""
 #. module: h2o_customer
 #: model:ir.module.module,summary:base.module_h2o_customer
 msgid "Water delivery customers, delivery zones and delivery preferences"
+msgstr ""
+
+#. module: h2o_customer
+#: model:ir.model.fields,help:h2o_customer.field_res_partner__h2o_has_location
+#: model:ir.model.fields,help:h2o_customer.field_res_users__h2o_has_location
+msgid "Whether the exact coordinates of the address are set."
 msgstr ""
 
 #. module: h2o_customer

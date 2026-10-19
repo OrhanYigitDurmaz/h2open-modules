@@ -1,6 +1,6 @@
 {
     'name': 'H2Open Base',
-    'version': '20.0.1.1.0',
+    'version': '20.0.1.2.0',
     'category': 'H2Open',
     'summary': 'Menus, security groups, shared settings and app API for H2Open water delivery',
     'description': """
@@ -13,7 +13,7 @@ Common foundation for every H2Open module:
 * weekdays used by zones, routes, customers and subscriptions,
 * shared company settings (order cut-off hour),
 * the bearer-token API used by the driver and customer mobile apps, with
-  rotating refresh tokens and a list of signed-in devices.
+  rotating refresh tokens, a list of signed-in devices and app crash reports.
 """,
     'author': 'H2Open',
     'license': 'LGPL-3',
@@ -25,6 +25,7 @@ Common foundation for every H2Open module:
         'views/h2o_menus.xml',
         'views/h2o_weekday_views.xml',
         'views/h2o_app_session_views.xml',
+        'views/h2o_app_crash_views.xml',
         'views/res_config_settings_views.xml',
     ],
     'application': True,

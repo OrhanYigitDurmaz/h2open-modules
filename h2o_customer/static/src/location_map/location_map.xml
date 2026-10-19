@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="h2o_customer.LocationMap">
+        <div class="o_h2o_location_map w-100">
+            <div t-if="!this.props.readonly" class="d-flex flex-wrap gap-2 mb-2">
+                <input type="text" class="o_input flex-grow-1 o_h2o_location_query"
+                       t-model.proxy="this.state.query" t-on-keydown="this.onKeydown"
+                       placeholder="Search an address, or paste a location or Google Maps link"/>
+                <button type="button" class="btn btn-secondary" t-on-click="this.onSearch"
+                        t-att-disabled="this.state.searching">Find</button>
+                <button type="button" class="btn btn-secondary" t-on-click="this.onSearchAddress"
+                        t-att-disabled="this.state.searching or !this.addressQuery">Use the address</button>
+                <button t-if="this.point" class="btn btn-link" type="button" t-on-click="this.onClear">Remove pin</button>
+            </div>
+            <div t-if="this.state.results.length" class="list-group mb-2 o_h2o_location_results">
+                <t t-foreach="this.state.results" t-as="result" t-key="result.lat + ',' + result.lng">
+                    <button type="button" class="list-group-item list-group-item-action text-start"
+                            t-on-click="() => this.onPick(result)" t-out="result.name"/>
+                </t>
+            </div>
+            <div t-elif="this.state.noResult" class="text-muted mb-2">No place found. Click the map to set the pin by hand.</div>
+            <div class="o_h2o_location_map_canvas border rounded" t-ref="this.mapRef"/>
+            <div t-if="!this.props.readonly" class="text-muted small mt-1">
+                Click the map or drag the pin onto the exact building.
+            </div>
+        </div>
+    </t>
+
+</templates>

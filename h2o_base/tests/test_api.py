@@ -191,3 +191,23 @@ class TestAppApi(HttpCase):
         self.assertEqual(res.status_code, 401)
         res = self._post('/h2o/api/v1/me', token='not-a-token')
         self.assertEqual(res.status_code, 401)
+
+    def test_crash_reports(self):
+        token = self._login()['access_token']
+        res = self._post('/h2o/api/v1/crashes', {'reports': [
+            {'stack_trace': 'java.lang.IllegalStateException: boom\n\tat tr.h2open.driver.X.y(X.kt:1)',
+             'app': 'driver', 'app_version': '1.2.0', 'device': 'Samsung SM-A155F', 'os_version': '15',
+             'occurred_at': '2026-10-19T08:30:00Z'},
+            {'stack_trace': '   '},
+        ]}, token=token)
+        self.assertEqual(res.status_code, 200, res.text)
+        self.assertEqual(res.json(), {'received': 1})
+        crash = self.env['h2o.app.crash'].search([('user_id', '=', self.driver.id)])
+        self.assertEqual(crash.exception, 'java.lang.IllegalStateException: boom')
+        self.assertEqual(crash.app_version, '1.2.0')
+        self.assertEqual(fields.Datetime.to_string(crash.occurred_at), '2026-10-19 08:30:00')
+
+        res = self._post('/h2o/api/v1/crashes', {'reports': 'nope'}, token=token)
+        self.assertEqual(res.status_code, 400)
+        res = self._post('/h2o/api/v1/crashes', {'reports': []})
+        self.assertEqual(res.status_code, 401)

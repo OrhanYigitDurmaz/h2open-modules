@@ -25,7 +25,9 @@ msgid ""
 "* Customer type (home, office, reseller) and payment mode (cash, card, monthly account) on contacts,\n"
 "* delivery zones (il, ilçe/mahalle names, postal codes, delivery days),\n"
 "  matched automatically from the customer's address,\n"
-"* delivery preferences: days, floor, elevator, notes for the driver.\n"
+"* delivery preferences: days, floor, elevator, notes for the driver,\n"
+"* the exact location of the address, set on a map (OpenStreetMap) by\n"
+"  clicking, searching the address or pasting a location or Google Maps link.\n"
 msgstr ""
 "\n"
 "H2Open müşteriler\n"
@@ -33,7 +35,9 @@ msgstr ""
 "* Kişilerde müşteri tipi (ev, ofis, bayi) ve ödeme şekli (nakit, kart, aylık cari hesap),\n"
 "* teslimat bölgeleri (il, ilçe/mahalle adları, posta kodları, teslimat günleri),\n"
 "  müşterinin adresinden otomatik olarak eşleştirilir,\n"
-"* teslimat tercihleri: günler, kat, asansör, şoför için notlar.\n"
+"* teslimat tercihleri: günler, kat, asansör, şoför için notlar,\n"
+"* adresin tam konumu, haritada (OpenStreetMap) tıklayarak, adresi arayarak\n"
+"  veya konum ya da Google Haritalar bağlantısı yapıştırarak belirlenir.\n"
 
 #. module: h2o_customer
 #: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__active
@@ -72,6 +76,12 @@ msgstr ""
 "fatura kesilir."
 
 #. module: h2o_customer
+#. odoo-javascript
+#: code:addons/h2o_customer/static/src/location_map/location_map.xml:0
+msgid "Click the map or drag the pin onto the exact building."
+msgstr "Haritaya tıklayın veya iğneyi tam binanın üzerine sürükleyin."
+
+#. module: h2o_customer
 #: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__code
 msgid "Code"
 msgstr "Kod"
@@ -105,6 +115,12 @@ msgstr "Şirket"
 #: model:ir.model,name:h2o_customer.model_res_partner
 msgid "Contact"
 msgstr "Kontak"
+
+#. module: h2o_customer
+#. odoo-python
+#: code:addons/h2o_customer/models/res_partner.py:0
+msgid "Could not open this link. Check the connection and try again."
+msgstr "Bu bağlantı açılamadı. Bağlantıyı kontrol edip tekrar deneyin."
 
 #. module: h2o_customer
 #: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__country_id
@@ -211,10 +227,21 @@ msgid "Empty when the contact is not a water delivery customer."
 msgstr "Kişi bir su dağıtım müşterisi değilse boştur."
 
 #. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_form_h2o
+msgid "Exact Location"
+msgstr "Tam Konum"
+
+#. module: h2o_customer
 #: model:ir.model.fields,help:h2o_customer.field_res_partner__h2o_zone_id
 #: model:ir.model.fields,help:h2o_customer.field_res_users__h2o_zone_id
 msgid "Filled automatically from the address when empty."
 msgstr "Boşsa adresten otomatik olarak doldurulur."
+
+#. module: h2o_customer
+#. odoo-javascript
+#: code:addons/h2o_customer/static/src/location_map/location_map.xml:0
+msgid "Find"
+msgstr "Bul"
 
 #. module: h2o_customer
 #: model:ir.model.fields,field_description:h2o_customer.field_res_partner__h2o_floor
@@ -226,6 +253,12 @@ msgstr "Kat"
 #: model:ir.module.module,shortdesc:base.module_h2o_customer
 msgid "H2Open Customers"
 msgstr "H2Open Müşteriler"
+
+#. module: h2o_customer
+#: model:ir.model.fields,field_description:h2o_customer.field_res_partner__h2o_has_location
+#: model:ir.model.fields,field_description:h2o_customer.field_res_users__h2o_has_location
+msgid "Has Location"
+msgstr "Konumu Var"
 
 #. module: h2o_customer
 #: model:ir.model.fields.selection,name:h2o_customer.selection__res_partner__h2o_customer_type__home
@@ -264,10 +297,22 @@ msgid "Last Updated on"
 msgstr "Son Güncelleme"
 
 #. module: h2o_customer
+#. odoo-javascript
+#: code:addons/h2o_customer/static/src/location_map/location_map.js:0
+msgid "Latitude"
+msgstr "Enlem"
+
+#. module: h2o_customer
 #: model:ir.model.fields,help:h2o_customer.field_res_partner__h2o_weekday_ids
 #: model:ir.model.fields,help:h2o_customer.field_res_users__h2o_weekday_ids
 msgid "Leave empty to use the delivery days of the zone."
 msgstr "Bölgenin teslimat günlerini kullanmak için boş bırakın."
+
+#. module: h2o_customer
+#. odoo-javascript
+#: code:addons/h2o_customer/static/src/location_map/location_map.js:0
+msgid "Longitude"
+msgstr "Boylam"
 
 #. module: h2o_customer
 #: model:ir.model.fields.selection,name:h2o_customer.selection__res_partner__h2o_payment_mode__account
@@ -283,8 +328,19 @@ msgstr "Ad"
 
 #. module: h2o_customer
 #: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_search_h2o
+msgid "No Location"
+msgstr "Konumsuz"
+
+#. module: h2o_customer
+#: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_search_h2o
 msgid "No Zone"
 msgstr "Bölgesiz"
+
+#. module: h2o_customer
+#. odoo-javascript
+#: code:addons/h2o_customer/static/src/location_map/location_map.xml:0
+msgid "No place found. Click the map to set the pin by hand."
+msgstr "Yer bulunamadı. İğneyi elle koymak için haritaya tıklayın."
 
 #. module: h2o_customer
 #: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__note
@@ -296,6 +352,12 @@ msgstr "Not"
 #: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_search_h2o
 msgid "Office"
 msgstr "Ofis"
+
+#. module: h2o_customer
+#. odoo-python
+#: code:addons/h2o_customer/models/res_partner.py:0
+msgid "Only employees can look up locations."
+msgstr "Konum aramayı yalnızca çalışanlar yapabilir."
 
 #. module: h2o_customer
 #: model:ir.model.fields,field_description:h2o_customer.field_res_partner__h2o_payment_mode
@@ -334,10 +396,22 @@ msgstr ""
 "ekle."
 
 #. module: h2o_customer
+#. odoo-javascript
+#: code:addons/h2o_customer/static/src/location_map/location_map.xml:0
+msgid "Remove pin"
+msgstr "İğneyi kaldır"
+
+#. module: h2o_customer
 #: model:ir.model.fields.selection,name:h2o_customer.selection__res_partner__h2o_customer_type__reseller
 #: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_search_h2o
 msgid "Reseller"
 msgstr "Bayi"
+
+#. module: h2o_customer
+#. odoo-javascript
+#: code:addons/h2o_customer/static/src/location_map/location_map.xml:0
+msgid "Search an address, or paste a location or Google Maps link"
+msgstr "Adres arayın veya konum ya da Google Haritalar bağlantısı yapıştırın"
 
 #. module: h2o_customer
 #: model:ir.model.fields,field_description:h2o_customer.field_h2o_zone__sequence
@@ -352,9 +426,21 @@ msgstr ""
 "Şoföre gösterilir: kapı şifresi, damacanaların nereye bırakılacağı, ..."
 
 #. module: h2o_customer
+#. odoo-python
+#: code:addons/h2o_customer/models/res_partner.py:0
+msgid "The address search is not available right now. Place the pin by hand."
+msgstr "Adres arama şu anda kullanılamıyor. İğneyi elle koyun."
+
+#. module: h2o_customer
 #: model:ir.model.constraint,message:h2o_customer.constraint_h2o_zone_code_company_unique
 msgid "The zone code must be unique per company."
 msgstr "Bölge kodu şirket başına benzersiz olmalıdır."
+
+#. module: h2o_customer
+#. odoo-javascript
+#: code:addons/h2o_customer/static/src/location_map/location_map.xml:0
+msgid "Use the address"
+msgstr "Adresi kullan"
 
 #. module: h2o_customer
 #: model:ir.model.fields,field_description:h2o_customer.field_res_partner__h2o_customer_type
@@ -378,6 +464,12 @@ msgstr "Su Dağıtımı"
 #: model:ir.module.module,summary:base.module_h2o_customer
 msgid "Water delivery customers, delivery zones and delivery preferences"
 msgstr "Su dağıtım müşterileri, teslimat bölgeleri ve teslimat tercihleri"
+
+#. module: h2o_customer
+#: model:ir.model.fields,help:h2o_customer.field_res_partner__h2o_has_location
+#: model:ir.model.fields,help:h2o_customer.field_res_users__h2o_has_location
+msgid "Whether the exact coordinates of the address are set."
+msgstr "Adresin tam koordinatlarının girilip girilmediği."
 
 #. module: h2o_customer
 #: model_terms:ir.ui.view,arch_db:h2o_customer.res_partner_view_form_h2o

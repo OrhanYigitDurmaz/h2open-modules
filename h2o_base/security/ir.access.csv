@@ -2,3 +2,4 @@ id,name,model_id,group_id/id,operation,domain
 access_h2o_weekday_user,h2o.weekday user,h2o.weekday,base.group_user,r,
 access_h2o_weekday_manager,h2o.weekday manager,h2o.weekday,h2o_base.group_h2o_manager,crud,
 access_h2o_app_session_manager,h2o.app.session manager,h2o.app.session,h2o_base.group_h2o_manager,r,
+access_h2o_app_crash_manager,h2o.app.crash manager,h2o.app.crash,h2o_base.group_h2o_manager,rd,

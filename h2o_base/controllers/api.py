@@ -11,7 +11,7 @@ JSON with an HTTP error status.
 """
 import logging
 
-from werkzeug.exceptions import Unauthorized
+from werkzeug.exceptions import BadRequest, Unauthorized
 
 from odoo import http
 from odoo.exceptions import AccessDenied
@@ -23,6 +23,7 @@ from odoo.addons.h2o_base.models.h2o_app_session import H2O_APP_SCOPE
 _logger = logging.getLogger(__name__)
 
 API_PREFIX = '/h2o/api/v1'
+MAX_CRASHES_PER_REQUEST = 20
 
 
 def h2o_route(path, methods=('POST',), **kwargs):
@@ -88,3 +89,12 @@ class H2oApiController(http.Controller):
     @h2o_route(f'{API_PREFIX}/me', methods=('GET', 'POST'))
     def h2o_me(self, **kw):
         return request.env.user._h2o_app_profile()
+
+    @h2o_route(f'{API_PREFIX}/crashes')
+    def h2o_crashes(self, reports=None, **kw):
+        """Crash reports the app saved on the phone; it sends them once signed in."""
+        if not isinstance(reports, list) or not all(isinstance(report, dict) for report in reports):
+            raise BadRequest("reports must be a list of {stack_trace, app, app_version, device, os_version, occurred_at}")
+        # A phone sends a few at a time; more would be a loop crashing on start.
+        crashes = request.env['h2o.app.crash']._h2o_report(request.env.user, reports[:MAX_CRASHES_PER_REQUEST])
+        return {'received': len(crashes)}

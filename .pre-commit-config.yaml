@@ -2,7 +2,8 @@
 # (.github/workflows/lint.yml) and locally:
 #   pip install pre-commit && pre-commit install   # then on each commit
 #   pre-commit run --all-files                     # whole repo
-exclude: ^docker-compose\.yml$
+# Third-party libraries under static/lib stay as their authors ship them.
+exclude: ^(docker-compose\.yml|h2o_\w+/static/lib/.*)$
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0

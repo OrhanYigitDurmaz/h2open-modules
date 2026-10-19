@@ -83,6 +83,12 @@ Depends: `base`, `mail`.
   `GET|POST /h2o/api/v1/me`. Token dict: `access_token`, `access_expires_at`
   (ISO UTC, `Z`), `access_expires_in` (s), `refresh_token`,
   `refresh_expires_at`, `refresh_expires_in`.
+* `h2o.app.crash`: crash reports the apps send (`user_id`, `app`,
+  `app_version`, `device`, `os_version`, `occurred_at`, `exception` = first
+  line, `stack_trace`), kept 90 days; Configuration > App Crashes (managers).
+  `POST /h2o/api/v1/crashes {reports: [{stack_trace, app, app_version,
+  device, os_version, occurred_at}]}` → `{received}`; at most 20 per call,
+  empty traces ignored.
 
 Built notes (h2o_base tokens): the access token is an `h2o_app` scoped
 `res.users.apikeys` key; the refresh token is `<ref>.<secret>` and only its
@@ -112,9 +118,19 @@ Depends: `h2o_base`, `contacts`.
   * `h2o_floor` (Integer), `h2o_has_elevator` (Boolean)
   * `h2o_payment_mode` selection `cash|card|account` (default `cash`; `account` = monthly invoice)
   * `_h2o_delivery_weekdays()` → own days or zone days
+  * exact location in Odoo's own `partner_latitude` / `partner_longitude`;
+    `h2o_has_location` (stored Boolean) and a "No Location" filter.
+    `h2o_locate(text)` (employees) → `{point: [lat, lng]}` for a pasted
+    "lat, lng", `geo:` URI or Google Maps link (short links followed through
+    Google's hosts only), else `{results: [{name, lat, lng}]}` from
+    OpenStreetMap Nominatim (Türkiye, at most 1 request/s server-wide).
 * Menus: Customers (`menu_h2o_customers` → partner list filtered on
   `h2o_customer_type != False`), Configuration → Zones.
-* Partner form: a "Water delivery" page with the fields above.
+* Partner form: a "Water delivery" page with the fields above and an
+  "Exact Location" map (view widget `h2o_location_map`, Leaflet with
+  OpenStreetMap tiles, bundled in `static/lib/leaflet`): click the map or
+  drag the pin, search an address, or paste a location. The pin is
+  optional; no paid Google API is used.
 
 Built notes: `h2o.zone` also has `sequence`, `country_id`, `note`,
 `action_view_partners`, `action_h2o_assign_partners`; partners have
